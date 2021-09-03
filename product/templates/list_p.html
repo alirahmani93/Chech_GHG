@@ -1,0 +1,26 @@
+{% extends "base_product.html" %}
+{% block title %}   {{ title }}     {% endblock %}
+
+{% block main %}
+   <h1>name is : {{ list_p.name }}</h1>
+   <p>status is:    {{ list_p.status }}</p>
+   <p>{{ list_p.count }}</p>
+
+   <div style="background-color: darkred; color:chartreuse"> Brand is:
+       <p>{{ list_p.brand.name }} </p>
+    <p>{{ list_p.brand.phone_number }}</p>
+   </div>
+
+
+   <div aria-busy="true" style="background-color: coral"> Category is:
+       <p>{{ list_p.cat.title }} </p>
+    <p>{{ list_p.cat.sub_category }}</p>
+   </div>
+   <p>{{ list_p.status }}</p>
+
+   <div style="background-color: firebrick">
+   <p>when request arrive: </p>
+       <p>{{ request_time }} </p>
+</div>
+
+{% endblock %}

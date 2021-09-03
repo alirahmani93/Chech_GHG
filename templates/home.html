@@ -1,0 +1,826 @@
+{%  load static %}
+
+
+<!DOCTYPE html>
+
+
+<html lang="fa-IR" dir="rtl" class="no-js">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>ÿ®ÿ™ ⁄©Ÿà€åŸÜ - ŸÅÿ±Ÿàÿ¥⁄ØÿßŸá ÿ®ÿ™ ⁄©Ÿà€åŸÜ ÿß⁄©ÿ≥⁄ÜŸÜÿ¨</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href={%  static "images/favicon.png" %}>
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/select2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skins/orange.css">
+
+    <link rel="alternate stylesheet" type="text/css" title="orange" href="css/skins/orange.css" />
+    <link rel="alternate stylesheet" type="text/css" title="green" href="css/skins/green.css" />
+    <link rel="alternate stylesheet" type="text/css" title="blue" href="css/skins/blue.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleswitcher.css" />
+
+    <script src="js/modernizr.js"></script>
+
+</head>
+
+<body>
+    <div id="preloader">
+        <div id="preloader-content">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="100 100 400 400" xml:space="preserve">
+                <filter id="dropshadow" height="130%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+                <feOffset dx="0" dy="0" result="offsetblur"/>
+                <feFlood flood-color="red"/>
+                <feComposite in2="offsetblur" operator="in"/>
+                <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+                </filter>
+                <path class="path" fill="#000000" d="M446.089,261.45c6.135-41.001-25.084-63.033-67.769-77.735l13.844-55.532l-33.801-8.424l-13.48,54.068
+                    c-8.896-2.217-18.015-4.304-27.091-6.371l13.568-54.429l-33.776-8.424l-13.861,55.521c-7.354-1.676-14.575-3.328-21.587-5.073
+                    l0.034-0.171l-46.617-11.64l-8.993,36.102c0,0,25.08,5.746,24.549,6.105c13.689,3.42,16.159,12.478,15.75,19.658L208.93,357.23
+                    c-1.675,4.158-5.925,10.401-15.494,8.031c0.338,0.485-24.579-6.134-24.579-6.134l-9.631,40.468l36.843,9.188
+                    c8.178,2.051,16.209,4.19,24.098,6.217l-13.978,56.17l33.764,8.424l13.852-55.571c9.235,2.499,18.186,4.813,26.948,6.995
+                    l-13.802,55.309l33.801,8.424l13.994-56.061c57.648,10.902,100.998,6.502,119.237-45.627c14.705-41.979-0.731-66.193-31.06-81.984
+                    C425.008,305.984,441.655,291.455,446.089,261.45z M368.859,369.754c-10.455,41.983-81.128,19.285-104.052,13.589l18.562-74.404
+                    C306.28,314.65,379.774,325.975,368.859,369.754z M379.302,260.846c-9.527,38.187-68.358,18.781-87.442,14.023l16.828-67.489
+                    C327.767,212.14,389.234,221.02,379.302,260.846z"/>
+            </svg>
+        </div>
+    </div>
+    <div id="switcher" class="">
+        <div class="content-switcher">
+          <h4>ÿ™ÿ∫€å€åÿ± ÿßÿ≥ÿ™ÿß€åŸÑ </h4>
+          <ul>
+                <li>
+                    <a id="orange-css" href="#" title="orange" class="color"><img src={% static "images/styleswitcher/colors/orange.png" %} alt="" width="30" height="30" /></a>
+                </li>
+                <li>
+                    <a id="green-css" href="#" title="green" class="color"><img src="images/styleswitcher/colors/green.png" alt="" width="30" height="30" /></a>
+                </li>
+                <li>
+                    <a id="blue-css" href="#" title="blue" class="color"><img src="images/styleswitcher/colors/blue.png" alt="" width="30" height="30" /></a>
+                </li>
+            </ul>
+          <p>ÿ±ŸÜ⁄Ø ŸæŸàÿ≥ÿ™Ÿá </p>
+          <label><input class="dark_switch" type="radio" name="color_style" id="is_dark" value="dark" checked="checked" />
+ŸÖÿ¥⁄©€å</label>
+          <label><input class="dark_switch" type="radio" name="color_style" id="is_light" value="light" />
+ÿ≥ŸÅ€åÿØ</label>
+
+            <hr />
+            <p>ÿ≥ÿ®⁄© ÿ∑ÿ±ÿßÿ≠€å </p>
+          <label><input class="boxed_switch" type="radio" name="layout_style" id="is_wide" value="wide" checked="checked" /> ⁄©ÿ¥€åÿØŸá</label>
+            <label><input class="boxed_switch" type="radio" name="layout_style" id="is_boxed" value="boxed" />ÿ¨ÿπÿ®Ÿá ÿß€å</label>
+
+            <hr />
+
+            <div id="hideSwitcher">&times;</div>
+
+        </div>
+    </div>
+    <div id="showSwitcher" class="styleSecondColor"><i class="fa fa-cog fa-spin"></i></div>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3">
+                        <ul class="unstyled user">
+                          <li class="sign-in"><a href="login.html" class="btn btn-primary"><em class="fa fa-user"></em> Ÿàÿ±ŸàÿØ</a></li>
+                          <li class="sign-up"><a href="register.html" class="btn btn-primary"><i class="fa fa-user-plus"></i> ÿ´ÿ®ÿ™ ŸÜÿßŸÖ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-7 col-lg-7">
+                        <ul class="unstyled bitcoin-stats text-center">
+                            <li>
+                                <h6>info@gmail.com</h6><span>ÿ¢ÿØÿ±ÿ≥ ÿß€åŸÖ€åŸÑ ŸÖÿØ€åÿ±€åÿ™</span></li>
+                            <li>
+                                <h6>031-33345560</h6><span>ÿ™ŸÑŸÅŸÜ ÿ™ŸÖÿßÿ≥ ÿ¥ÿ±⁄©ÿ™</span></li>
+                            <li>
+                                <h6>8 ÿµÿ®ÿ≠ ÿßŸÑ€å 17 ÿπÿµÿ±</h6><span>ÿ≥ÿßÿπÿ™ ⁄©ÿßÿ±€å</span></li>
+                            <li>
+                                <div class="btcwdgt-price" data-bw-theme="light" data-bw-cur="usd"></div>
+                                <span>ŸÇ€åŸÖÿ™ ÿ¨ŸáÿßŸÜ€å ÿ®ÿ™ ⁄©Ÿà€åŸÜ</span>
+							</li>
+                        </ul>
+                    </div>
+
+					                    <div class="main-logo col-xs-12 col-md-3 col-md-2 col-lg-2 hidden-xs">
+                        <a href="index.html">
+							<img id="logo" class="img-responsive" src="images/logo-dark.png" alt="logo">
+						</a>
+                    </div>
+                </div>
+            </div>
+            <nav class="site-navigation navigation" id="site-navigation">
+                <div class="container">
+                    <div class="site-nav-inner">
+                        <a class="logo-mobile" href="index.html">
+							<img id="logo-mobile" class="img-responsive" src="images/logo-dark.png" alt="">
+						</a>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">ÿ™ÿ∫€å€åÿ± ŸÜÿßŸàÿ®ÿ±€å</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+                        <div class="collapse navbar-collapse navbar-responsive-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="index.html">ÿµŸÅÿ≠Ÿá ÿßÿµŸÑ€å</a></li>
+                                <li><a href="services.html">ÿÆÿØŸÖÿßÿ™</a></li>
+                                <li><a href="blog.html">Ÿàÿ®ŸÑÿß⁄Ø ÿÆÿ®ÿ±€å</a></li>
+                                <li><a href="faq.html">ÿ≥ŸàÿßŸÑÿßÿ™ ŸÖÿ™ÿØÿßŸàŸÑ</a></li>
+                                <li><a href="contact.html">ŸÖÿ¥ÿßŸàÿ±Ÿá ÿ±ÿß€å⁄ØÿßŸÜ</a></li>
+                                <li><a href="about.html">ÿØÿ±ÿ®ÿßÿ±Ÿá ŸÖÿß</a></li>
+                                <li><a href="contact.html">ÿ™ŸÖÿßÿ≥ ÿ®ÿßŸÖÿß</a></li>
+                                <li class="search"><button class="fa fa-search"></button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="site-search">
+                    <div class="container">
+                        <input type="text" placeholder="ÿ®Ÿá ÿØŸÜÿ®ÿßŸÑ ŸÖŸàÿ∂Ÿàÿπ ÿÆŸàÿØ ÿ®⁄Øÿ±ÿØ€åÿØ ...">
+                        <span class="close">√ó</span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div id="main-slide" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators visible-lg visible-md">
+                <li data-target="#main-slide" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slide" data-slide-to="1"></li>
+                <li data-target="#main-slide" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active bg-parallax item-1">
+                    <div class="slider-content">
+                        <div class="container">
+                            <div class="slider-text text-center">
+                                <h3 class="slide-title"><span>ÿ®ÿß ÿßŸÜÿ™ÿÆÿßÿ® </span> ÿ±ÿßŸá ÿ≠ŸÑ ÿØÿ±ÿ≥ÿ™ <span>⁄©ÿ≥ÿ® Ÿà ⁄©ÿßÿ± </span><br/>ÿÆŸàÿØ ÿ±ÿß ÿ±ŸàŸÜŸÇ ÿØŸá€åÿØ.</h3>
+                                <p>
+                                    <a href="about.html" class="slider btn btn-primary">ÿ®ÿßŸÖÿß ŸáŸÖÿ±ÿßŸá ÿ¥Ÿà€åÿØ</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item bg-parallax item-2">
+                    <div class="slider-content">
+                        <div class="col-md-12">
+                            <div class="container">
+                                <div class="slider-text text-center">
+                                    <h3 class="slide-title"><span>ÿ®ÿß ÿ®Ÿáÿ™ÿ±€åŸÜ ÿ≥ÿß€åÿ™</span> ÿßÿ±ÿ≤ ÿØ€åÿ¨€åÿ™ÿßŸÑ ÿØŸÜ€åÿß <br/>ŸáŸÖÿ±ÿßŸá  <span>ÿ®ÿßÿ¥€åÿØ</span> </h3>
+                                    <p>
+                                        <a href="pricing.html" class="slider btn btn-primary">ÿÆÿ±€åÿØ ÿ¢ŸÜŸÑÿß€åŸÜ</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="index.html#main-slide" data-slide="prev">
+				<span><i class="fa fa-angle-left"></i></span>
+			</a>
+            <a class="right carousel-control" href="index.html#main-slide" data-slide="next">
+				<span><i class="fa fa-angle-right"></i></span>
+			</a>
+        </div>
+<section class="features">
+            <div class="container">
+                <div class="row features-row">
+                    <div class="feature-box col-md-4 col-sm-12">
+                        <span class="feature-icon">
+							<img id="download-bitcoin" src="images/icons/orange/download-bitcoin.png" alt="download bitcoin">
+						</span>
+                        <div class="feature-box-content">
+                            <h3>ÿ≥ÿßÿÆÿ™ ⁄©€åŸÅ ŸæŸàŸÑ</h3>
+                            <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box two col-md-4 col-sm-12">
+                        <span class="feature-icon">
+							<img id="add-bitcoins" src="images/icons/orange/add-bitcoins.png" alt="add bitcoins">
+						</span>
+                        <div class="feature-box-content">
+                            <h3>ÿ®ÿßŸÜ⁄©ÿØÿßÿ±€å ÿ≥ÿ±ŸÖÿß€åŸá ⁄Øÿ∞ÿßÿ±€å</h3>
+                            <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                        </div>
+                    </div>
+                    <div class="feature-box three col-md-4 col-sm-12">
+                        <span class="feature-icon">
+							<img id="buy-sell-bitcoins" src="images/icons/orange/buy-sell-bitcoins.png" alt="buy and sell bitcoins">
+						</span>
+                        <div class="feature-box-content">
+                            <h3>ÿ™ÿ®ÿßÿØŸÑ ŸÅŸàÿ±€å</h3>
+                            <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-us">
+            <div class="container">
+                <div class="row text-center">
+                    <h2 class="title-head">ÿØÿ±ÿ®ÿßÿ±Ÿá <span>ÿ®€åÿ™ ⁄©Ÿà€åŸÜ ÿß⁄©ÿ≥⁄ÜŸÜÿ¨</span></h2>
+                    <div class="title-head-subtitle">
+                        <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. ⁄ÜÿßŸæ⁄Øÿ±Ÿáÿß Ÿà ŸÖÿ™ŸàŸÜ ÿ®ŸÑ⁄©Ÿá ÿ±Ÿàÿ≤ŸÜÿßŸÖŸá Ÿà ŸÖÿ¨ŸÑŸá ÿØÿ± ÿ≥ÿ™ŸàŸÜ Ÿà ÿ≥ÿ∑ÿ±ÿ¢ŸÜ⁄ÜŸÜÿßŸÜ ⁄©Ÿá ŸÑÿßÿ≤ŸÖ ÿßÿ≥ÿ™
+</p>
+                    </div>
+                </div>
+                <div class="row about-content">
+                    <div class="col-sm-12 col-md-5 col-lg-6 text-center">
+                        <img id="about-us" class="img-responsive img-about-us" src="images/about-us.png" alt="about us">
+                    </div>
+                    <div class="col-sm-12 col-md-7 col-lg-6">
+                        <h3 class="title-about">ÿÆÿ±€åÿØÿå ŸÅÿ±Ÿàÿ¥ Ÿà ŸÖÿ®ÿßÿØŸÑŸá Ÿà ŸáŸÖŸá ⁄Ü€åÿ≤Ÿáÿß€å€å ⁄©Ÿá ÿ®ÿß€åÿØ ÿØÿ±ÿ®ÿßÿ±Ÿá ÿ®€åÿ™⁄©Ÿà€åŸÜ ÿ®ÿØÿßŸÜ€åÿØ</h3>
+                        <p class="about-text">ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. ⁄ÜÿßŸæ⁄Øÿ±Ÿáÿß Ÿà ŸÖÿ™ŸàŸÜ ÿ®ŸÑ⁄©Ÿá ÿ±Ÿàÿ≤ŸÜÿßŸÖŸá Ÿà ŸÖÿ¨ŸÑŸá ÿØÿ± ÿ≥ÿ™ŸàŸÜ Ÿà ÿ≥ÿ∑ÿ±ÿ¢ŸÜ⁄ÜŸÜÿßŸÜ ⁄©Ÿá ŸÑÿßÿ≤ŸÖ ÿßÿ≥ÿ™
+
+</p>
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#menu1">ÿ®ÿ™ ⁄©Ÿà€åŸÜ</a></li>
+                            <li><a data-toggle="tab" href="#menu2">ÿßÿ™ÿ±€åŸàŸÖ</a></li>
+                            <li><a data-toggle="tab" href="#menu3">ÿ±€åŸæŸÑ</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="menu1" class="tab-pane fade in active">
+                                <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. ⁄ÜÿßŸæ⁄Øÿ±Ÿáÿß Ÿà ŸÖÿ™ŸàŸÜ ÿ®ŸÑ⁄©Ÿá ÿ±Ÿàÿ≤ŸÜÿßŸÖŸá Ÿà ŸÖÿ¨ŸÑŸá ÿØÿ± ÿ≥ÿ™ŸàŸÜ Ÿà ÿ≥ÿ∑ÿ±ÿ¢ŸÜ⁄ÜŸÜÿßŸÜ ⁄©Ÿá ŸÑÿßÿ≤ŸÖ ÿßÿ≥ÿ™
+</p>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. ⁄ÜÿßŸæ⁄Øÿ±Ÿáÿß Ÿà ŸÖÿ™ŸàŸÜ ÿ®ŸÑ⁄©Ÿá ÿ±Ÿàÿ≤ŸÜÿßŸÖŸá Ÿà ŸÖÿ¨ŸÑŸá ÿØÿ± ÿ≥ÿ™ŸàŸÜ Ÿà ÿ≥ÿ∑ÿ±ÿ¢ŸÜ⁄ÜŸÜÿßŸÜ ⁄©Ÿá ŸÑÿßÿ≤ŸÖ ÿßÿ≥ÿ™
+</p>
+                            </div>
+                            <div id="menu3" class="tab-pane fade">
+                                <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. ⁄ÜÿßŸæ⁄Øÿ±Ÿáÿß Ÿà ŸÖÿ™ŸàŸÜ ÿ®ŸÑ⁄©Ÿá ÿ±Ÿàÿ≤ŸÜÿßŸÖŸá Ÿà ŸÖÿ¨ŸÑŸá ÿØÿ± ÿ≥ÿ™ŸàŸÜ Ÿà ÿ≥ÿ∑ÿ±ÿ¢ŸÜ⁄ÜŸÜÿßŸÜ ⁄©Ÿá ŸÑÿßÿ≤ŸÖ ÿßÿ≥ÿ™
+</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary" href="about.html">ÿØÿ±ÿ®ÿßÿ±Ÿá ŸÖÿß</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="image-block">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 ts-padding img-block-left">
+                        <div class="gap-20"></div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="feature text-center">
+                                    <span class="feature-icon">
+										<img id="strong-security" src="images/icons/orange/strong-security.png" alt="strong security"/>
+									</span>
+                                    <h3 class="feature-title">ÿ™ÿ®ÿßÿØŸÑ ŸÅŸàÿ±€å</h3>
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                                </div>
+                            </div>
+							<div class="gap-20-mobile"></div>
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="feature text-center">
+                                    <span class="feature-icon">
+										<img id="world-coverage" src="images/icons/orange/world-coverage.png" alt="world coverage"/>
+									</span>
+                                    <h3 class="feature-title">ÿÆÿ±€åÿØ Ÿà ŸÅÿ±Ÿàÿ¥ ÿ®€åÿ™ ⁄©Ÿà€åŸÜ</h3>
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.
+
+</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gap-20"></div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="feature text-center">
+                                    <span class="feature-icon">
+										<img id="payment-options" src="images/icons/orange/payment-options.png" alt="payment options"/>
+									</span>
+                                    <h3 class="feature-title">ÿ®ÿ±ŸÜÿßŸÖŸá ÿ±€åÿ≤€å ÿ≥ÿ±ŸÖÿß€åŸá ⁄Øÿ∞ÿßÿ±€å</h3>
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                                </div>
+                            </div>
+							<div class="gap-20-mobile"></div>
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="feature text-center">
+                                    <span class="feature-icon">
+										<img id="mobile-app" src="images/icons/orange/mobile-app.png" alt="mobile app"/>
+									</span>
+                                    <h3 class="feature-title">ÿ®ÿßÿ≤ÿ±⁄ØÿßŸÜ€å ŸÅŸàÿ±€å</h3>
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gap-20"></div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="feature text-center">
+                                    <span class="feature-icon">
+										<img id="cost-efficiency" src="images/icons/orange/cost-efficiency.png" alt="cost efficiency"/>
+									</span>
+                                    <h3 class="feature-title">ÿ®ÿßŸÜ⁄©ÿØÿßÿ±€å ÿ≥ÿ±ŸÖÿß€åŸá ⁄Øÿ∞ÿßÿ±€å</h3>
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                                </div>
+                            </div>
+							<div class="gap-20-mobile"></div>
+                            <div class="col-sm-6 col-md-6 col-xs-12">
+                                <div class="feature text-center">
+                                    <span class="feature-icon">
+										<img id="high-liquidity" src="images/icons/orange/high-liquidity.png" alt="high liquidity"/>
+									</span>
+                                    <h3 class="feature-title">ÿßŸÖŸÜ Ÿà ŸÖÿ∑ŸÖÿ¶ŸÜ</h3>
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ts-padding bg-image-1">
+                        <div>
+                            <div class="text-center">
+                                <a class="button-video mfp-youtube" href="https://www.youtube.com/watch?v=0gv7OC9L2s8"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+		        <section class="pricing">
+            <div class="container">
+                <div class="row text-center">
+                    <h2 class="title-head">Ÿæ⁄©€åÿ¨ Ÿáÿß€å ŸÅÿ±Ÿàÿ¥ <span>ÿ®ÿ™ ⁄©Ÿà€åŸÜ</span></h2>
+                    <div class="title-head-subtitle">
+                        <p>Ÿæ⁄©€åÿ¨ Ÿáÿß€å ŸÅŸàŸÇ ÿßŸÑÿπÿßÿØŸá Ÿà Ÿà€å⁄òŸá ŸÅÿ±Ÿàÿ¥⁄ØÿßŸá ŸÖÿß ÿ®ÿ±ÿß€å ÿ¥ŸÖÿß ŸÖÿ¥ÿ™ÿ±€åÿßŸÜ€å ⁄©Ÿá ÿ™ÿß ÿ®Ÿá ÿ≠ÿßŸÑ ÿßÿ≤ ÿ®ÿ™ ⁄©Ÿà€åŸÜ ÿßÿ≥ÿ™ŸÅÿßÿØŸá ŸÜ⁄©ÿ±ÿØ€åÿØ</p>
+                    </div>
+                </div>
+                <div class="row pricing-tables-content">
+                    <div class="pricing-container">
+                        <div class="pricing-switcher">
+                            <p>
+                                <input type="radio" name="switch" value="buy" id="buy-1" checked>
+                                <label for="buy-1">ÿÆÿ±€åÿØ</label>
+                                <input type="radio" name="switch" value="sell" id="sell-1">
+                                <label for="sell-1">ŸÅÿ±Ÿàÿ¥</label>
+                                <span class="switch"></span>
+                            </p>
+                        </div>
+                        <ul class="pricing-list bounce-invert">
+                            <li class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <ul class="pricing-wrapper">
+                                    <li data-type="buy" class="is-visible">
+                                        <header class="pricing-header">
+                                            <h2>ÿÆÿ±€åÿØ 0.007 ÿ®ÿ™ ⁄©Ÿà€åŸÜ <span>ŸÅŸÇÿ∑ </span></h2>
+                                            <div class="price">
+                                                <span class="currency">ÿ™ŸàŸÖÿßŸÜ</i></span>
+                                                <span class="value">100,000</span>
+                                            </div>
+                                        </header>
+                                        <footer class="pricing-footer">
+                                            <a href="#" class="btn btn-primary">ÿ≥ŸÅÿßÿ±ÿ¥ ÿØŸá€åÿØ</a>
+                                        </footer>
+                                    </li>
+                                    <li data-type="sell" class="is-hidden">
+                                        <header class="pricing-header">
+                                            <h2>GET 100 USD <span>For </span></h2>
+
+                                            <div class="price">
+                                                <span class="currency"><i class="fa fa-bitcoin"></i></span>
+                                                <span class="value">0.2</span>
+                                            </div>
+                                        </header>
+                                        <footer class="pricing-footer">
+                                            <a href="#" class="btn btn-primary">ÿ≥ŸÅÿßÿ±ÿ¥ ÿØŸá€åÿØ</a>
+                                        </footer>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <ul class="pricing-wrapper">
+                                    <li data-type="buy" class="is-visible">
+                                        <header class="pricing-header">
+                                          <h2>ÿÆÿ±€åÿØ 0.015 ÿ®ÿ™ ⁄©Ÿà€åŸÜ <span>ŸÅŸÇÿ∑ </span></h2>
+                                          <div class="price">
+                                                <span class="currency">ÿ™ŸàŸÖÿßŸÜ</i></span>
+                                                <span class="value">300,000</span>
+                                            </div>
+                                        </header>
+                                        <footer class="pricing-footer">
+                                            <a href="#" class="btn btn-primary">ÿ≥ŸÅÿßÿ±ÿ¥ ÿØŸá€åÿØ</a>
+                                        </footer>
+                                    </li>
+                                    <li data-type="sell" class="is-hidden">
+                                        <header class="pricing-header">
+                                            <h2>GET 1000 USD <span>For </span></h2>
+                                            <div class="price">
+                                                <span class="currency"><i class="fa fa-bitcoin"></i></span>
+                                                <span class="value">0.5</span>
+                                            </div>
+                                        </header>
+                                        <footer class="pricing-footer">
+                                            <a href="#" class="btn btn-primary">ÿ≥ŸÅÿßÿ±ÿ¥ ÿØŸá€åÿØ</a>
+                                        </footer>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <ul class="pricing-wrapper">
+                                    <li data-type="buy" class="is-visible">
+                                        <header class="pricing-header">
+                                            <h2>ÿÆÿ±€åÿØ 0.031 ÿ®ÿ™ ⁄©Ÿà€åŸÜ <span>ŸÅŸÇÿ∑ </span></h2>
+                                            <div class="price">
+                                                <span class="currency">ÿ™ŸàŸÖÿßŸÜ</span>
+                                                <span class="value">500,000</span>
+                                            </div>
+                                        </header>
+                                        <footer class="pricing-footer">
+                                            <a href="#" class="btn btn-primary">ÿ≥ŸÅÿßÿ±ÿ¥ ÿØŸá€åÿØ</a>
+                                        </footer>
+                                    </li>
+                                    <li data-type="sell" class="is-hidden">
+                                        <header class="pricing-header">
+                                            <h2>GET 3000 USD <span>For </span></h2>
+
+                                            <div class="price">
+                                                <span class="currency"><i class="fa fa-bitcoin"></i></span>
+                                                <span class="value">1</span>
+                                            </div>
+                                        </header>
+                                        <footer class="pricing-footer">
+                                            <a href="#" class="btn btn-primary">ÿ≥ŸÅÿßÿ±ÿ¥ ÿØŸá€åÿØ</a>
+                                        </footer>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <ul class="pricing-wrapper">
+                                    <li data-type="buy" class="is-visible">
+                                        <header class="pricing-header">
+                                            <h2>ÿÆÿ±€åÿØ 0.081 ÿ®ÿ™ ⁄©Ÿà€åŸÜ <span>ŸÅŸÇÿ∑ </span></h2>
+                                            <div class="price">
+                                                <span class="currency">ÿ™ŸàŸÖÿßŸÜ</span>
+                                                <span class="value">800,000</span>
+                                            </div>
+                                        </header>
+                                        <footer class="pricing-footer">
+                                            <a href="#" class="btn btn-primary">ÿ≥ŸÅÿßÿ±ÿ¥ ÿØŸá€åÿØ</a>
+                                        </footer>
+                                    </li>
+                                    <li data-type="sell" class="is-hidden">
+                                        <header class="pricing-header">
+                                            <h2>GET 9000 USD <span>For </span></h2>
+                                            <div class="price">
+                                                <span class="currency"><i class="fa fa-bitcoin"></i></span>
+                                                <span class="value">2</span>
+                                            </div>
+                                        </header>
+                                        <footer class="pricing-footer">
+                                            <a href="#" class="btn btn-primary">ÿ≥ŸÅÿßÿ±ÿ¥ ÿØŸá€åÿØ</a>
+                                        </footer>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bitcoin-calculator-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="title-head text-center"><span>ÿ®ÿ™ ⁄©Ÿà€åŸÜ</span> ŸÖÿßÿ¥€åŸÜ ÿ≠ÿ≥ÿßÿ®</h2>
+                        <p class="message text-center">ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <form class="bitcoin-calculator" id="bitcoin-calculator">
+                            <input class="form-input" name="btc-calculator-value" value="1">
+                            <div class="form-info"><i class="fa fa-bitcoin"></i></div>
+                            <div class="form-equal">=</div>
+                            <input class="form-input form-input-result" name="btc-calculator-result">
+                            <div class="form-wrap">
+                                <select id="currency-select" class="form-input select-currency select-primary" name="btc-calculator-currency" data-dropdown-class="select-primary-dropdown"></select>
+                            </div>
+                        </form>
+                        <p class="info"><i>* ŸÇ€åŸÖÿ™ Ÿáÿß€å Ÿáÿ± 15 ÿØŸÇ€åŸÇŸá ÿ®Ÿá ÿ±Ÿàÿ≤ ŸÖ€åÿ¥ŸàÿØ</i></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+		        <section class="team">
+            <div class="container">
+                <div class="row text-center">
+                    <h2 class="title-head">ÿ™€åŸÖ  <span>ÿ®€åÿ™ ⁄©Ÿà€åŸÜ ÿß⁄©ÿ≥⁄ÜŸÜÿ¨</span></h2>
+                    <div class="title-head-subtitle">
+                        <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™.</p>
+                    </div>
+                </div>
+                <div class="row team-content team-members">
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                        <div class="team-member">
+                            <img src="images/team/member1.png" class="img-responsive" alt="team member">
+                            <div class="team-member-caption social-icons">
+                                <h4>ŸÑ€åŸÑÿß ÿ®ÿ±ÿØÿ®ÿßÿ±</h4>
+                                <p>ŸÖÿØ€åÿ± ÿßÿ±ÿ≤€å</p>
+                                <ul class="list list-inline social">
+                                    <li>
+                                        <a href="#" class="fa fa-facebook"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fa fa-twitter"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fa fa-google-plus"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                        <div class="team-member">
+                            <img src="images/team/member2.png" class="img-responsive" alt="team member">
+                            <div class="team-member-caption social-icons">
+								<h4>ÿ≥ÿßÿ±ÿß Ÿæ⁄òŸàŸáÿßŸÜ</h4>
+                                <p>ŸÖÿØ€åÿ± ÿ≠ÿ≥ÿßÿ®ÿØÿßÿ±€å</p>
+                                <ul class="list list-inline social">
+                                    <li>
+                                        <a href="#" class="fa fa-facebook"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fa fa-twitter"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fa fa-google-plus"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                        <div class="team-member">
+                            <img src="images/team/member3.png" class="img-responsive" alt="team member">
+                            <div class="team-member-caption social-icons">
+                                <h4>ÿπŸÖÿßÿØ ÿπÿßÿ±ŸÅ</h4>
+                              <p>ŸÖÿ¥ÿßŸàÿ± ÿßÿ±ÿ≤€å</p>
+                                <ul class="list list-inline social">
+                                    <li>
+                                        <a href="#" class="fa fa-facebook"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fa fa-twitter"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fa fa-google-plus"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                        <div class="team-member">
+                            <img src="images/team/member4.png" class="img-responsive" alt="team member">
+                            <div class="team-member-caption social-icons">
+                                <h4>ÿØÿßŸÜ€åÿßŸÑ ÿÆÿßŸÜ€å ÿ¢ÿ®ÿßÿØ€å</h4>
+                                <p>ŸÖÿØ€åÿ± ÿµÿ±ÿßŸÅ€å</p>
+                                <ul class="list list-inline social">
+                                    <li>
+                                        <a href="#" class="fa fa-facebook"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fa fa-twitter"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fa fa-google-plus"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="image-block2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 img-block-quote bg-image-2">
+                        <blockquote>
+                          <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™<br></br><br></br></p>
+                          <footer><img src="images/ceo.jpg" alt="ceo" /> <span>ÿØÿßŸÜ€åÿßŸÑ ÿÆÿßŸÜ€å ÿ¢ÿ®ÿßÿØ€å</span> - ŸÖÿØ€åÿ± ÿµÿ±ÿßŸÅ€å</footer>
+                        </blockquote>
+                    </div>
+                    <div class="col-md-8 bg-grey-chart">
+                        <div class="chart-widget dark-chart chart-1">
+                            <div>
+                                <div class="btcwdgt-chart" data-bw-theme="dark"></div>
+                            </div>
+                        </div>
+						<div class="chart-widget light-chart chart-2">
+                            <div>
+                                <div class="btcwdgt-chart" bw-theme="light"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="blog">
+            <div class="container">
+                <div class="row text-center">
+                    <h2 class="title-head">ÿ¢ÿÆÿ±€åŸÜ ÿßÿÆÿ®ÿßÿ± <span>ÿ®ÿ™ ⁄©Ÿà€åŸÜ</span></h2>
+                    <div class="title-head-subtitle">
+                        <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. </p>
+                    </div>
+                </div>
+                <div class="row latest-posts-content">
+                    <div class="col-sm-4 col-md-4 col-xs-12">
+                        <div class="latest-post">
+                            <a href="blog-post.html"><img class="img-responsive" src="images/blog/blog-post-small-1.jpg" alt="img"></a>
+                            <div class="post-body">
+                                <h4 class="post-title">
+                                    <a href="blog-post.html">ÿ¢ŸÖŸàÿ≤ÿ¥ ÿÆÿ±€åÿØ ÿ®ÿ™ ⁄©Ÿà€åŸÜ</a>
+                                </h4>
+                                <div class="post-text">
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. ⁄ÜÿßŸæ⁄Øÿ±Ÿáÿß Ÿà ŸÖÿ™ŸàŸÜ ÿ®ŸÑ⁄©Ÿá ÿ±Ÿàÿ≤ŸÜÿßŸÖŸá Ÿà ŸÖÿ¨ŸÑŸá ÿØÿ± ÿ≥ÿ™ŸàŸÜ Ÿà ÿ≥ÿ∑ÿ±ÿ¢ŸÜ⁄ÜŸÜÿßŸÜ ⁄©Ÿá ŸÑÿßÿ≤ŸÖ ÿßÿ≥ÿ™</p>
+                                </div>
+                            </div>
+                            <div class="post-date">
+                                <span>01</span>
+                                <span>ŸÖÿ±ÿØÿßÿØ</span>
+                            </div>
+							<a href="blog-post.html" class="btn btn-primary">ÿßÿØÿßŸÖŸá ŸÖÿ∑ŸÑÿ®</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-xs-12">
+                        <div class="latest-post">
+                            <a href="blog-post.html"><img class="img-responsive" src="images/blog/blog-post-small-2.jpg" alt="img"></a>
+                            <div class="post-body">
+                                <h4 class="post-title">
+                                    <a href="blog-post.html">ÿ¢ŸÖŸàÿ≤ÿ¥ ÿÆÿ±€åÿØ ÿßÿ™ÿ±€åŸàŸÖ </a>
+                                </h4>
+                                <div class="post-text">
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. ⁄ÜÿßŸæ⁄Øÿ±Ÿáÿß Ÿà ŸÖÿ™ŸàŸÜ ÿ®ŸÑ⁄©Ÿá ÿ±Ÿàÿ≤ŸÜÿßŸÖŸá Ÿà ŸÖÿ¨ŸÑŸá ÿØÿ± ÿ≥ÿ™ŸàŸÜ Ÿà ÿ≥ÿ∑ÿ±ÿ¢ŸÜ⁄ÜŸÜÿßŸÜ ⁄©Ÿá ŸÑÿßÿ≤ŸÖ ÿßÿ≥ÿ™</p>
+                                </div>
+                            </div>
+                            <div class="post-date">
+                                <span>17</span>
+                                <span>ŸÖÿ±ÿØÿßÿØ</span>
+                            </div>
+							<a href="blog-post.html" class="btn btn-primary">ÿßÿØÿßŸÖŸá ŸÖÿ∑ŸÑÿ®</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-xs-12">
+                        <div class="latest-post">
+                            <a href="blog-post.html"><img class="img-responsive" src="images/blog/blog-post-small-3.jpg" alt="img"></a>
+                            <div class="post-body">
+                                <h4 class="post-title">
+                                    <a href="blog-post.html">ÿ¢ŸÖŸàÿ≤ÿ¥ ÿÆÿ±€åÿØ Ÿà ŸÅÿ±Ÿàÿ¥ ÿßÿ™ŸàŸÖÿßÿ™€å⁄© ÿßÿ±ÿ≤</a>
+                                </h4>
+                                <div class="post-text">
+                                    <p>ŸÑŸàÿ±ŸÖ ÿß€åŸæÿ≥ŸàŸÖ ŸÖÿ™ŸÜ ÿ≥ÿßÿÆÿ™⁄Ø€å ÿ®ÿß ÿ™ŸàŸÑ€åÿØ ÿ≥ÿßÿØ⁄Ø€å ŸÜÿßŸÖŸÅŸáŸàŸÖ ÿßÿ≤ ÿµŸÜÿπÿ™ ⁄ÜÿßŸæ Ÿà ÿ®ÿß ÿßÿ≥ÿ™ŸÅÿßÿØŸá ÿßÿ≤ ÿ∑ÿ±ÿßÿ≠ÿßŸÜ ⁄Øÿ±ÿßŸÅ€å⁄© ÿßÿ≥ÿ™. ⁄ÜÿßŸæ⁄Øÿ±Ÿáÿß Ÿà ŸÖÿ™ŸàŸÜ ÿ®ŸÑ⁄©Ÿá ÿ±Ÿàÿ≤ŸÜÿßŸÖŸá Ÿà ŸÖÿ¨ŸÑŸá ÿØÿ± ÿ≥ÿ™ŸàŸÜ Ÿà ÿ≥ÿ∑ÿ±ÿ¢ŸÜ⁄ÜŸÜÿßŸÜ ⁄©Ÿá ŸÑÿßÿ≤ŸÖ ÿßÿ≥ÿ™</p>
+                                </div>
+                            </div>
+                            <div class="post-date">
+                                <span>25</span>
+                                <span>ŸÖÿ±ÿØÿßÿØ</span>
+                            </div>
+							<a href="blog-post.html" class="btn btn-primary">ÿßÿØÿßŸÖŸá ŸÖÿ∑ŸÑÿ®</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="call-action-all">
+			<div class="call-action-all-overlay">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="action-text">
+								<h2>ÿßŸÖÿ±Ÿàÿ≤ ÿ®ÿß ÿ®€åÿ™ ⁄©Ÿà€åŸÜ ÿ¥ÿ±Ÿàÿπ ⁄©ŸÜ€åÿØ</h2>
+								<p class="lead">ÿ≠ÿ≥ÿßÿ® ÿ±ÿß ÿ®Ÿá ÿµŸàÿ±ÿ™ ÿ±ÿß€å⁄ØÿßŸÜ ÿ®ÿßÿ≤ ⁄©ŸÜ€åÿØ Ÿà ÿ¥ÿ±Ÿàÿπ ÿ®Ÿá ÿÆÿ±€åÿØ Ÿà ŸÅÿ±Ÿàÿ¥ ÿ®€åÿ™ ⁄©Ÿà€åŸÜ ⁄©ŸÜ€åÿØ</p>
+							</div>
+							<p class="action-btn"><a class="btn btn-primary" href="register.html">ÿß⁄©ŸÜŸàŸÜ ÿ´ÿ®ÿ™ ŸÜÿßŸÖ ⁄©ŸÜ€åÿØ</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+        </section>
+        <footer class="footer">
+            <div class="top-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-2">
+                            <h4>ÿµŸÅÿ≠ÿßÿ™ ÿßÿµŸÑ€å</h4>
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="index.html">ÿµŸÅÿ≠Ÿá ÿµÿ±ÿßŸÅ€å</a></li>
+                                    <li><a href="register.html">ÿØÿßÿ¥ÿ®Ÿàÿ± ŸæŸÜŸÑ ⁄©ÿßÿ±ÿ®ÿ±€å</a></li>
+                                    <li><a href="services.html">ÿ≥ÿ±Ÿà€åÿ≥ Ÿáÿß</a></li>
+                                    <li><a href="login.html">ÿÆÿ±€åÿØ Ÿà ŸÅÿ±Ÿàÿ¥</a></li>
+                                    <li><a href="about.html">ÿØÿ±ÿ®ÿßÿ±Ÿá ŸÖÿß</a></li>
+                                    <li><a href="contact.html">ÿ™ŸÖÿßÿ≥ ÿ®ÿß ŸÖÿß</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-2">
+                            <h4>ÿØÿ≥ÿ™ÿ±ÿ≥€å ÿ≥ÿ±€åÿπ</h4>
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="faq.html">Ÿæÿ±ÿ≥ÿ¥ Ÿà Ÿæÿßÿ≥ÿÆ</a></li>
+                                    <li><a href="terms-of-services.html">ŸÇŸàÿßŸÜ€åŸÜ ÿ≥ÿ±Ÿà€åÿ≥ ÿØŸá€å</a></li>
+                                    <li><a href="404.html">Ÿàÿ®ŸÑÿß⁄Ø ÿÆÿ®ÿ±€å</a></li>
+                                    <li><a href="coming-soon.html">⁄©ÿ≥ÿ® ÿØÿ±ÿ¢ŸÖÿØ</a></li>
+                                    <li><a href="login.html">Ÿæÿ¥ÿ™€åÿ®ÿßŸÜ€å</a></li>
+                                    <li><a href="coming-soon.html">ÿßÿ±ÿ≥ÿßŸÑ ŸÜÿ∏ÿ±ÿßÿ™ Ÿà Ÿæ€åÿ¥ŸÜŸáÿßÿØÿßÿ™</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-3">
+                            <h4>ÿ™ŸÖÿßÿ≥ ÿ®ÿßŸÖÿß</h4>
+                            <div class="contacts">
+                                <div>
+                                    <span>info@gmail.com</span>
+                                </div>
+                                <div>
+                                    <span>031-33345560</span>
+                                </div>
+                                <div>
+                                    <span>ÿßÿµŸÅŸáÿßŸÜ - ÿÆ€åÿßÿ®ÿßŸÜ ŸÖ€åÿ± - ÿ≥ÿßÿÆÿ™ŸÖÿßŸÜ Ÿæÿßÿ±ÿ≥</span>
+                                </div>
+                                <div>
+                                    <span>ÿ≥ÿßÿπÿßÿ™ ŸÖÿ±ÿßÿ¨ÿπŸá ÿ≠ÿ∂Ÿàÿ±€å 17:00 &#x21FE; 08:30</span>
+                                </div>
+                            </div>
+                            <div class="social-footer">
+                                <ul>
+                                    <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-5">
+							<div class="facts-footer">
+								<div>
+									<h5>$10.76B</h5>
+									<span>ŸÖŸàÿ¨ŸàÿØ€å ÿ®ÿ™ ⁄©Ÿà€åŸÜ ÿ≥ÿß€åÿ™</span>
+								</div>
+								<div>
+									<h5>21.69ETH</h5>
+									<span>ŸÖŸàÿ¨ŸàÿØ€å ÿßÿ™ÿ±€åŸàŸÖ ÿ≥ÿß€åÿ™</span>
+								</div>
+								<div>
+									<h5>3610 ⁄©ÿßÿ±ÿ®ÿ±</h5>
+									<span>ŸÖÿ¥ÿ™ÿ±€åÿßŸÜ ŸÅÿπÿßŸÑ ŸÖÿß</span>
+								</div>
+								<div>
+									<h5>1690 ÿ™ÿ±ÿß⁄©ŸÜÿ¥</h5>
+									<span>ÿ™ÿ±ÿß⁄©ŸÜÿ¥ Ÿáÿß€å ŸÖŸàŸÅŸÇ</span>
+								</div>
+							</div>
+							<hr>
+							<div class="payment-logos">
+								<h4 class="payment-title">ÿØÿ±⁄ØÿßŸá Ÿáÿß€å Ÿæÿ±ÿØÿßÿÆÿ™ ŸÖÿß</h4>
+								<img src="images/icons/payment/american-express.png" alt="american-express">
+								<img src="images/icons/payment/mastercard.png" alt="mastercard">
+								<img src="images/icons/payment/visa.png" alt="visa">
+								<img src="images/icons/payment/paypal.png" alt="paypal">
+								<img class="last" src="images/icons/payment/maestro.png" alt="maestro">
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                          <p class="text-center"> ÿ∑ŸÄÿ®ŸÇ ŸÖÿßÿØŸá 12 ŸÅÿµŸÑ ÿ≥ŸàŸÖ ŸÇÿßŸÜŸàŸÜ ÿ¨ÿ±ÿßÿ¶ŸÖ ÿ±ÿß€åÿßŸÜŸá ÿß€å Ÿáÿ±⁄ØŸàŸÜŸá ⁄©Ÿæ€å ÿ®ÿ±ÿØÿßÿ±€å ÿßÿ≤ ŸÇÿßŸÑÿ® Ÿáÿß€å ÿ∑ÿ±ÿßÿ≠€å ÿ¥ÿØŸá ÿ™Ÿàÿ≥ÿ∑ ÿ¢€å ÿØ€åÿ≤ÿß€åŸÜÿ± Ÿæ€å⁄Øÿ±ÿØ ŸÇÿßŸÜŸàŸÜ€å ÿØÿßÿ±ÿØ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <a href="#" id="back-to-top" class="back-to-top fa fa-arrow-up"></a>
+
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/select2.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/custom.js"></script>
+
+		<script src="js/styleswitcher.js"></script>
+
+    </div>
+</body>
+
+</html>
