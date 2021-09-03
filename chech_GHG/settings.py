@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     "debug_toolbar",  ## In debug mode
     "azbankgateways",
 
-    # "users",
+    "users",
     # "product",
     # "cart",
     # "shipping",

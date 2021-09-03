@@ -59,14 +59,15 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, phone, **extra_fields)
 
 
-class OurUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class OurUser(AbstractUser):
+    # user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=11)
     first_name = models.CharField(_("نام"), max_length=250)
     last_name = models.CharField(_("نام خانوادگی"), max_length=250)
     age = models.IntegerField(_("سن"))
-    # wallet= models.OneToOneField("کیف پول داخلی کاربر","wallet", on_delete=models.PROTECT)
+    wallet = models.OneToOneField("کیف پول داخلی کاربر", "wallet", on_delete=models.PROTECT)
     image = models.ImageField(upload_to=model_image_directory_path)
     address = models.CharField(_("نشانی"), max_length=500)
 
@@ -74,7 +75,8 @@ class OurUser(models.Model):
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
 
-    def __str__(self):      return self.email
+    def __str__(self):
+        return self.email
 
     class Meta:
         verbose_name = 'karbaran'
@@ -82,16 +84,20 @@ class OurUser(models.Model):
 
 
 class Regular(OurUser):
-    pass
+    GENDER_CHICES= (("مرد","man"),("زن","woman"),("دیگر","other"), )
 
+    code_meli = models.PositiveIntegerField(_("کدملی"), max_length=10)
+    gender = models.CharField(_("جنسیت"),max_length=5 , choices=GENDER_CHICES)
 
 
 class Staff(OurUser):
-    pass
-
+    staff_number = models.PositiveIntegerField(_("کد کارمندی"),max_length=10)
+    staff_duty = models.PositiveIntegerField(_("مقام") , max_length=10)
 
 
 class Supplier(OurUser):
     open_working_hour = models.TimeField("زمان شروع کار در روز")
     close_working_hour = models.TimeField("زمان پایان کار در روز")
-
+    excel_file = models.FileField("فایل اکسل محصولات خود را در اینجا باز گذاری کنید ",
+                                  name="EXCEL", upload_to=model_image_directory_path)
+    bank_shaba = models.PositiveIntegerField(_("شماره شبا کارت بانکی خود را وارد کنید") , max_length=16)
