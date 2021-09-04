@@ -4,30 +4,14 @@ from .models import Category, Media, Product, Brand
 
 
 # Register your models here.
-
-@admin.register(Category)
-class BrandAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(Category)
+admin.site.register(Brand)
 
 
-@admin.register(Brand)
-class BrandAdmin(admin.ModelAdmin):
-    pass
 
-
-# @admin.register(Media)
-# class MediaAdmin(admin.ModelAdmin):
-#     pass
-
-
-# @admin.register(Product)
-# class ProductAdmin(admin.ModelAdmin):
-#     pass
-
-#########_____________________###########
 class Inline(admin.TabularInline):
     model = Media
-    extra = 2
+    extra = 1
 @admin.register(Product)
 class ProductInlineAdmin(admin.ModelAdmin):
     inlines = [Inline]

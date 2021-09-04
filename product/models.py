@@ -38,11 +38,11 @@ class Brand(models.Model):
 
 
 class Media(models.Model):
-    picture = models.ImageField(upload_to="Project_Pictures", max_length=100, null=True, blank=True, default=None,
-                                validators=[validate_image_file_extension])
     image_product = models.ForeignKey("Product", on_delete=models.CASCADE)
+    picture = models.ImageField(upload_to="Project_Pictures/", max_length=100, null=True, blank=True, default=None,
+                                validators=[validate_image_file_extension])
     discription = models.CharField(max_length=100, default=None)
-    video_description = models.FileField(upload_to='hand_product_video/', null=True, blank=True)
+    video_description = models.FileField(upload_to='Project_Videos/', null=True, blank=True)
                                             # , validators=[file_size_validator])
     slug = models.SlugField(unique=True, null=True, blank=True)
 
@@ -90,23 +90,27 @@ class Product(models.Model):
     # catalog = models.FileField("کاتالوگ")
 
     ### Price ###  set Temp price for this product (( if (end - start) > (end - now) ==> cost = temporary_price
-    price = models.FloatField(default=0, help_text="﷼") #10 000
-    set_time = models.DateTimeField(auto_now_add=True) # 1400/06/10
+    price = models.FloatField(default=0, help_text="﷼") #ex:10 000
+    set_time = models.DateTimeField(auto_now_add=True) #ex: 1400/06/10
     ## set Temp and start & end date
-    date_start = models.DateTimeField("زمان شروع تخفیف", default=None) # 1400/06/12
-    date_end = models.DateTimeField("زمان پایان تخفیف", default=None) # 1400/06/14
-    Temporary_price = models.FloatField(verbose_name="قیمت مموقت")  # 15 000
-
+    date_start = models.DateTimeField("زمان شروع تخفیف", null=True, blank=True) #ex: 1400/06/12
+    date_end = models.DateTimeField("زمان پایان تخفیف", null=True, blank=True) #ex: 1400/06/14
+    Temporary_price = models.FloatField(verbose_name="قیمت مموقت", null=True, blank=True)  #ex: 15 000
     cost = 0  ## last Price
+
 
     @property
     def original_price(self):
         if datetime.time() > self.date_start and datetime.time() < self.date_end:
+            return True
+        else: return False
+
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if not self.original_price:
             self.cost = self.Temporary_price
-            return self.cost
-        else:
-            self.cost = self.price
-            return self.cost
+
 
     class Meta:
         verbose_name = "محصولات"
