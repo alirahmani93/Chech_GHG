@@ -1,13 +1,12 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-import datetime
+from django.utils import timezone
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from django.core.validators import validate_image_file_extension, DecimalValidator
+from django.core.validators import validate_image_file_extension
 
-
-from users.models import OurUser
+from users.models import OurUser , Supplier
 
 # Create your models here.
 User = get_user_model()
@@ -41,9 +40,9 @@ class Media(models.Model):
     image_product = models.ForeignKey("Product", on_delete=models.CASCADE)
     picture = models.ImageField(upload_to="Project_Pictures/", max_length=100, null=True, blank=True, default=None,
                                 validators=[validate_image_file_extension])
-    discription = models.CharField(max_length=100, default=None)
     video_description = models.FileField(upload_to='Project_Videos/', null=True, blank=True)
-                                            # , validators=[file_size_validator])
+    # , validators=[file_size_validator])
+    discription = models.CharField(max_length=100, default=None)
     slug = models.SlugField(unique=True, null=True, blank=True)
 
     @property
@@ -74,7 +73,7 @@ class Product(models.Model):
     Not_Exist, Active, Will_not_be_produced, Ordered = "N", "A", "W", "O"
     status_choices = [("N", "Not_Exist"), ("A", "Active"), ("W", "Will_not_be_produced"), ("O", "Ordered")]
 
-    #    supplier = models.OneToOneField(to="Supplier", on_delete=models.RESTRICT)
+    supplier = models.OneToOneField(to=User, on_delete=models.RESTRICT)
     ### FK ###
     cat = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True)
     brand = models.ForeignKey("Brand", on_delete=models.SET_NULL, null=True, blank=True)
@@ -87,29 +86,37 @@ class Product(models.Model):
     wat = models.IntegerField("wat", null=True, blank=True)
     voltage = models.IntegerField("Voltage", null=True, blank=True)
     discription = models.TextField("توضیحات اضافی", max_length=30, null=True, blank=True)
-    # catalog = models.FileField("کاتالوگ")
+    # catalog = models.FileField("کاتالوگ")   ### How to connerct CDN??
 
     ### Price ###  set Temp price for this product (( if (end - start) > (end - now) ==> cost = temporary_price
-    price = models.FloatField(default=0, help_text="﷼") #ex:10 000
-    set_time = models.DateTimeField(auto_now_add=True) #ex: 1400/06/10
+    price = models.FloatField(default=0, help_text="﷼")  # ex:10 000
+    set_time = models.DateTimeField(auto_now_add=True)  # ex: 1400/06/10
     ## set Temp and start & end date
-    date_start = models.DateTimeField("زمان شروع تخفیف", null=True, blank=True) #ex: 1400/06/12
-    date_end = models.DateTimeField("زمان پایان تخفیف", null=True, blank=True) #ex: 1400/06/14
-    Temporary_price = models.FloatField(verbose_name="قیمت مموقت", null=True, blank=True)  #ex: 15 000
-    cost = 0  ## last Price
-
+    date_start = models.DateTimeField("زمان شروع تخفیف", null=True, blank=True)  # ex: 1400/06/12
+    date_end = models.DateTimeField("زمان پایان تخفیف", null=True, blank=True)  # ex: 1400/06/14
+    Temporary_price = models.FloatField(verbose_name="قیمت مموقت", null=True, blank=True)  # ex: 15 000
+    cost = models.FloatField("قیمت محصول",null=True, blank=True)  ## last Price
 
     @property
     def original_price(self):
-        if datetime.time() > self.date_start and datetime.time() < self.date_end:
+        if self.date_start < timezone.now() < self.date_end:
             return True
-        else: return False
-
+        else:
+            return False
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if not self.original_price:
+        if self.status == "N" and self.count > 0:
+            raise Exception("تعداد کالا با وضعیت همخوانی ندارد ")
+        if self.count < 0:
+            raise Exception("تعداد کالا نمیتواند منفی باشد")
+        if not self.date_start < self.date_end:
+            raise Exception("تاریخ شروع از تاریخ پایان کمتر است ")
+
+        if self.original_price:
             self.cost = self.Temporary_price
+        else:
+            self.cost = self.price
 
 
     class Meta:

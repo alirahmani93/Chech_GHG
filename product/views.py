@@ -54,7 +54,6 @@ def selcted_product(request, id):
     obj = Product.objects.filter(id=id).values()
     attribute = []
     for attr in obj:
-        print(attr)
         attribute.append({
             "Product": attr.name,
             "Brand": attr.brand,

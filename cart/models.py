@@ -9,9 +9,9 @@ from product.models import Product
 class Cart(models.Model):
     status_choices = (('on_cart', 'on_cart'), ('ready_to_pay', 'ready_to_pay'))
 
-    cart_uuid= models.UUIDField("شماره کارتی ساخته شده",unique_for_date=1,default=None)
-    # user_fk = models.ForeignKey("Regular", on_delete=models.CASCADE)
-    # product_fk = models.ForeignKey("Product", on_delete=models.CASCADE, null=True, blank=True)
+    cart_uuid= models.UUIDField("شماره کارت ساخته شده",unique_for_date=1,default=None)
+    user_fk = models.OneToOneField("Regular", on_delete=models.CASCADE)
+    product_fk = models.ForeignKey("Product", on_delete=models.CASCADE, null=True, blank=True)
     cart_status = models.CharField(max_length=100, choices=status_choices, default=None)
     ordered_count = models.IntegerField("تعداد سفارش شده")
     cost_price = Product.cost

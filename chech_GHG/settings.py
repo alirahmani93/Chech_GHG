@@ -16,7 +16,7 @@ INTERNAL_IPS = ['127.0.0.1', ]
 
 ALLOWED_HOSTS = []
 
-THOUSAND_SEPARATOR = True
+THOUSAND_SEPARATOR = True #### mohem ####
 
 # Application definition
 
@@ -27,13 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'product.apps.ProductConfig',
+
 
     "debug_toolbar",  ## In debug mode
     "azbankgateways",
 
     "users",
-    # "product",
+    "product",
     # "cart",
     # "shipping",
     # "wallet",

@@ -59,14 +59,14 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, phone, **extra_fields)
 
 
-class OurUser(AbstractUser):
+class OurUser(AbstractUser):    #### ADD REGEX (PHONE NUMBER / MAX_LENGHTH) ####
     username = None
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=11)
     first_name = models.CharField(_("نام"), max_length=250,blank=True,null=True)
     last_name = models.CharField(_("نام خانوادگی"), max_length=250,blank=True,null=True)
     age = models.IntegerField(_("سن"),blank=True,null=True)
-    image = models.ImageField(upload_to=model_image_directory_path,blank=True,null=True)
+    image = models.ImageField(upload_to=model_image_directory_path,blank=True,null=True)    ### esmesh ro be AVATAR taghir bde
     address = models.CharField(_("نشانی"), max_length=500, blank=True,null=True)
 
     USERNAME_FIELD = 'email'
@@ -100,7 +100,7 @@ class Regular(OurUser):
         verbose_name_plural = 'Regular'
 
     def save(self, *args, **kwargs):
-        if not (self.code_meli > 1000000 and self.code_meli < 10000000000):
+        if not (self.code_meli > 10**10 and self.code_meli < 10**11):
             raise Exception("کد ملی باید ده رقم باشد")
 
     def __str__(self):
