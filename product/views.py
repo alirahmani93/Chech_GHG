@@ -13,14 +13,15 @@ def show_all_product(request, cat):
     # return JsonResponse(obj, safe=False)
 
     # list_product = Product.objects.filter(cat=Category.objects.get(title=cat).values("id")).values()
-    list_product = Category.objects.filter(title=cat)
-    print( list_product)
+    list_product = list(Product.objects.filter(cat__title__contains=cat).values())
+    print(list_product)
     context = {
         "title": "Product List",
         "list_p": list_product,
         "request_time": datetime.strptime("26/08/2021", "%d/%m/%Y"),
     }
-    render(request, "list_p.html", context,status=205)
+    return JsonResponse(list_product, safe=False)
+    # render(request, "list_p.html", context,status=205)
 
 
 def show_all_brand(request):
@@ -48,7 +49,7 @@ def show_all_media(request):
     return JsonResponse(media_list, safe=False)
 
 
-def selcted_product(request, id):
+def selected_product(request, id):
     # uuid = str(uuid)
     # print(uuid)
     obj = Product.objects.filter(id=id).values()

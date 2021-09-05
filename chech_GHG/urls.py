@@ -9,9 +9,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
 
-    # # path('', home, name='home_page'),
-    # path('product/', include("product.urls")),
-    # path('account/', include("users.urls")),
+    # path('', home, name='home_page'),
+    path('product/', include("product.urls")),
+    path('account/', include("users.urls")),
     # path('cart/', include("cart.urls")),
     # path('shipping/', include("shipping.urls")),
     # path('payment/', include("payment.urls")),

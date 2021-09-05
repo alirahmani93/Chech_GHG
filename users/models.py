@@ -73,13 +73,14 @@ class OurUser(AbstractUser):    #### ADD REGEX (PHONE NUMBER / MAX_LENGHTH) ####
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
 
-    def __str__(self):
-        return self.email
 
     class Meta:
         verbose_name = 'karbaran'
         verbose_name_plural = 'karbaran'
 
+
+    def __str__(self):
+        return self.email
 
 class BaseUers(models.Model):
     user = models.OneToOneField(OurUser, on_delete=models.CASCADE, verbose_name="کاربر")
@@ -102,7 +103,7 @@ class Regular(OurUser):
     def save(self, *args, **kwargs):
         if not (self.code_meli > 10**10 and self.code_meli < 10**11):
             raise Exception("کد ملی باید ده رقم باشد")
-
+        return super().save(*args, **kwargs)
     def __str__(self):
         return f"{self.email}"
 
@@ -118,6 +119,7 @@ class Staff(OurUser):
     def save(self, *args, **kwargs):
         if not self.staff_number > 0:
             raise Exception("کد کارمندی را به صورت صحیح وارد کنید")
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.staff_duty}"
@@ -128,7 +130,7 @@ class Supplier(OurUser):
     open_working_hour = models.TimeField("زمان شروع کار در روز")
     close_working_hour = models.TimeField("زمان پایان کار در روز")
     excel_file = models.FileField("فایل اکسل محصولات خود را در اینجا باز گذاری کنید ",
-                                  name="EXCEL", upload_to=model_image_directory_path)
+                                  name="EXCEL", upload_to=model_image_directory_path,null=True,blank=True)
     bank_shaba = models.IntegerField(_("شماره شبا کارت بانکی خود را وارد کنید"), max_length=24)
 
     class Meta:
@@ -138,6 +140,7 @@ class Supplier(OurUser):
     def save(self, *args, **kwargs):
         if not (self.bank_shaba >= 10**24 and self.bank_shaba < 10**25):
             raise Exception("کد شبا بایستی 24 رقم داشته باشد")
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.email}, {self.company_name}"
