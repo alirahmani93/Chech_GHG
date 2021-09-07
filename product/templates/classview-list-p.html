@@ -1,0 +1,38 @@
+{% extends "base_product.html" %}
+
+{% block title %}   product name     {% endblock %}
+
+{% block main %}
+    <div style="background-color:darkred; font-size:30px ;color:chartreuse; padding:15pt ">
+        <ul>
+
+            {% for elm in qs %}
+                <li>
+                    <p>category title: {{ elm.cat.title }}</p>
+                    <p>category sub category: {% if elm.cat.sub_category == None %}
+                        -
+                    {% endif %} </p>
+                    <hr>
+
+                    <p>Product name{{ elm.name }} </p>
+                    <p>count: {{ elm.count }}</p>
+                    <p>cost: {{ elm.cost }}</p>
+                    <p>status: {{ elm.status }}</p>
+                    <p>description: {{ elm.discription }}</p>
+                    <hr>
+
+                    <p>supplier email: {{ elm.supplier.email }}</p>
+                    <p>phone number: {{ elm.supplier.phone }}</p>
+                    <p style="position: center">⏬</p>
+                </li>
+                <hr>
+                <hr>
+                <hr>
+
+            {% endfor %}
+
+
+        </ul>
+    </div>
+    <hr>
+{% endblock %}

@@ -2,11 +2,23 @@ from datetime import datetime
 from json import loads, dumps
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, View, DetailView
 
 from .models import Product, Brand, Category, Media
 
 
+
 # Create your views here.
+class ProductList(ListView):
+    context_object_name = 'list_p'
+    template_name = 'shop.html'
+    queryset = Product.objects.all()
+    model = Product
+
+class ProductDetails(DetailView):
+    model = Product
+    template_name = "product.html"
+    context_object_name = "p_details"
 
 def show_all_product(request, cat):
     # obj = list(Product.objects.all().order_by("id").values())
@@ -20,8 +32,9 @@ def show_all_product(request, cat):
         "list_p": list_product,
         "request_time": datetime.strptime("26/08/2021", "%d/%m/%Y"),
     }
-    return JsonResponse(list_product, safe=False)
-    # render(request, "list_p.html", context,status=205)
+    print("context",context)
+    # return JsonResponse(list_product, safe=False)
+    return render(request, "shop.html", context)
 
 
 def show_all_brand(request):
