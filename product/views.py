@@ -44,7 +44,7 @@ def show_all_brand(request):
 
 def show_all_category(request):
     obj = list(Category.objects.all().order_by("id").values())
-    return HttpResponse(obj)
+    return JsonResponse(obj,safe=False)
 
 
 def show_all_media(request):
@@ -77,12 +77,3 @@ def selected_product(request, id):
     return JsonResponse(attribute, safe=True)
 
 
-def show_price(request, upc):
-    obj = Product.objects.filter(upc__exact=upc).values()
-    print(obj, upc)
-    if (datetime.time > obj.date_start) and (datetime.time < obj.date_end):
-        object.cost = obj.Temporary_price
-        return obj.cost
-    else:
-        obj.cost = obj.price
-        return obj.cost
