@@ -7,13 +7,10 @@ from dotenv import load_dotenv, find_dotenv
 env_file = Path(find_dotenv(usecwd=True))
 load_dotenv(verbose=True, dotenv_path=env_file)
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 SECRET_KEY = 'django-insecure-w34#+sf(hziskp3wbl6!t*(8^6!)s@#(8yeofk5ebgccfkd)=_'
-
 DEBUG = True
 
 INTERNAL_IPS = ['127.0.0.1', ]
-
 ALLOWED_HOSTS = []
 
 THOUSAND_SEPARATOR = True #### mohem ####
@@ -132,6 +129,14 @@ MEDIA_ROOT = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get("EMAIL_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #### ____________  my custom setting  ____________ ####
 AZ_IRANIAN_BANK_GATEWAYS = {

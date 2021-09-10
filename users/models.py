@@ -93,7 +93,7 @@ class BaseUers(models.Model):
 class Regular(OurUser):
     GENDER_CHICES = (("مرد", "man"), ("زن", "woman"), ("دیگر", "other"),)
 
-    code_meli = models.IntegerField(_("کدملی"), max_length=10)
+    code_meli = models.IntegerField(_("کدملی"))
     gender = models.CharField(_("جنسیت"), max_length=5, choices=GENDER_CHICES)
 
     class Meta:
@@ -109,8 +109,8 @@ class Regular(OurUser):
 
 
 class Staff(OurUser):
-    staff_number = models.IntegerField(_("کد کارمندی"), max_length=10)
-    staff_duty = models.CharField(_("مقام"), max_length=10)
+    staff_number = models.IntegerField(_("کد کارمندی"))
+    staff_duty = models.CharField(_("مقام"),  max_length=50)
 
     class Meta:
         verbose_name = 'Staff'
@@ -131,7 +131,7 @@ class Supplier(OurUser):
     close_working_hour = models.TimeField("زمان پایان کار در روز")
     excel_file = models.FileField("فایل اکسل محصولات خود را در اینجا باز گذاری کنید ",
                                   name="EXCEL", upload_to=model_image_directory_path,null=True,blank=True)
-    bank_shaba = models.IntegerField(_("شماره شبا کارت بانکی خود را وارد کنید"), max_length=24)
+    bank_shaba = models.IntegerField(_("شماره شبا کارت بانکی خود را وارد کنید"))
 
     class Meta:
         verbose_name = 'Supplier'

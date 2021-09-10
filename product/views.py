@@ -7,7 +7,6 @@ from django.views.generic import ListView, View, DetailView
 from .models import Product, Brand, Category, Media
 
 
-
 # Create your views here.
 class ProductList(ListView):
     context_object_name = 'list_p'
@@ -15,10 +14,12 @@ class ProductList(ListView):
     queryset = Product.objects.all()
     model = Product
 
+
 class ProductDetails(DetailView):
     model = Product
     template_name = "product.html"
     context_object_name = "p_details"
+
 
 def show_all_product(request, cat):
     # obj = list(Product.objects.all().order_by("id").values())
@@ -32,7 +33,7 @@ def show_all_product(request, cat):
         "list_p": list_product,
         "request_time": datetime.strptime("26/08/2021", "%d/%m/%Y"),
     }
-    print("context",context)
+    print("context", context)
     # return JsonResponse(list_product, safe=False)
     return render(request, "shop.html", context)
 
@@ -44,7 +45,7 @@ def show_all_brand(request):
 
 def show_all_category(request):
     obj = list(Category.objects.all().order_by("id").values())
-    return JsonResponse(obj,safe=False)
+    return JsonResponse(obj, safe=False)
 
 
 def show_all_media(request):
@@ -75,5 +76,3 @@ def selected_product(request, id):
         })
     # return render(request, "app1/show_Questions.html", context)
     return JsonResponse(attribute, safe=True)
-
-

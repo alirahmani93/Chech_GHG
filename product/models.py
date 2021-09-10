@@ -41,7 +41,7 @@ class Brand(models.Model):
 class Media(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
     image_product = models.ImageField(upload_to=model_image_directory_path, null=True, blank=True,
-                                validators=[validate_image_file_extension])
+                                      validators=[validate_image_file_extension])
     video_product = models.FileField(upload_to=model_image_directory_path, null=True, blank=True)
     description = models.CharField(max_length=100, default=None)
     slug = models.SlugField(unique=True, null=True, blank=True, )
@@ -74,7 +74,7 @@ class Product(models.Model):
     Not_Exist, Active, Will_not_be_produced, Ordered = "N", "A", "W", "O"
     status_choices = [("N", "Not_Exist"), ("A", "Active"), ("W", "Will_not_be_produced"), ("O", "Ordered")]
 
-    supplier = models.ForeignKey(to=Supplier,on_delete=models.RESTRICT,null=True,blank=True)
+    supplier = models.ForeignKey(to=Supplier, on_delete=models.RESTRICT, null=True, blank=True)
     ### FK ###
     cat = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True)
     brand = models.ForeignKey("Brand", on_delete=models.SET_NULL, null=True, blank=True)
@@ -82,14 +82,14 @@ class Product(models.Model):
     name = models.CharField(max_length=50, )
     upc = models.PositiveBigIntegerField(help_text="بارکد ۱۲ رقمی")
     count = models.IntegerField("تعداد", default=0)
-    status = models.CharField(choices=status_choices, max_length=1, default="N")
+    status = models.CharField("وضعیت موجودی", choices=status_choices, max_length=1, default="N")
     size = models.CharField(max_length=30, null=True, blank=True)
     wat = models.IntegerField("wat", null=True, blank=True)
     voltage = models.IntegerField("Voltage", null=True, blank=True)
     discription = models.TextField("توضیحات اضافی", max_length=30, null=True, blank=True)
-    catalog = models.FileField("کاتالوگ",upload_to="",null=True, blank=True)   ### How to connerct CDN??
-
-    ### Price ###  set Temp price for this product (( if (end - start) > (end - now) ==> cost = temporary_price
+    catalog = models.FileField("کاتالوگ", upload_to="", null=True, blank=True)  ### How to connerct CDN??
+    # is_acrive = models.BooleanField("فعال/غیرفعال", default=False)
+    ## Price ###  set Temp price for this product (( if (end - start) > (end - now) ==> cost = temporary_price
     price = models.FloatField(default=0, help_text="﷼")  # ex:10 000
     set_time = models.DateTimeField(auto_now_add=True)  # ex: 1400/06/10
     ## set Temp and start & end date
@@ -105,7 +105,7 @@ class Product(models.Model):
         else:
             return False
 
-    def save(self, force_insert=True,*args, **kwargs):
+    def save(self, force_insert=True, *args, **kwargs):
         if self.status == "N" and self.count > 0:
             raise Exception("تعداد کالا با وضعیت همخوانی ندارد ")
         if self.count < 0:
