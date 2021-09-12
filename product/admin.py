@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Media, Product, Brand
+from .models import Category, Media, Product, Brand, Attribute
 
 
 # Register your models here.
@@ -8,6 +8,7 @@ admin.site.register(Category)
 admin.site.register(Brand)
 admin.site.register(Media)
 admin.site.register(Product)
+admin.site.register(Attribute)
 
 
 

@@ -18,6 +18,14 @@ class Cart(models.Model):
 
     # class Meta:
     #     db_table = 'سبد خرید'
-
+    def save_base(self, raw=False, force_insert=False,
+                  force_update=False, using=None, update_fields=None):
+        pass
     def __str__(self):
         return self.cart_uuid
+
+class Choosen_Product(models.Model):
+    att_fk = models.ForeignKey("Attribute", on_delete=models.CASCADE, null=True, blank=True)
+    title = models.CharField(max_length=50)
+    numeric_value = models.IntegerField(null=True, blank=True)
+    string_value = models.CharField(max_length=200, null=True, blank=True)

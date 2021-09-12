@@ -59,28 +59,28 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, phone, **extra_fields)
 
 
-class OurUser(AbstractUser):    #### ADD REGEX (PHONE NUMBER / MAX_LENGHTH) ####
-    username = None
+class OurUser(AbstractUser):  #### ADD REGEX (PHONE NUMBER / MAX_LENGHTH) ####
+    username = models.CharField(max_length=50, default="defult")
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=11)
-    first_name = models.CharField(_("نام"), max_length=250,blank=True,null=True)
-    last_name = models.CharField(_("نام خانوادگی"), max_length=250,blank=True,null=True)
-    age = models.IntegerField(_("سن"),blank=True,null=True)
-    image = models.ImageField(upload_to=model_image_directory_path,blank=True,null=True)    ### esmesh ro be AVATAR taghir bde
-    address = models.CharField(_("نشانی"), max_length=500, blank=True,null=True)
+    first_name = models.CharField(_("نام"), max_length=250, blank=True, null=True)
+    last_name = models.CharField(_("نام خانوادگی"), max_length=250, blank=True, null=True)
+    age = models.IntegerField(_("سن"), blank=True, null=True)
+    avatar = models.ImageField(upload_to=model_image_directory_path, blank=True,
+                               null=True)  ### esmesh ro be AVATAR taghir bde
+    address = models.CharField(_("نشانی"), max_length=500, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
 
-
     class Meta:
         verbose_name = 'karbaran'
         verbose_name_plural = 'karbaran'
 
-
     def __str__(self):
         return self.email
+
 
 class BaseUers(models.Model):
     user = models.OneToOneField(OurUser, on_delete=models.CASCADE, verbose_name="کاربر")
@@ -101,16 +101,17 @@ class Regular(OurUser):
         verbose_name_plural = 'Regular'
 
     def save(self, *args, **kwargs):
-        if not (self.code_meli > 10**10 and self.code_meli < 10**11):
+        if len(str(self.code_meli)) != 10:
             raise Exception("کد ملی باید ده رقم باشد")
         return super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.email}"
 
 
 class Staff(OurUser):
     staff_number = models.IntegerField(_("کد کارمندی"))
-    staff_duty = models.CharField(_("مقام"),  max_length=50)
+    staff_duty = models.CharField(_("مقام"), max_length=50)
 
     class Meta:
         verbose_name = 'Staff'
@@ -130,7 +131,7 @@ class Supplier(OurUser):
     open_working_hour = models.TimeField("زمان شروع کار در روز")
     close_working_hour = models.TimeField("زمان پایان کار در روز")
     excel_file = models.FileField("فایل اکسل محصولات خود را در اینجا باز گذاری کنید ",
-                                  name="EXCEL", upload_to=model_image_directory_path,null=True,blank=True)
+                                  name="EXCEL", upload_to=model_image_directory_path, null=True, blank=True)
     bank_shaba = models.IntegerField(_("شماره شبا کارت بانکی خود را وارد کنید"))
 
     class Meta:
@@ -138,8 +139,8 @@ class Supplier(OurUser):
         verbose_name_plural = 'Supplier'
 
     def save(self, *args, **kwargs):
-        if not (self.bank_shaba >= 10**24 and self.bank_shaba < 10**25):
-            raise Exception("کد شبا بایستی 24 رقم داشته باشد")
+        if len(str(self.bank_shaba)) != 10:
+            raise Exception("کد شبا بایستی 10 رقم داشته باشد", len(str(self.bank_shaba)))
         return super().save(*args, **kwargs)
 
     def __str__(self):

@@ -1,6 +1,11 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login as log_in, logout as log_out
+from django.views.generic import UpdateView
+
+from .models import OurUser, Regular, Staff, Supplier
 
 
 def login(request):
@@ -29,5 +34,15 @@ def login(request):
 def logout(request):
     pass
 
+
 def register(request):
     pass
+
+
+
+class UpdateProfile(UpdateView):    #(LoginRequiredMixin, UpdateView):
+    model = OurUser
+    template_name = "test.html"
+    fields = ["username"]
+    success_url = "/"
+
