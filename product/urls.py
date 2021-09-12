@@ -9,6 +9,9 @@ urlpatterns = [
     path('show_all_c/', show_all_category, name="show_all_category"),
     path('show_all_m/', show_all_media, name="show_all_media"),
     path('selcted_p/<int:id>', selected_product, name="selected_product"),
+    path('form/', ProductFormView.as_view(), name="ProdfuctForm"),
+    path('annotated/', TestAnnotated.as_view(), name="annotated"),
+
 ]
 
 # path('show_all_p/<str:cat>', show_all_product, name="show_all_product"),

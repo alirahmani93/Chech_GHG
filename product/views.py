@@ -1,10 +1,13 @@
 from datetime import datetime
 from json import loads, dumps
+
+from django.db.models import Q , Count
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, View, DetailView
+from django.views.generic import ListView, View, DetailView, FormView
 
 from .models import Product, Brand, Category, Media
+from .form import ProductForm
 
 
 # Create your views here.
@@ -21,6 +24,18 @@ class ProductDetails(DetailView):
     context_object_name = "p_details"
 
 
+class ProductFormView(FormView):
+    template_name = "producr_form.html"
+    form_class = ProductForm
+    success_url = "Thank YOU"
+
+class TestAnnotated(ListView):
+    template_name = "producr_form.html"
+    model = Product
+    context_object_name = "p_list"
+    queryset = Product.objects.all()
+    # queryset = Product.objects.annotate(status_type=Count("cat"))
+
 def show_all_product(request, cat):
     # obj = list(Product.objects.all().order_by("id").values())
     # return JsonResponse(obj, safe=False)
@@ -33,6 +48,7 @@ def show_all_product(request, cat):
         "list_p": list_product,
         "request_time": datetime.strptime("26/08/2021", "%d/%m/%Y"),
     }
+
     print("context", context)
     # return JsonResponse(list_product, safe=False)
     return render(request, "shop.html", context)
