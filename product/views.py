@@ -6,7 +6,7 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, View, DetailView, FormView
 
-from .models import Product, Brand, Category, Media
+from .models import Product, Brand, Category, Media, Attribute
 from .form import ProductForm
 
 

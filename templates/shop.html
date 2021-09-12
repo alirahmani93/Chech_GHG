@@ -5,451 +5,240 @@
 
     <div class="master-wrapper">
 
+{#          {##}
+        <!--  ==========  -->
+        <!--  = Breadcrumbs =  -->
+        <!--  ==========  -->
+        <div class="darker-stripe">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="index.html">وبمارکت</a>
+                            </li>
+                            <li><span class="icon-chevron-right"></span></li>
+                            <li>
+                                <a href="shop.html">فروشگاه</a>
+                            </li>
+                            <li><span class="icon-chevron-right"></span></li>
+                            <li>
+                                <a href="shop.html">قالب بندی اصلی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-{#        <!--  ==========  -->#}
-{#        <!--  = Main Menu / navbar =  -->#}
-{#        <!--  ==========  -->#}
-{#        <div class="navbar navbar-static-top" id="stickyNavbar">#}
-{#            <div class="navbar-inner">#}
-{#                <div class="container">#}
-{#                    <div class="row">#}
-{#                        <div class="span9">#}
-{#                            <button type="button" class="btn btn-navbar" data-toggle="collapse"#}
-{#                                    data-target=".nav-collapse">#}
-{#                                <span class="icon-bar"></span>#}
-{#                                <span class="icon-bar"></span>#}
-{#                                <span class="icon-bar"></span>#}
-{#                            </button>#}
+        <div class="container">
+            <div class="push-up blocks-spacer">
+                <div class="row">
 
-{#                            <!--  ==========  -->#}
-{#                            <!--  = Menu =  -->#}
-{#                            <!--  ==========  -->#}
-{#                            <div class="nav-collapse collapse">#}
-{#                                <ul class="nav" id="mainNavigation">#}
-{#                                    <li class="dropdown">#}
-{#                                        <a href="index.html" class="dropdown-toggle"> خانه <b class="caret"></b> </a>#}
-{#                                        <ul class="dropdown-menu">#}
-{#                                            <li class="dropdown">#}
-{#                                                <a href="index.html"><i#}
-{#                                                        class="icon-caret-left pull-right visible-desktop"></i> رنگ های#}
-{#                                                    پوسته</a>#}
-{#                                                <ul class="dropdown-menu">#}
-{#                                                    <li><a href="index.html">پوسته پیش فرض</a></li>#}
-{#                                                    <li><a href="index-grass-green.html">پوسته سبز چمنی</a></li>#}
-{#                                                    <li><a href="index-oil-green.html">پوسته سبز روغنی</a></li>#}
-{#                                                    <li><a href="index-gray.html">پوسته خاکستری</a></li>#}
-{#                                                </ul>#}
-{#                                            </li>#}
-{#                                            <li class="dropdown">#}
-{#                                                <a href="index-boxed-solid.html"><i#}
-{#                                                        class="icon-caret-left pull-right visible-desktop"></i> ورژن#}
-{#                                                    boxed</a>#}
-{#                                                <ul class="dropdown-menu">#}
-{#                                                    <li><a href="index-boxed-solid.html">Boxed - با رنگ پس زمینه#}
-{#                                                        ثابت</a></li>#}
-{#                                                    <li><a href="index-boxed-pattern.html">Boxed - با پس زمینه الگو</a>#}
-{#                                                    </li>#}
-{#                                                </ul>#}
-{#                                            </li>#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{##}
-{#                                    <li class="dropdown active">#}
-{#                                        <a href="shop.html" class="dropdown-toggle"> فروشگاه <b class="caret"></b> </a>#}
-{#                                        <ul class="dropdown-menu">#}
-{#                                            <li class="active"><a href="shop.html">قالب بندی پیش فرض</a></li>#}
-{#                                            <li><a href="shop-no-sidebar.html">تمام صفحه</a></li>#}
-{#                                            <li><a href="product.html">محصول تکی</a></li>#}
-{#                                            <li><a href="shop-search.html">نتایج جستجو</a></li>#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{#                                    <li class="dropdown">#}
-{#                                        <a href="blog.html" class="dropdown-toggle">بلاگ <b class="caret"></b> </a>#}
-{#                                        <ul class="dropdown-menu">#}
-{#                                            <li><a href="blog.html">قالب بندی پیش فرض</a></li>#}
-{#                                            <li><a href="blog-single.html">تک نوشته</a></li>#}
-{#                                            <li><a href="blog-search.html">نتایج جستجو</a></li>#}
-{#                                            <li><a href="404.html">صفحه 404</a></li>#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{#                                    <li class="dropdown">#}
-{#                                        <a href="features.html" class="dropdown-toggle">امکانات <b class="caret"></b>#}
-{#                                        </a>#}
-{#                                        <ul class="dropdown-menu">#}
-{#                                            <li><a href="icons.html">آیکن ها</a></li>#}
-{#                                            <li class="dropdown">#}
-{#                                                <a href="features.html" class="dropdown-toggle"><i#}
-{#                                                        class="icon-caret-left pull-right visible-desktop"></i> همه#}
-{#                                                    امکانات</a>#}
-{#                                                <ul class="dropdown-menu">#}
-{#                                                    <li><a href="{% static  "features.html#headings" %}">سرخط ها</a>#}
-{#                                                    </li>#}
-{#                                                    <li><a href="{% static  "features.html#alertBoxes" %}">جعبه های#}
-{#                                                        هشدار</a></li>#}
-{#                                                    <li><a href="{% static   "features.html#tabs" %}">تب ها</a></li>#}
-{#                                                    <li><a href="{% static   "features.html#buttons" %}">دکمه ها</a>#}
-{#                                                    </li>#}
-{#                                                    <li><a href="{% static  "features.html#toggles" %}">تاگل ها</a></li>#}
-{#                                                    <li><a href="{% static  "features.html#quotes" %}">نقل قول ها</a>#}
-{#                                                    </li>#}
-{#                                                    <li><a href="{% static  "features.html#gallery" %}">گرید های#}
-{#                                                        گالری</a></li>#}
-{#                                                    <li><a href="{% static  "features.html#code" %}">کد</a></li>#}
-{#                                                    <li><a href="{% static  "features.html#columns" %}">ستون ها</a></li>#}
-{#                                                    <li><a href="{% static  "features.html#maps" %}">نقشه ها</a></li>#}
-{#                                                    <li><a href="{% static  "features.html#progress" %}">نوار های#}
-{#                                                        پیشرفت</a></li>#}
-{#                                                    <li><a href="{% static  "features.html#tables" %}">جداول</a></li>#}
-{#                                                </ul>#}
-{#                                            </li>#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{#                                    <li><a href="about-us.html">درباره ما</a></li>#}
-{#                                    <li><a href="contact.html">تماس با ما</a></li>#}
-{#                                </ul>#}
-{##}
-{#                                <!--  ==========  -->#}
-{#                                <!--  = Search form =  -->#}
-{#                                <!--  ==========  -->#}
-{#                                <form class="navbar-form pull-right" action="#" method="get">#}
-{#                                    <button type="submit"><span class="icon-search"></span></button>#}
-{##}
-{#                                    <label for="navSearchInput"></label><input type="text" class="span1" name="search" id="navSearchInput">#}
-{#                                </form>#}
-{#                            </div><!-- /.nav-collapse -->#}
-{#                        </div>#}
+                    <!--  ==========  -->
+                    <!--  = Sidebar =  -->
+                    <!--  ==========  -->
+                    <aside class="span3 left-sidebar" id="tourStep1">
+                        <div class="sidebar-item sidebar-filters" id="sidebarFilters">
+
+                            <!--  ==========  -->
+                            <!--  = Sidebar Title =  -->
+                            <!--  ==========  -->
+                            <div class="underlined">
+                                <h3><span class="light">بر اساس فیلتر</span> خرید کنید</h3>
+                            </div>
+
+                            <!--  ==========  -->
+                            <!--  = Categories =  -->
+                            <!--  ==========  -->
+                            <div class="accordion-group" id="tourStep2">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" href="#filterOne">دسته بندی ها <b
+                                            class="caret"></b></a>
+                                </div>
+                                <div id="filterOne" class="accordion-body collapse in">
+                                    <div class="accordion-inner">
+                                        <a href="#" data-target=".filter--accessories" class="selectable"><i
+                                                class="box"></i> لوازم شخصی</a>
+                                        <a href="#" data-target=".filter--bags, .filter--hats" class="selectable"><i
+                                                class="box"></i>کیف و کلاه</a>
+                                        <a href="#" data-target=".filter--polo-shirts" class="selectable"><i
+                                                class="box"></i> تی شرت های پولو</a>
+                                        <a href="#" data-target=".filter--shirts" class="selectable"><i class="box"></i>
+                                            پیراهن</a>
+                                        <a href="#" data-target=".filter--shoes, .filter--boots, .filter--trainers"
+                                           class="selectable"><i class="box"></i> کفش اسپورت و رسمی</a>
+                                        <a href="#" data-target=".filter--shorts" class="selectable"><i class="box"></i>
+                                            لوازم جانبی</a>
+                                        <a href="#" data-target=".filter--suits, .filter--blazers" class="selectable"><i
+                                                class="box"></i> لباس رسمی</a>
+                                        <a href="#" data-target=".filter--sunglasses" class="selectable"><i
+                                                class="box"></i> عینک آفتابی</a>
+                                        <a href="#" data-target=".filter--swimwear" class="selectable"><i
+                                                class="box"></i> لباس شنا</a>
+                                        <a href="#" data-target=".filter--trousers, .filter--chinos" class="selectable"><i
+                                                class="box"></i> شلوار</a>
+                                        <a href="#" data-target=".filter--t-shirts, .filter--vests"
+                                           class="selectable"><i class="box"></i> تی شرت و جلیقه</a>
+                                        <a href="#" data-target=".filter--bags" class="selectable"><i class="box"></i>
+                                            کیف</a>
+                                        <a href="#" data-target=".filter--underwear, .filter--socks" class="selectable"><i
+                                                class="box"></i> زیر پوش و جوراب</a>
+
+                                    </div>
+                                </div>
+                            </div> <!-- /categories -->
+
+                            <!--  ==========  -->
+                            <!--  = Prices slider =  -->
+                            <!--  ==========  -->
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">قیمت <b
+                                            class="caret"></b></a>
+                                </div>
+                                <div id="filterPrices" class="accordion-body in collapse">
+                                    <div class="accordion-inner with-slider">
+                                        <div class="jqueryui-slider-container">
+                                            <div id="pricesRange"></div>
+                                        </div>
+                                        <label>
+                                            <input type="text" data-initial="432" class="max-val pull-right" disabled/>
+                                        </label>
+                                        <label>
+                                            <input type="text" data-initial="99" class="min-val" disabled/>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <!-- /prices slider -->
+
+                            <!--  ==========  -->
+                            <!--  = Size filter =  -->
+                            <!--  ==========  -->
+                            <div class="accordion-group" id="tourStep3">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">سایز
+                                        <b class="caret"></b></a>
+                                </div>
+                                <div id="filterTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <a href="#" data-target="xs" data-type="size" class="selectable detailed"><i
+                                                class="box"></i> XS</a>
+                                        <a href="#" data-target="s" data-type="size" class="selectable detailed"><i
+                                                class="box"></i> S</a>
+                                        <a href="#" data-target="m" data-type="size" class="selectable detailed"><i
+                                                class="box"></i> M</a>
+                                        <a href="#" data-target="l" data-type="size" class="selectable detailed"><i
+                                                class="box"></i> L</a>
+                                        <a href="#" data-target="xl" data-type="size" class="selectable detailed"><i
+                                                class="box"></i> XL</a>
+                                        <a href="#" data-target="xxl" data-type="size" class="selectable detailed"><i
+                                                class="box"></i> XXL</a>
+
+                                    </div>
+                                </div>
+                            </div> <!-- /size filter -->
+
+                            <!--  ==========  -->
+                            <!--  = Color filter =  -->
+                            <!--  ==========  -->
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">رنگ
+                                        <b class="caret"></b></a>
+                                </div>
+                                <div id="filterThree" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <a href="#" data-target="red" data-type="color" class="selectable detailed"><i
+                                                class="box"></i> قرمز</a>
+                                        <a href="#" data-target="green" data-type="color" class="selectable detailed"><i
+                                                class="box"></i> سبز</a>
+                                        <a href="#" data-target="blue" data-type="color" class="selectable detailed"><i
+                                                class="box"></i> آبی</a>
+                                        <a href="#" data-target="pink" data-type="color" class="selectable detailed"><i
+                                                class="box"></i> صورتی</a>
+                                        <a href="#" data-target="purple" data-type="color"
+                                           class="selectable detailed"><i class="box"></i> بنفش</a>
+                                        <a href="#" data-target="orange" data-type="color"
+                                           class="selectable detailed"><i class="box"></i> نارنجی</a>
+
+                                    </div>
+                                </div>
+                            </div> <!-- /color filter -->
+
+                            <!--  ==========  -->
+                            <!--  = Brand filter =  -->
+                            <!--  ==========  -->
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">برند
+                                        <b class="caret"></b></a>
+                                </div>
+                                <div id="filterFour" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <a href="#" data-target="s-oliver" data-type="brand"
+                                           class="selectable detailed"><i class="box"></i> S. Oliver</a>
+                                        <a href="#" data-target="nike" data-type="brand" class="selectable detailed"><i
+                                                class="box"></i> Nike</a>
+                                        <a href="#" data-target="naish" data-type="brand" class="selectable detailed"><i
+                                                class="box"></i> Naish</a>
+                                        <a href="#" data-target="adidas" data-type="brand"
+                                           class="selectable detailed"><i class="box"></i> Adidas</a>
+                                        <a href="#" data-target="puma" data-type="brand" class="selectable detailed"><i
+                                                class="box"></i> Puma</a>
+                                        <a href="#" data-target="shred" data-type="brand" class="selectable detailed"><i
+                                                class="box"></i> Shred</a>
+
+                                    </div>
+                                </div>
+                            </div> <!-- /brand filter -->
+
+                            <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span>
+                                حذف همه فیلتر ها</a>
+
+                        </div>
+                    </aside> <!-- /sidebar -->
+
+                    <!--  ==========  -->
+                    <!--  = Main content =  -->
+                    <!--  ==========  -->
+                    <section class="span9">
 
                         <!--  ==========  -->
-                        <!--  = Cart =  -->
+                        <!--  = Title =  -->
                         <!--  ==========  -->
-{#                        <div class="span3">#}
-{#                            <div class="cart-container" id="cartContainer">#}
-{#                                <div class="cart">#}
-{#                                    <p class="items">سبد خرید <span class="dark-clr">(3)</span></p>#}
-{#                                    <p class="dark-clr hidden-tablet">$1816.90</p>#}
-{#                                    <a href="checkout-step-1.html" class="btn btn-danger">#}
-{#                                        <!-- <span class="icon icons-cart"></span> -->#}
-{#                                        <i class="icon-shopping-cart"></i>#}
-{#                                    </a>#}
-{#                                </div>#}
-{#                                <div class="open-panel">#}
-{##}
-{#                                    <div class="item-in-cart clearfix">#}
-{#                                        <div class="image">#}
-{#                                            <img src="{% static "images/dummy/cart-items/cart-item-1.jpg"%}" width="124" height="124"#}
-{#                                                 alt="cart item"/>#}
-{#                                        </div>#}
-{#                                        <div class="desc">#}
-{#                                            <strong><a href="product.html">کلاه زمستانی</a></strong>#}
-{#                                            <span class="light-clr qty">#}
-{#                                    تعداد : 1#}
-{#                                    &nbsp;#}
-{#                                    <a href="#" class="icon-remove-sign" title="Remove Item"></a>#}
-{#                                </span>#}
-{#                                        </div>#}
-{#                                        <div class="price">#}
-{#                                            <strong>$182</strong>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{##}
-{#                                    <div class="item-in-cart clearfix">#}
-{#                                        <div class="image">#}
-{#                                            <img src="{% static "images/dummy/cart-items/cart-item-2.jpg"%}" width="124" height="124"#}
-{#                                                 alt="cart item"/>#}
-{#                                        </div>#}
-{#                                        <div class="desc">#}
-{#                                            <strong><a href="product.html">کمربند اسپورت</a></strong>#}
-{#                                            <span class="light-clr qty">#}
-{#                                    تعداد : 1#}
-{#                                    &nbsp;#}
-{#                                    <a href="#" class="icon-remove-sign" title="Remove Item"></a>#}
-{#                                </span>#}
-{#                                        </div>#}
-{#                                        <div class="price">#}
-{#                                            <strong>$1042</strong>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{##}
-{#                                    <div class="item-in-cart clearfix">#}
-{#                                        <div class="image">#}
-{#                                            <img src="{% static "images/dummy/cart-items/cart-item-3.jpg"%}" width="124" height="124"#}
-{#                                                 alt="cart item"/>#}
-{#                                        </div>#}
-{#                                        <div class="desc">#}
-{#                                            <strong><a href="product.html">کیف پول مردانه</a></strong>#}
-{#                                            <span class="light-clr qty">#}
-{#                                    تعداد : 1#}
-{#                                    &nbsp;#}
-{#                                    <a href="#" class="icon-remove-sign" title="Remove Item"></a>#}
-{#                                </span>#}
-{#                                        </div>#}
-{#                                        <div class="price">#}
-{#                                            <strong>$6534</strong>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{##}
-{#                                    <div class="summary">#}
-{#                                        <div class="line">#}
-{#                                            <div class="row-fluid">#}
-{#                                                <div class="span6">هزینه ارسال :</div>#}
-{#                                                <div class="span6 align-right">$4.99</div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="line">#}
-{#                                            <div class="row-fluid">#}
-{#                                                <div class="span6">جمع کل :</div>#}
-{#                                                <div class="span6 align-right size-16">$357.81</div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                    <div class="proceed">#}
-{#                                        <a href="checkout-step-1.html" class="btn btn-danger pull-right bold higher">تصویه#}
-{#                                            حساب <i class="icon-shopping-cart"></i></a>#}
-{#                                        <small>هزینه ارسال بر اساس منطقه جغرافیایی محاسبه میشود. <a href="#">اطلاعات#}
-{#                                            بیشتر</a></small>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div> <!-- /cart -->#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div> <!-- /main menu -->#}
-{##}
-{##}
-{#        <!--  ==========  -->#}
-{#        <!--  = Breadcrumbs =  -->#}
-{#        <!--  ==========  -->#}
-{#        <div class="darker-stripe">#}
-{#            <div class="container">#}
-{#                <div class="row">#}
-{#                    <div class="span12">#}
-{#                        <ul class="breadcrumb">#}
-{#                            <li>#}
-{#                                <a href="index.html">وبمارکت</a>#}
-{#                            </li>#}
-{#                            <li><span class="icon-chevron-right"></span></li>#}
-{#                            <li>#}
-{#                                <a href="shop.html">فروشگاه</a>#}
-{#                            </li>#}
-{#                            <li><span class="icon-chevron-right"></span></li>#}
-{#                            <li>#}
-{#                                <a href="shop.html">قالب بندی اصلی</a>#}
-{#                            </li>#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{#        <div class="container">#}
-{#            <div class="push-up blocks-spacer">#}
-{#                <div class="row">#}
-{##}
-{#                    <!--  ==========  -->#}
-{#                    <!--  = Sidebar =  -->#}
-{#                    <!--  ==========  -->#}
-{#                    <aside class="span3 left-sidebar" id="tourStep1">#}
-{#                        <div class="sidebar-item sidebar-filters" id="sidebarFilters">#}
-{##}
-{#                            <!--  ==========  -->#}
-{#                            <!--  = Sidebar Title =  -->#}
-{#                            <!--  ==========  -->#}
-{#                            <div class="underlined">#}
-{#                                <h3><span class="light">بر اساس فیلتر</span> خرید کنید</h3>#}
-{#                            </div>#}
-{##}
-{#                            <!--  ==========  -->#}
-{#                            <!--  = Categories =  -->#}
-{#                            <!--  ==========  -->#}
-{#                            <div class="accordion-group" id="tourStep2">#}
-{#                                <div class="accordion-heading">#}
-{#                                    <a class="accordion-toggle" data-toggle="collapse" href="#filterOne">دسته بندی ها <b#}
-{#                                            class="caret"></b></a>#}
-{#                                </div>#}
-{#                                <div id="filterOne" class="accordion-body collapse in">#}
-{#                                    <div class="accordion-inner">#}
-{#                                        <a href="#" data-target=".filter--accessories" class="selectable"><i#}
-{#                                                class="box"></i> لوازم شخصی</a>#}
-{#                                        <a href="#" data-target=".filter--bags, .filter--hats" class="selectable"><i#}
-{#                                                class="box"></i>کیف و کلاه</a>#}
-{#                                        <a href="#" data-target=".filter--polo-shirts" class="selectable"><i#}
-{#                                                class="box"></i> تی شرت های پولو</a>#}
-{#                                        <a href="#" data-target=".filter--shirts" class="selectable"><i class="box"></i>#}
-{#                                            پیراهن</a>#}
-{#                                        <a href="#" data-target=".filter--shoes, .filter--boots, .filter--trainers"#}
-{#                                           class="selectable"><i class="box"></i> کفش اسپورت و رسمی</a>#}
-{#                                        <a href="#" data-target=".filter--shorts" class="selectable"><i class="box"></i>#}
-{#                                            لوازم جانبی</a>#}
-{#                                        <a href="#" data-target=".filter--suits, .filter--blazers" class="selectable"><i#}
-{#                                                class="box"></i> لباس رسمی</a>#}
-{#                                        <a href="#" data-target=".filter--sunglasses" class="selectable"><i#}
-{#                                                class="box"></i> عینک آفتابی</a>#}
-{#                                        <a href="#" data-target=".filter--swimwear" class="selectable"><i#}
-{#                                                class="box"></i> لباس شنا</a>#}
-{#                                        <a href="#" data-target=".filter--trousers, .filter--chinos" class="selectable"><i#}
-{#                                                class="box"></i> شلوار</a>#}
-{#                                        <a href="#" data-target=".filter--t-shirts, .filter--vests"#}
-{#                                           class="selectable"><i class="box"></i> تی شرت و جلیقه</a>#}
-{#                                        <a href="#" data-target=".filter--bags" class="selectable"><i class="box"></i>#}
-{#                                            کیف</a>#}
-{#                                        <a href="#" data-target=".filter--underwear, .filter--socks" class="selectable"><i#}
-{#                                                class="box"></i> زیر پوش و جوراب</a>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div> <!-- /categories -->#}
-{##}
-{#                            <!--  ==========  -->#}
-{#                            <!--  = Prices slider =  -->#}
-{#                            <!--  ==========  -->#}
-{#                            <div class="accordion-group">#}
-{#                                <div class="accordion-heading">#}
-{#                                    <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">قیمت <b#}
-{#                                            class="caret"></b></a>#}
-{#                                </div>#}
-{#                                <div id="filterPrices" class="accordion-body in collapse">#}
-{#                                    <div class="accordion-inner with-slider">#}
-{#                                        <div class="jqueryui-slider-container">#}
-{#                                            <div id="pricesRange"></div>#}
-{#                                        </div>#}
-{#                                        <label>#}
-{#                                            <input type="text" data-initial="432" class="max-val pull-right" disabled/>#}
-{#                                        </label>#}
-{#                                        <label>#}
-{#                                            <input type="text" data-initial="99" class="min-val" disabled/>#}
-{#                                        </label>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div> <!-- /prices slider -->#}
-{##}
-{#                            <!--  ==========  -->#}
-{#                            <!--  = Size filter =  -->#}
-{#                            <!--  ==========  -->#}
-{#                            <div class="accordion-group" id="tourStep3">#}
-{#                                <div class="accordion-heading">#}
-{#                                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">سایز#}
-{#                                        <b class="caret"></b></a>#}
-{#                                </div>#}
-{#                                <div id="filterTwo" class="accordion-body collapse">#}
-{#                                    <div class="accordion-inner">#}
-{#                                        <a href="#" data-target="xs" data-type="size" class="selectable detailed"><i#}
-{#                                                class="box"></i> XS</a>#}
-{#                                        <a href="#" data-target="s" data-type="size" class="selectable detailed"><i#}
-{#                                                class="box"></i> S</a>#}
-{#                                        <a href="#" data-target="m" data-type="size" class="selectable detailed"><i#}
-{#                                                class="box"></i> M</a>#}
-{#                                        <a href="#" data-target="l" data-type="size" class="selectable detailed"><i#}
-{#                                                class="box"></i> L</a>#}
-{#                                        <a href="#" data-target="xl" data-type="size" class="selectable detailed"><i#}
-{#                                                class="box"></i> XL</a>#}
-{#                                        <a href="#" data-target="xxl" data-type="size" class="selectable detailed"><i#}
-{#                                                class="box"></i> XXL</a>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div> <!-- /size filter -->#}
-{##}
-{#                            <!--  ==========  -->#}
-{#                            <!--  = Color filter =  -->#}
-{#                            <!--  ==========  -->#}
-{#                            <div class="accordion-group">#}
-{#                                <div class="accordion-heading">#}
-{#                                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">رنگ#}
-{#                                        <b class="caret"></b></a>#}
-{#                                </div>#}
-{#                                <div id="filterThree" class="accordion-body collapse">#}
-{#                                    <div class="accordion-inner">#}
-{#                                        <a href="#" data-target="red" data-type="color" class="selectable detailed"><i#}
-{#                                                class="box"></i> قرمز</a>#}
-{#                                        <a href="#" data-target="green" data-type="color" class="selectable detailed"><i#}
-{#                                                class="box"></i> سبز</a>#}
-{#                                        <a href="#" data-target="blue" data-type="color" class="selectable detailed"><i#}
-{#                                                class="box"></i> آبی</a>#}
-{#                                        <a href="#" data-target="pink" data-type="color" class="selectable detailed"><i#}
-{#                                                class="box"></i> صورتی</a>#}
-{#                                        <a href="#" data-target="purple" data-type="color"#}
-{#                                           class="selectable detailed"><i class="box"></i> بنفش</a>#}
-{#                                        <a href="#" data-target="orange" data-type="color"#}
-{#                                           class="selectable detailed"><i class="box"></i> نارنجی</a>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div> <!-- /color filter -->#}
-{##}
-{#                            <!--  ==========  -->#}
-{#                            <!--  = Brand filter =  -->#}
-{#                            <!--  ==========  -->#}
-{#                            <div class="accordion-group">#}
-{#                                <div class="accordion-heading">#}
-{#                                    <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">برند#}
-{#                                        <b class="caret"></b></a>#}
-{#                                </div>#}
-{#                                <div id="filterFour" class="accordion-body collapse">#}
-{#                                    <div class="accordion-inner">#}
-{#                                        <a href="#" data-target="s-oliver" data-type="brand"#}
-{#                                           class="selectable detailed"><i class="box"></i> S. Oliver</a>#}
-{#                                        <a href="#" data-target="nike" data-type="brand" class="selectable detailed"><i#}
-{#                                                class="box"></i> Nike</a>#}
-{#                                        <a href="#" data-target="naish" data-type="brand" class="selectable detailed"><i#}
-{#                                                class="box"></i> Naish</a>#}
-{#                                        <a href="#" data-target="adidas" data-type="brand"#}
-{#                                           class="selectable detailed"><i class="box"></i> Adidas</a>#}
-{#                                        <a href="#" data-target="puma" data-type="brand" class="selectable detailed"><i#}
-{#                                                class="box"></i> Puma</a>#}
-{#                                        <a href="#" data-target="shred" data-type="brand" class="selectable detailed"><i#}
-{#                                                class="box"></i> Shred</a>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div> <!-- /brand filter -->#}
-{##}
-{#                            <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span>#}
-{#                                حذف همه فیلتر ها</a>#}
-{##}
-{#                        </div>#}
-{#                    </aside> <!-- /sidebar -->#}
-{##}
-{#                    <!--  ==========  -->#}
-{#                    <!--  = Main content =  -->#}
-{#                    <!--  ==========  -->#}
-{#                    <section class="span9">#}
-{##}
-{#                        <!--  ==========  -->#}
-{#                        <!--  = Title =  -->#}
-{#                        <!--  ==========  -->#}
-{#                        <div class="underlined push-down-20">#}
-{#                            <div class="row">#}
-{#                                <div class="span5">#}
-{#                                    <h3><span class="light">همه</span> محصولات</h3>#}
-{#                                </div>#}
-{#                                <div class="span4">#}
-{#                                    <div class="form-inline sorting-by" id="tourStep4">#}
-{#                                        <label for="isotopeSorting" class="black-clr">چینش :</label>#}
-{#                                        <select id="isotopeSorting" class="span3">#}
-{#                                            <option value='{"sortBy":"price", "sortAscending":"true"}'>بر اساس قیمت (کم#}
-{#                                                به زیاد) &uarr;#}
-{#                                            </option>#}
-{#                                            <option value='{"sortBy":"price", "sortAscending":"false"}'>بر اساس قیمت#}
-{#                                                (زیاد به کم) &darr;#}
-{#                                            </option>#}
-{#                                            <option value='{"sortBy":"name", "sortAscending":"true"}'>بر اساس نام#}
-{#                                                (صعودی) &uarr;#}
-{#                                            </option>#}
-{#                                            <option value='{"sortBy":"name", "sortAscending":"false"}'>بر اساس نام#}
-{#                                                (نزولی) &darr;#}
-{#                                            </option>#}
-{#                                            <option value='{"sortBy":"popularity", "sortAscending":"true"}'>بر اساس#}
-{#                                                محبوبیت (کم به زیاد) &uarr;#}
-{#                                            </option>#}
-{#                                            <option value='{"sortBy":"popularity", "sortAscending":"false"}'>بر اساس#}
-{#                                                محبوبیت (زیاد به کم) &darr;#}
-{#                                            </option>#}
-{#                                        </select>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div> <!-- /title -->#}
+                        <div class="underlined push-down-20">
+                            <div class="row">
+                                <div class="span5">
+                                    <h3><span class="light">همه</span> محصولات</h3>
+                                </div>
+                                <div class="span4">
+                                    <div class="form-inline sorting-by" id="tourStep4">
+                                        <label for="isotopeSorting" class="black-clr">چینش :</label>
+                                        <select id="isotopeSorting" class="span3">
+                                            <option value='{"sortBy":"price", "sortAscending":"true"}'>بر اساس قیمت (کم
+                                                به زیاد) &uarr;
+                                            </option>
+                                            <option value='{"sortBy":"price", "sortAscending":"false"}'>بر اساس قیمت
+                                                (زیاد به کم) &darr;
+                                            </option>
+                                            <option value='{"sortBy":"name", "sortAscending":"true"}'>بر اساس نام
+                                                (صعودی) &uarr;
+                                            </option>
+                                            <option value='{"sortBy":"name", "sortAscending":"false"}'>بر اساس نام
+                                                (نزولی) &darr;
+                                            </option>
+                                            <option value='{"sortBy":"popularity", "sortAscending":"true"}'>بر اساس
+                                                محبوبیت (کم به زیاد) &uarr;
+                                            </option>
+                                            <option value='{"sortBy":"popularity", "sortAscending":"false"}'>بر اساس
+                                                محبوبیت (زیاد به کم) &darr;
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- /title -->
 
                         <!--  ==========  -->
                         <!--  = Products =  -->
@@ -462,41 +251,42 @@
                                 <!--  = Single Product =  -->
                                 <!--  ==========  -->
                                 {% for p in list_p %}
-                                
 
-                                
-                                <div class="span3 filter--blazers" data-price="1567" data-popularity="2"
-                                     data-size="xs|s|m|xl" data-color="pink" data-brand="adidas">
-                                    <div class="product">
 
-                                        <div class="stamp red">تمام شد</div>
 
-                                        <div class="product-img">
-                                            <div class="picture">
-                                                <img width="540" height="374" alt=""
-                                                     src="{% static "images/dummy/products/product-1.jpg"%}"/>
-                                                <div class="img-overlay">
-                                                    <a class="btn more btn-primary" href="{% url "product-details" p.id %}">توضیحات بیشتر</a>
-                                                    <a class="btn buy btn-danger" href="#">اضافه به سبد خرید</a>
+                                    <div class="span3 filter--blazers" data-price="1567" data-popularity="2"
+                                         data-size="xs|s|m|xl" data-color="pink" data-brand="adidas">
+                                        <div class="product">
+
+                                            <div class="stamp red">تمام شد</div>
+
+                                            <div class="product-img">
+                                                <div class="picture">
+                                                    <img width="540" height="374" alt=""
+                                                         src="{% static "images/dummy/products/product-1.jpg" %}"/>
+                                                    <div class="img-overlay">
+                                                        <a class="btn more btn-primary"
+                                                           href="{% url "product-details" p.id %}">توضیحات بیشتر</a>
+                                                        <a class="btn buy btn-danger" href="#">اضافه به سبد خرید</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="main-titles no-margin">
-                                            <h4 class="title">{{ p.cost }}</h4>
-                                            <h5 class="no-margin isotope--title">{{ p.name|upper }}</h5>
-                                        </div>
-                                        <p class="center-align stars">
-                                            <span class="icon-star stars-clr"></span>
-                                            <span class="icon-star stars-clr"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
+                                            <div class="main-titles no-margin">
+                                                <h4 class="title">{{ p.cost }}</h4>
+                                                <h5 class="no-margin isotope--title">{{ p.name|upper }}</h5>
+                                            </div>
+                                            <p class="center-align stars">
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star"></span>
+                                                <span class="icon-star"></span>
+                                                <span class="icon-star"></span>
 
-                                        </p>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
                                 {% endfor %}
-                                                        </div>
+                            </div>
                         </div>
                         <hr/>
                     </section> <!-- /main content -->
@@ -509,7 +299,7 @@
 
 {% endblock %}
 
-                                <!-- /single product -->
+{#                                <!-- /single product -->#}
 {##}
 {#                                <!--  ==========  -->#}
 {#                                <!--  = Single Product =  -->#}
