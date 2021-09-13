@@ -1,7 +1,8 @@
 from datetime import datetime
 from json import loads, dumps
+from django.apps import apps
 
-from django.db.models import Q , Count
+from django.db.models import Q, Count
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, View, DetailView, FormView
@@ -19,9 +20,9 @@ class ProductList(ListView):
 
 
 class ProductDetails(DetailView):
-    model = Product
     template_name = "product.html"
     context_object_name = "p_details"
+    model = Product
 
 
 class ProductFormView(FormView):
@@ -29,12 +30,14 @@ class ProductFormView(FormView):
     form_class = ProductForm
     success_url = "Thank YOU"
 
+
 class TestAnnotated(ListView):
     template_name = "producr_form.html"
-    model = Product
     context_object_name = "p_list"
     queryset = Product.objects.all()
+    model = Product
     # queryset = Product.objects.annotate(status_type=Count("cat"))
+
 
 def show_all_product(request, cat):
     # obj = list(Product.objects.all().order_by("id").values())
@@ -54,29 +57,26 @@ def show_all_product(request, cat):
     return render(request, "shop.html", context)
 
 
-def show_all_brand(request):
-    obj = list(Brand.objects.all().order_by("id").values())
-    return JsonResponse(obj, safe=False)
+def show_all(request, pmodel, pk=None):
+    pmodel = str(pmodel).capitalize()
+    app_models = apps.get_app_config(request.path.split("/")[1]).get_models()
+    model_list = list()
+    for model in app_models:
+        if str(model.__name__) == pmodel:
+            pmodel = model
+            obj = pmodel.objects.all().order_by("id")
+            obj_list = list(pmodel.objects.all().order_by("id").values())
 
+            if not pk:
+                return JsonResponse(obj_list, safe=False)
 
-def show_all_category(request):
-    obj = list(Category.objects.all().order_by("id").values())
-    return JsonResponse(obj, safe=False)
-
-
-def show_all_media(request):
-    obj = Media.objects.all().order_by("image_product_id").values()
-    media_list = []
-    for elm in obj:
-        print(elm)
-        media_list.append({
-            "picture": obj.picture,
-            "image_product": obj.image_product,
-            "discription": obj.discription,
-            "video_description": obj.video_description,
-            "slug": obj.slug,
-        })
-    return JsonResponse(media_list, safe=False)
+            elif pk <= len(obj):
+                obj_detail = list(obj.filter(id=pk).values())
+                return JsonResponse(obj_detail, safe=False)
+            elif pk > len(obj):
+                return HttpResponse("chizi ba in ID mojood nist")
+        model_list.append(model.__name__)
+    return JsonResponse({"Our_models_are": model_list}, safe=False)
 
 
 def selected_product(request, id):

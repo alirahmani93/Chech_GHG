@@ -5,9 +5,10 @@ from .views import *
 urlpatterns = [
     path('product-list/', ProductList.as_view(), name="shop"),
     path('product-details/<int:pk>', ProductDetails.as_view(), name="product-details"),
-    path('show_all_b/', show_all_brand, name="show_all_brand"),
-    path('show_all_c/', show_all_category, name="show_all_category"),
-    path('show_all_m/', show_all_media, name="show_all_media"),
+
+    path('show_all/<str:pmodel>/', show_all, name="show_all"),
+    path('show_all/<str:pmodel>/<int:pk>', show_all, name="show_all"),
+
     path('selcted_p/<int:id>', selected_product, name="selected_product"),
     path('form/', ProductFormView.as_view(), name="ProdfuctForm"),
     path('annotated/', TestAnnotated.as_view(), name="annotated"),
