@@ -10,7 +10,7 @@ from .models import OurUser, Regular, Staff, Supplier
 
 def login(request):
     if request.method == "GET":
-        return render(request, "login.html", {})
+        return render(request, "login-register.html", {})
 
     elif request.method == "POST":
         email = request.POST.get("email", None)
@@ -28,7 +28,7 @@ def login(request):
         else:
             return HttpResponse("ورود موفقیت آمیز نبود")
 
-    return render(request, "404.html", {})
+    return render(request, "login-register.html", {})
 
 
 def logout(request):

@@ -6,7 +6,7 @@ urlpatterns = [
     path('product-list/', ProductList.as_view(), name="shop"),
     path('product-details/<int:pk>', ProductDetails.as_view(), name="product-details"),
 
-    path('show_all/<str:pmodel>/', show_all, name="show_all"),
+    path('show_all/<str:pmodel>/', show_all, name="show_all_list"),
     path('show_all/<str:pmodel>/<int:pk>', show_all, name="show_all"),
 
     path('selcted_p/<int:id>', selected_product, name="selected_product"),

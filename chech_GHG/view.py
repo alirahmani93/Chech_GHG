@@ -7,4 +7,7 @@ from django.views.generic import ListView, View
 
 # Create your views here.
 def home(request):
-    return render(request, "index.html", {'title': "home"})
+    return render(request, "index.html", {'title': "Baba Barghi"})
+
+def about(request):
+    return render(request,"about-us.html", {"title":"درباره ما"})

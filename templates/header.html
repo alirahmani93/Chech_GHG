@@ -29,9 +29,10 @@
                         <div class="lang-currency">
                             <div class="dropdown js-selectable-dropdown">
                                 <a data-toggle="dropdown" class="selected" href="#"><span class="js-change-text"><i
-                                        class="famfamfam-flag-gb"></i> انگلیسی (EN)</span> <b class="caret"></b></a>
+                                        class="famfamfam-flag-ir"></i> فارسی (FA)</span> <b class="caret"></b></a>
                                 <!-- for all available country flags look the styles in lib/components/_flags.scss -->
                                 <ul class="dropdown-menu js-possibilities" role="menu" aria-labelledby="dLabel">
+                                    <li><a href="#"><i class="famfamfam-flag-ir"></i> فارسی (FA)</a></li>
                                     <li><a href="#"><i class="famfamfam-flag-gb"></i> انگلیسی (EN)</a></li>
                                     <li><a href="#"><i class="famfamfam-flag-si"></i> اسلوانیایی (SI)</a></li>
                                     <li><a href="#"><i class="famfamfam-flag-de"></i> آلمانی (DE)</a></li>
@@ -41,8 +42,10 @@
                             </div>
                             <div class="dropdown js-selectable-dropdown">
                                 <a data-toggle="dropdown" class="selected" href="#"><span
-                                        class="js-change-text">USD ($)</span> <b class="caret"></b></a>
+                                        class="js-change-text">IRR (﷼)</span> <b class="caret"></b></a>
                                 <ul class="dropdown-menu js-possibilities" role="menu" aria-labelledby="dLabel">
+                                    <li><a href="#">IRR (تومان)</a></li>
+                                    <li><a href="#">IRR (﷼)</a></li>
                                     <li><a href="#">USD ($)</a></li>
                                     <li><a href="#">EUR (€)</a></li>
                                     <li><a href="#">YEN (¥)</a></li>
@@ -53,17 +56,12 @@
                     </div>
                     <div class="top-right">
                         <div class="icons">
-                            <a href="http://www.facebook.com/ProteusNet"><span
-                                    class="zocial-facebook"></span></a>
-                            <a href="skype:primozcigler?call"><span class="zocial-skype"></span></a>
-                            <a href="https://twitter.com/proteusnetcom"><span
-                                    class="zocial-twitter"></span></a>
-                            <a href=http://eepurl.com/xFPYD"><span class="zocial-rss"></span></a>
-                            <a href="#"><span class="zocial-wordpress"></span></a>
-                            <a href="#"><span class="zocial-android"></span></a>
-                            <a href="#"><span class="zocial-html5"></span></a>
-                            <a href="#"><span class="zocial-windows"></span></a>
-                            <a href="#"><span class="zocial-apple"></span></a>
+                            <a href="http://www.google.com/ProteusNet"><span
+                                    class="zocial-google"></span></a>
+                            <a href="http://www.paypal.com/ProteusNet"><span
+                                    class="zocial-paypal"></span></a>
+                            <a href="http://www.github.com/alirahmani93"><span
+                                    class="zocial-github"></span></a>
                         </div>
                         <div class="register">
                             <a href="{% static "#loginModal" %}" role="button" data-toggle="modal">ورود</a> یا
@@ -94,47 +92,20 @@
                         <!--  ==========  -->
                         <div class="nav-collapse collapse">
                             <ul class="nav" id="mainNavigation">
-                                <li class="dropdown active">
-                                    <a href="{% static "index.html" %}" class="dropdown-toggle"> خانه <b
+                                <li class="active">
+                                    <a href="{% url "home_page" %}" class="dropdown-toggle"> خانه <b
                                             class="caret"></b> </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown active">
-                                            <a href="{% static "index.html" %}"><i
-                                                    class="icon-caret-left pull-right visible-desktop"></i> رنگ های
-                                                پوسته</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="active"><a href="{% static "index.html" %}">پوسته پیش فرض</a>
-                                                </li>
-                                                <li><a href="{% static "index-grass-green.html" %}">پوسته سبز چمنی</a>
-                                                </li>
-                                                <li><a href="{% static "index-oil-green.html" %}">پوسته سبز روغنی</a>
-                                                </li>
-                                                <li><a href="{% static "index-gray.html" %}">پوسته خاکستری</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="{% static "index-boxed-solid.html" %}"><i
-                                                    class="icon-caret-left pull-right visible-desktop"></i> ورژن
-                                                boxed</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="{% static "index-boxed-solid.html" %}">Boxed - با رنگ پس
-                                                    زمینه ثابت</a>
-                                                </li>
-                                                <li><a href="{% static "index-boxed-pattern.html" %}">Boxed - با پس
-                                                    زمینه الگو</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
                                 </li>
 
                                 <li class="dropdown">
                                     <a href="{% url "shop" %}" class="dropdown-toggle"> فروشگاه <b
                                             class="caret"></b> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{% static "shop.html" %}">قالب بندی پیش فرض</a></li>
-                                        <li><a href="{% static "shop-no-sidebar.html" %}">تمام صفحه</a></li>
-                                        <li><a href="{% static "product.html" %}">محصول تکی</a></li>
-                                        <li><a href="{% static "shop-search.html" %}">نتایج جستجو</a></li>
+                                        <li><a href="{% static "shop.html" %}" > محصولات</a></li>
+                                        <li><a href="{% url "show_all_list" "category"%}" >کتگوری</a></li>
+                                        <li><a href="{% url "show_all_list" "media"%}" > تصاویر </a></li>
+                                        <li><a href="{% url "show_all_list" "brand"%}" > برند ها</a></li>
+
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -142,9 +113,7 @@
                                             class="caret"></b> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{% static "blog.html" %}">قالب بندی پیش فرض</a></li>
-                                        <li><a href="{% static "blog-single.html" %}">تک نوشته</a></li>
-                                        <li><a href="{% static "blog-search.html" %}">نتایج جستجو</a></li>
-                                        <li><a href="{% static "404.html" %}">صفحه 404</a></li>
+
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -159,18 +128,7 @@
                                                 <li><a href="{% static  "features.html#headings" %}">سرخط ها</a></li>
                                                 <li><a href="{% static  "features.html#alertBoxes" %}">جعبه های
                                                     هشدار</a></li>
-                                                <li><a href="{% static  "features.html#tabs" %}">تب ها</a></li>
-                                                <li><a href="{% static  "features.html#buttons" %}">دکمه ها</a></li>
-                                                <li><a href="{% static  "features.html#toggles" %}">تاگل ها</a></li>
-                                                <li><a href="{% static  "features.html#quotes" %}">نقل قول ها</a></li>
-                                                <li><a href="{% static  "features.html#gallery" %}">گرید های گالری</a>
-                                                </li>
-                                                <li><a href="{% static  "features.html#code" %}">کد</a></li>
-                                                <li><a href="{% static  "features.html#columns" %}">ستون ها</a></li>
-                                                <li><a href="{% static  "features.html#maps" %}">نقشه ها</a></li>
-                                                <li><a href="{% static  "features.html#progress" %}">نوار های پیشرفت</a>
-                                                </li>
-                                                <li><a href="{% static  "features.html#tables" %}">جداول</a></li>
+
                                             </ul>
                                         </li>
                                     </ul>

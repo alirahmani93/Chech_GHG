@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
   <body class="">
     
     <div class="master-wrapper">
@@ -56,11 +55,11 @@
                 <div class="span5">
                     <div class="product-preview">
                         <div class="picture">
-                            <img src="{% static "images/dummy/products/shirt-1.jpg" %}"  alt="" width="940" height="940" id="mainPreviewImg" />
+                            <img src="{{ p_details.supplier.avatar.url }}"  alt={{ p_details.slug }} width="940" height="940" id="mainPreviewImg" />
                         </div>
                         <div class="thumbs clearfix">
                             <div class="thumb active">
-                                <a href="#mainPreviewImg"><img src="{%  static  "images/dummy/products/shirt-1.jpg"%}"  alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="{%  static  "images/dummy/products/product-2.jpg" %}"  alt="" width="940" height="940" /></a>
                             </div>
                             <div class="thumb">
                                 <a href="#mainPreviewImg"><img src="{%  static "images/dummy/products/shirt-2.jpg" %}"  alt="" width="940" height="940" /></a>

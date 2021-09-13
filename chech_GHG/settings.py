@@ -9,7 +9,6 @@ load_dotenv(verbose=True, dotenv_path=env_file)
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w34#+sf(hziskp3wbl6!t*(8^6!)s@#(8yeofk5ebgccfkd)=_'
 DEBUG = True
-
 INTERNAL_IPS = ['127.0.0.1', ]
 ALLOWED_HOSTS = []
 

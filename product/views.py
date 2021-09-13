@@ -57,7 +57,7 @@ def show_all_product(request, cat):
     return render(request, "shop.html", context)
 
 
-def show_all(request, pmodel, pk=None):
+def show_all(request, pmodel=None, pk=None):
     pmodel = str(pmodel).capitalize()
     app_models = apps.get_app_config(request.path.split("/")[1]).get_models()
     model_list = list()
@@ -68,15 +68,20 @@ def show_all(request, pmodel, pk=None):
             obj_list = list(pmodel.objects.all().order_by("id").values())
 
             if not pk:
-                return JsonResponse(obj_list, safe=False)
+                return render(request, "index.html", {})
+                # return JsonResponse(obj_list, safe=False)
 
             elif pk <= len(obj):
                 obj_detail = list(obj.filter(id=pk).values())
-                return JsonResponse(obj_detail, safe=False)
+                return render(request, "index.html", {})
+                # return JsonResponse(obj_detail, safe=False)
             elif pk > len(obj):
-                return HttpResponse("chizi ba in ID mojood nist")
+                # return HttpResponse("chizi ba in ID mojood nist")
+                return render(request, "404.html", {})
+
         model_list.append(model.__name__)
-    return JsonResponse({"Our_models_are": model_list}, safe=False)
+    return render(request, "404.html", {})
+    # return JsonResponse({"Our_models_are": model_list}, safe=False)
 
 
 def selected_product(request, id):

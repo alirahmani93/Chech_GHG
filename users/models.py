@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser, User
 from django.db import models
 from django.utils.translation import gettext as _
 
-from utils.models_utils import model_image_directory_path
+from utils.models_utils import model_image_directory_path, model_supplier_directory_path
 
 
 class CustomUserManager(BaseUserManager):
@@ -66,7 +66,7 @@ class OurUser(AbstractUser):  #### ADD REGEX (PHONE NUMBER / MAX_LENGHTH) ####
     first_name = models.CharField(_("نام"), max_length=250, blank=True, null=True)
     last_name = models.CharField(_("نام خانوادگی"), max_length=250, blank=True, null=True)
     age = models.IntegerField(_("سن"), blank=True, null=True)
-    avatar = models.ImageField(upload_to=model_image_directory_path, blank=True,
+    avatar = models.ImageField(upload_to=model_supplier_directory_path, blank=True,
                                null=True)  ### esmesh ro be AVATAR taghir bde
     address = models.CharField(_("نشانی"), max_length=500, blank=True, null=True)
 
@@ -131,7 +131,7 @@ class Supplier(OurUser):
     open_working_hour = models.TimeField("زمان شروع کار در روز")
     close_working_hour = models.TimeField("زمان پایان کار در روز")
     excel_file = models.FileField("فایل اکسل محصولات خود را در اینجا باز گذاری کنید ",
-                                  name="EXCEL", upload_to=model_image_directory_path, null=True, blank=True)
+                                  name="EXCEL", upload_to=model_supplier_directory_path, null=True, blank=True)
     bank_shaba = models.IntegerField(_("شماره شبا کارت بانکی خود را وارد کنید"))
 
     class Meta:
