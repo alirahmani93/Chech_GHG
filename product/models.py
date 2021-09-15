@@ -42,11 +42,21 @@ class Media(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
     image_product = models.ImageField(upload_to=model_image_directory_path, null=True, blank=True,
                                       validators=[validate_image_file_extension], default=None)
-    video_product = models.FileField(upload_to=model_image_directory_path, null=True, blank=True,default=None)
+    video_product = models.FileField(upload_to=model_image_directory_path, null=True, blank=True, default=None)
     description = models.CharField(max_length=100, default=None)
 
     def __str__(self):
         return f'{self.description}'
+
+
+class Attribute(models.Model):
+    att_fk = models.ForeignKey("Attribute", on_delete=models.CASCADE, null=True, blank=True)
+    title = models.CharField(max_length=50)
+    numeric_value = models.IntegerField(null=True, blank=True)
+    string_value = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.title}"
 
 
 class Product(models.Model):
@@ -95,8 +105,10 @@ class Product(models.Model):
             raise Exception("تاریخ شروع از تاریخ پایان کمتر است ")
 
         if self.original_price:
+            self.cost = 0
             self.cost = self.Temporary_price
         else:
+            self.cost = 0
             self.cost = self.price
 
         if self.slug:
@@ -108,33 +120,4 @@ class Product(models.Model):
         verbose_name_plural = "محصولات"
 
     def __str__(self):
-        return f" {self.name}, {self.cost}, {self.id}"
-
-
-class Attribute(models.Model):
-    att_fk = models.ForeignKey("Attribute", on_delete=models.CASCADE, null=True, blank=True)
-    title = models.CharField(max_length=50)
-    numeric_value = models.IntegerField(null=True, blank=True)
-    string_value = models.CharField(max_length=200, null=True, blank=True)
-
-    def __str__(self):
-        return f" {self.title}"
-
-
-##################################################################
-# Create your models here.
-class Log(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-
-class Cart(Log):
-    status_choices = (('on_cart', 'on_cart'), ('ready_to_pay', 'ready_to_pay'))
-    # FK
-    # sth = models.ForeignKey(Regular, on_delete=models.CASCADE, null=True, blank=True)
-
-    # Attrs
-    cart_uuid = models.UUIDField("شماره کارت ساخته شده", unique_for_date=1, default=None)
-    cart_status = models.CharField(max_length=100, choices=status_choices, default=status_choices[0])
-    active = models.BooleanField(default=True)
-
+        return f"{self.name}, {self.cost}, {self.id}"
