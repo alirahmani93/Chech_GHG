@@ -12,6 +12,8 @@ urlpatterns = [
     path('selcted_p/<int:id>', selected_product, name="selected_product"),
     path('form/', ProductFormView.as_view(), name="ProdfuctForm"),
     path('annotated/', TestAnnotated.as_view(), name="annotated"),
+    path('annotated/', TestAnnotated.as_view(), name="annotated"),
+    path('aaaa/', AK.as_view(), name="aa"),
 
 ]
 

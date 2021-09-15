@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import validate_image_file_extension
 
-from users.models import OurUser, Supplier
+from users.models import OurUser, Supplier, Regular
 from utils.models_utils import model_image_directory_path
 
 # Create your models here.
@@ -41,8 +41,8 @@ class Brand(models.Model):
 class Media(models.Model):
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
     image_product = models.ImageField(upload_to=model_image_directory_path, null=True, blank=True,
-                                      validators=[validate_image_file_extension])
-    video_product = models.FileField(upload_to=model_image_directory_path, null=True, blank=True)
+                                      validators=[validate_image_file_extension], default=None)
+    video_product = models.FileField(upload_to=model_image_directory_path, null=True, blank=True,default=None)
     description = models.CharField(max_length=100, default=None)
 
     def __str__(self):
@@ -77,7 +77,7 @@ class Product(models.Model):
     date_end = models.DateTimeField("زمان پایان تخفیف", null=True, blank=True)  # ex: 1400/06/14
     Temporary_price = models.FloatField(verbose_name="قیمت مموقت", null=True, blank=True)  # ex: 15 000
     cost = models.FloatField("قیمت محصول", null=True, blank=True)  # last Price
-    slug = models.SlugField(unique=True, null=True, blank=True,allow_unicode=True )
+    slug = models.SlugField(unique=True, null=True, blank=True, allow_unicode=True)
 
     @property
     def original_price(self):
@@ -116,43 +116,25 @@ class Attribute(models.Model):
     title = models.CharField(max_length=50)
     numeric_value = models.IntegerField(null=True, blank=True)
     string_value = models.CharField(max_length=200, null=True, blank=True)
+
     def __str__(self):
         return f" {self.title}"
 
-# class Attribute(models.Model):
-#     ohm = models.IntegerField()
-#     voltag = models.IntegerField()
-#     amper = models.IntegerField()
-#     pin = models.IntegerField()
-#     modul = models.CharField(max_length=50)
-#     Manufacturer = models.CharField(max_length=50)
-#     Logic_Family = models.CharField(max_length=5)
-#     Input_Type = models.CharField(max_length=5)
-#     Output_Type = models.CharField(max_length=5)
-#     Propagation_Delay = models.IntegerField()
-#     Supply_Voltage_Min = models.IntegerField()
-#     Supply_Voltage_Max = models.IntegerField()
-#     Height = models.IntegerField()
-#     Length = models.IntegerField()
-#     Operating_Temperature_Down = models.IntegerField()
-#     Operating_Temperature_up = models.IntegerField()
-#
-# @property
-# def validate_path(self):
-#     """
-#     A validator is a callable that takes a value and raises a ValidationError if it doesn’t meet some criteria.
-#      Validators can be useful for re-using validation logic between different types of fields.
-#     :return: raiseError if it dose not a __path__
-#     """
-#     if self is not __path__:
-#         raise ValidationError(
-#             _('%(value)s is not a path '),
-#             params={'value': __path__},
-#         )
-#
-# @property
-# def validate_image(self):
-#     if validate_image_file_extension(self):
-#         picture = models.ImageField(upload_to="Product",
-#                                     width_field=100, height_field=160, max_length=100)
-#         return picture
+
+##################################################################
+# Create your models here.
+class Log(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class Cart(Log):
+    status_choices = (('on_cart', 'on_cart'), ('ready_to_pay', 'ready_to_pay'))
+    # FK
+    # sth = models.ForeignKey(Regular, on_delete=models.CASCADE, null=True, blank=True)
+
+    # Attrs
+    cart_uuid = models.UUIDField("شماره کارت ساخته شده", unique_for_date=1, default=None)
+    cart_status = models.CharField(max_length=100, choices=status_choices, default=status_choices[0])
+    active = models.BooleanField(default=True)
+

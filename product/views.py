@@ -7,7 +7,7 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, View, DetailView, FormView
 
-from .models import Product, Brand, Category, Media, Attribute
+from .models import Product, Brand, Category, Media, Attribute #,Cart #, CartItem
 from .form import ProductForm
 
 
@@ -97,3 +97,17 @@ def selected_product(request, id):
         })
     # return render(request, "app1/show_Questions.html", context)
     return JsonResponse(attribute, safe=True)
+
+
+###################################################################
+# #
+# class ListCart(ListView):
+#     model = Product
+#     context_object_name = 'qs'
+#     queryset = None
+#     template_name= "index.html"
+
+
+class AK(View):
+    def get(self, request):
+        return HttpResponse("salam")
