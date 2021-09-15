@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>register</title>
+    <title>Register</title>
 </head>
 <body>
-
-
+    <form action="{{form.action}}" method="post">
+{#    {{ csrf }}#}
+    {{form}}
+    </form>
 
 </body>
 </html>

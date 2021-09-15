@@ -3,6 +3,7 @@ from json import loads, dumps
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, View, DetailView
+from django.db.models import Q
 
 from .models import Product, Brand, Category, Media
 
@@ -76,3 +77,13 @@ def selected_product(request, id):
         })
     # return render(request, "app1/show_Questions.html", context)
     return JsonResponse(attribute, safe=True)
+
+
+def search(self, request):
+    title = request.GET.get('q')
+    products = Product.objects.filter(
+        Q(name__icontains=title) | Q(Brand__name__icontains=title) | Q(
+            cat__title__icontains=title))  # is_active should be added
+    # context = "\n".join([f'{product.name}, {product.upc}'for product in products])
+    return self.request.filter(products)
+    # return HttpResponse(f'Search page:\n{context}')

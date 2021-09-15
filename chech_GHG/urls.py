@@ -5,7 +5,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .view import home
+
+from .view import home, header, footer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,7 +15,9 @@ urlpatterns = [
     path('', home, name='home_page'),
 
     path('product/', include("product.urls"), name="prd"),
-    path('account/', include("users.urls"), name= "acc"),
+    path('account/', include("users.urls"), name="acc"),
+    path('header', header, name='header'),
+    path('footer', footer, name='footer')
     # path('cart/', include("cart.urls")),
     # path('shipping/', include("shipping.urls")),
     # path('payment/', include("payment.urls")),

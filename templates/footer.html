@@ -40,10 +40,10 @@
                         <p>این بخشی از یک نوشتار آزمایشی صرفا برای پر کردن این ناحیه است.</p>
                         <!-- Begin MailChimp Signup Form -->
                         <div id="mc_embed_signup">
-                            <form action="{%  url "register"  %}"
-                                  method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                                  class="validate form form-inline" target="_blank" novalidate>
-                                <div class="mc-field-group">
+{#                            <form action="{%  url "register"  %}"#}
+                                method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                            class="validate form form-inline" target="_blank" novalidate>
+                            <div class="mc-field-group">
                                     <input type="email" value="" placeholder="آدرس ایمیلتان را وارد کنید" name="EMAIL"
                                            class="required email" id="mce-EMAIL">
                                     <input type="submit" value="ارسال" name="subscribe" id="mc-embedded-subscribe"
@@ -172,6 +172,7 @@
     <!--  ==========  -->
 
     <!--  = Login =  -->
+{% if not user.is_authenticated %}
     <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
          aria-hidden="true">
         <div class="modal-header">
@@ -179,27 +180,30 @@
             <h3 id="loginModalLabel"><span class="light">ورود</span> در وبمارکت</h3>
         </div>
         <div class="modal-body">
-            <form method="post" action="#">
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputEmail">نام کاربری</label>
-                    <div class="controls">
-                        <input type="text" class="input-block-level" id="inputEmail" placeholder="Username">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputPassword">رمز عبور</label>
-                    <div class="controls">
-                        <input type="password" class="input-block-level" id="inputPassword" placeholder="Password">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <label class="checkbox">
-                            <input type="checkbox">
-                            مرا به خاطر بسپار
-                        </label>
-                    </div>
-                </div>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ LoginForm.username }}
+                {{ LoginForm.password }}
+{#                <div class="control-group">#}
+{#                    <label class="control-label hidden shown-ie8" for="inputEmail">نام کاربری</label>#}
+{#                    <div class="controls">#}
+{#                        <input type="text" class="input-block-level" id="inputEmail" placeholder="Username">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="control-group">#}
+{#                    <label class="control-label hidden shown-ie8" for="inputPassword">رمز عبور</label>#}
+{#                    <div class="controls">#}
+{#                        <input type="password" class="input-block-level" id="inputPassword" placeholder="Password">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="control-group">#}
+{#                    <div class="controls">#}
+{#                        <label class="checkbox">#}
+{#                            <input type="checkbox">#}
+{#                            مرا به خاطر بسپار#}
+{#                        </label>#}
+{#                    </div>#}
+{#                </div>#}
                 <button type="submit" class="btn btn-primary input-block-level bold higher">
                     ورود
                 </button>
@@ -218,25 +222,29 @@
             <h3 id="registerModalLabel"><span class="light">عضویت</span> در وبمارکت</h3>
         </div>
         <div class="modal-body">
-            <form method="post" action="#">
+            <form method="post" action="{% url 'register' %}">
                 <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputUsernameRegister">نام کاربری</label>
-                    <div class="controls">
-                        <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">ایمیل</label>
-                    <div class="controls">
-                        <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputPasswordRegister">رمز عبور</label>
-                    <div class="controls">
-                        <input type="password" class="input-block-level" id="inputPasswordRegister"
-                               placeholder="Password">
-                    </div>
+                    {% csrf_token %}
+                    {{ RegistrationForm.email }}
+                    {{ RegistrationForm.username }}
+                    {{ RegistrationForm.password }}
+{#                    <label class="control-label hidden shown-ie8" for="inputUsernameRegister">نام کاربری</label>#}
+{#                    <div class="controls">#}
+{#                        <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="control-group">#}
+{#                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">ایمیل</label>#}
+{#                    <div class="controls">#}
+{#                        <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="control-group">#}
+{#                    <label class="control-label hidden shown-ie8" for="inputPasswordRegister">رمز عبور</label>#}
+{#                    <div class="controls">#}
+{#                        <input type="password" class="input-block-level" id="inputPasswordRegister"#}
+{#                               placeholder="Password">#}
+{#                    </div>#}
                 </div>
                 <button type="submit" class="btn btn-danger input-block-level bold higher">
                     عضویت

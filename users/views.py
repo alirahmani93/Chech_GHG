@@ -1,33 +1,31 @@
+from django.contrib.auth import get_user_model, login
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login as log_in, logout as log_out
+from django.views import View
+from django.views.generic import FormView, ListView
+from users.forms import RegistrationForm, LoginForm
+
+User = get_user_model
 
 
-def login(request):
-    if request.method == "GET":
-        return render(request, "login.html", {})
+class RegisterView(FormView):
+    form_class = RegistrationForm
+    template_name = "register.html"
+    success_url = ""
 
-    elif request.method == "POST":
-        email = request.POST.get("email", None)
-        if not email:
-            return render(request, "404.html", {})
-
-        password = request.POST.get("password", None)
-        if not password:
-            return render(request, "404.html", {})
-
-        user = authenticate(username=email, password=password)
-        if user:
-            log_in(request, user)
-            return HttpResponse("خوش آمدید")
-        else:
-            return HttpResponse("ورود موفقیت آمیز نبود")
-
-    return render(request, "404.html", {})
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
-def logout(request):
-    pass
+class LoginView(FormView):
+    form_class = LoginForm
+    template_name = "login.html"
+    success_url = ""
 
-def register(request):
-    pass
+    def form_valid(self, form):
+        login(self.request, self.get_context_data(['user']))
+        return super().form_valid(form)
+
+
+class LogOut(ListView):
+    success_url = ""

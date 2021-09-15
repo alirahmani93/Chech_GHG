@@ -76,8 +76,8 @@ class Product(models.Model):
 
     supplier = models.ForeignKey(to=Supplier, on_delete=models.RESTRICT, null=True, blank=True)
     ### FK ###
-    cat = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True)
-    brand = models.ForeignKey("Brand", on_delete=models.SET_NULL, null=True, blank=True)
+    cat = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True, related_name='cat')
+    brand = models.ForeignKey("Brand", on_delete=models.SET_NULL, null=True, blank=True, related_name='brand')
     #### Product ####
     name = models.CharField(max_length=50, )
     upc = models.PositiveBigIntegerField(help_text="بارکد ۱۲ رقمی")
@@ -126,3 +126,5 @@ class Product(models.Model):
 
     def __str__(self):
         return f" {self.name}, {self.cost}, {self.id}"
+
+

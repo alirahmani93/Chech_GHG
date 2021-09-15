@@ -66,8 +66,12 @@
                             <a href="#"><span class="zocial-apple"></span></a>
                         </div>
                         <div class="register">
-                            <a href="{% static "#loginModal" %}" role="button" data-toggle="modal">ورود</a> یا
-                            <a href="{% static "#registerModal" %}" role="button" data-toggle="modal">ثبت نام</a>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'logout' %}" role="button">خروج</a>
+                            {% else %}
+                                <a href="{% static "#loginModal" %}" role="button" data-toggle="modal">ورود</a> یا
+                                <a href="{% static "#registerModal" %}" role="button" data-toggle="modal">ثبت نام</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div> <!-- /social icons -->
@@ -562,4 +566,5 @@
         <!--  ==========  -->
         <div id="sliderRevLeft"><i class="icon-chevron-left"></i></div>
         <div id="sliderRevRight"><i class="icon-chevron-right"></i></div>
+    </div>
     </div> <!-- /slider revolution -->
