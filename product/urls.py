@@ -13,7 +13,6 @@ urlpatterns = [
     path('form/', ProductFormView.as_view(), name="ProdfuctForm"),
     path('annotated/', TestAnnotated.as_view(), name="annotated"),
     path('annotated/', TestAnnotated.as_view(), name="annotated"),
-    path('aaaa/', AK.as_view(), name="aa"),
 
 ]
 
