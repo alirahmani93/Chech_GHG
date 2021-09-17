@@ -1,28 +1,33 @@
-  <body class=" checkout-page">
-    
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<body class=" checkout-page">
+
     <div class="master-wrapper">
-     
-    
-    
+
+
+
     <div class="container">
         <div class="row">
-            
+
             <!--  ==========  -->
             <!--  = Main content =  -->
             <!--  ==========  -->
             <section class="span12">
-                
+
                 <div class="checkout-container">
                     <div class="row">
                     	<div class="span10 offset1">
-                    	    
+
                     	    <!--  ==========  -->
 							<!--  = Header =  -->
 							<!--  ==========  -->
+                            <hr>
                     		<header>
                     		    <div class="row">
                     		    	<div class="span2">
-                    		    		<a href="index.html"><img src="images/logo-bw.png" alt="Webmarket Logo" width="48" height="48" /></a>
+                    		    		<a href="index.html"><img src="{% static "images/LOGO50.png" %}" alt="Webmarket Logo" width="48" height="48" /></a>
                     		    	</div>
                     		    	<div class="span6">
                     		    	    <div class="center-align">
@@ -31,7 +36,7 @@
                     		    	</div>
                     		    	<div class="span2">
                     		    	    <div class="right-align">
-                    		    	    	<img src="images/buttons/security.jpg" alt="Security Sign" width="92" height="65" />
+                    		    	    	<img src="{% static "images/LOGO50.png" %}" alt="Security Sign" width="92" height="65" />
                     		    	    </div>
                     		    	</div>
                     		    </div>
@@ -60,10 +65,11 @@
                     		    	</div>
                     		    </div>
                     		</div> <!-- /steps -->
-                    		
+
                     		<!--  ==========  -->
 							<!--  = Selected Items =  -->
 							<!--  ==========  -->
+
 							<table class="table table-items">
 							    <thead>
 							    	<tr>
@@ -73,80 +79,31 @@
 							    	</tr>
 							    </thead>
 							    <tbody>
-							         
+                                {% if object. %}
+                                
+                                {% endif %} 
+                                {% for cart in cart_list_view %}
 							        <tr>
-							        	<td class="image"><img src="images/dummy/cart-items/cart-item-1.jpg" alt="" width="124" height="124" /></td>
-							        	<td class="desc">لباس ورزشی آدیداس &nbsp; <a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
+							        	<td class="image"><img src="{% static "images/LOGO50.png" %}" alt="" width="55" height="55" /></td>
+
+							        	<td class="desc">تولید کننده {{ cart.cart_item.product_fk.supplier.company_name}}
+                                            &nbsp; <a title="Remove Item" class="icon-remove-sign" href="#"></a>
+                                                   {{ cart.cart_item.product_fk.name}}</td>
+
 							        	<td class="qty">
-							        	    <input type="text" class="tiny-size" value="4" />
+							        	    <input type="text" class="tiny-size" value= {{ cart.cart_item.quantity}} />
 					            	    </td>
 							        	<td class="price">
-							        	    $59
+							        	  {{ cart.cart_item.product_fk.cost }}
 							        	</td>
 							        </tr>
-							         
-							        <tr>
-							        	<td class="image"><img src="images/dummy/cart-items/cart-item-2.jpg" alt="" width="124" height="124" /></td>
-							        	<td class="desc">لباس ورزشی آدیداس &nbsp; <a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
-							        	<td class="qty">
-							        	    <input type="text" class="tiny-size" value="1" />
-					            	    </td>
-							        	<td class="price">
-							        	    $59
-							        	</td>
-							        </tr>
-							         
-							        <tr>
-							        	<td class="image"><img src="images/dummy/cart-items/cart-item-3.jpg" alt="" width="124" height="124" /></td>
-							        	<td class="desc">لباس ورزشی آدیداس &nbsp; <a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
-							        	<td class="qty">
-							        	    <input type="text" class="tiny-size" value="2" />
-					            	    </td>
-							        	<td class="price">
-							        	    $59
-							        	</td>
-							        </tr>
-							         
-							        <tr>
-							        	<td class="image"><img src="images/dummy/cart-items/cart-item-4.jpg" alt="" width="124" height="124" /></td>
-							        	<td class="desc">لباس ورزشی آدیداس &nbsp; <a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
-							        	<td class="qty">
-							        	    <input type="text" class="tiny-size" value="4" />
-					            	    </td>
-							        	<td class="price">
-							        	    $59
-							        	</td>
-							        </tr>
-							         
-							        <tr>
-							        	<td class="image"><img src="images/dummy/cart-items/cart-item-5.jpg" alt="" width="124" height="124" /></td>
-							        	<td class="desc">لباس ورزشی آدیداس &nbsp; <a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
-							        	<td class="qty">
-							        	    <input type="text" class="tiny-size" value="4" />
-					            	    </td>
-							        	<td class="price">
-							        	    $59
-							        	</td>
-							        </tr>
-							        							        <tr>
-							        	<td colspan="2" rowspan="2">
-							        	    <div class="alert alert-info">
-                                                <button data-dismiss="alert" class="close" type="button">×</button>
-                                                هزینه ارسال بر اساس منطقه جغرافیایی محاسبه میشود. <a href="#">اطلاعات بیشتر</a>
-                                            </div>
-							        	</td>
-							        	<td class="stronger">هزینه ارسال :</td>
-							        	<td class="stronger"><div class="align-right">$4.99</div></td>
-							        </tr>
-							        <tr>
-							        	<td class="stronger">جمع کل :</td>
-							        	<td class="stronger"><div class="size-16 align-right">$357.81</div></td>
-							        </tr>
-							    </tbody>
+                            {% endfor %}
+
+                                </tbody>
 							</table>
-							
+
 							<hr />
-							
+
 							<p class="right-align">
 							    در مرحله بعدی شما آدرس ارسال را انتخاب خواهید کرد. &nbsp; &nbsp;
 							    <a href="checkout-step-2.html" class="btn btn-primary higher bold">ادامه</a>
@@ -154,14 +111,15 @@
                     	</div>
                     </div>
                 </div>
-                
-                
+
+
             </section> <!-- /main content -->
-        
+
         </div>
     </div> <!-- /container -->
-    
-     
-    
-     
+
+
+
+
     </div> <!-- end of master-wrapper -->
+{% endblock %}

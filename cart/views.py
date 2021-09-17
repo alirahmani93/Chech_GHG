@@ -11,52 +11,64 @@ from .models import Cart, CartItem
 class DetailCart(DetailView):
     model = Cart
     template_name = 'checkout-step-1.html'
+    context_object_name = "cart_detail"
+
 
 
 class ListCart(ListView):
     model = Cart
-    context_object_name = 'carts'
     queryset = Cart.objects.all()
     template_name = 'checkout-step-1.html'
+    context_object_name = "cart_list_view"
+
 
 
 class CreateCart(CreateView):
     model = Cart
     template_name = 'checkout-step-1.html'
+    context_object_name = "cart_create"
 
 
 class Updatecart(UpdateView):
     model = Cart
-    template_name = 'checkout-step-1.html'
+    template_name = 'header.html'
+    context_object_name = "cart_update"
+
 
 
 class DeleteCart(DeleteView):
     model = Cart
     template_name = 'checkout-step-1.html'
+    context_object_name = "cart_delete"
 
 
 ##-------------- CartItem Views --------------------------------------
 class DetailCartItem(DetailView):
     model = CartItem
     template_name = 'checkout-step-1.html'
+    context_object_name = "cartitem_detail"
 
 
 class ListCartItem(ListView):
     model = CartItem
-    context_object_name = 'cartitems'
     template_name = 'checkout-step-1.html'
+    context_object_name = "cartitem_list"
+    queryset = CartItem.objects.all()
 
 
-class CreateItemCart(CreateView):
+class CreateCartItem(CreateView):
     model = CartItem
     template_name = 'checkout-step-1.html'
+    context_object_name = "cartitem_create"
 
 
 class UpdateCartItem(UpdateView):
     model = CartItem
     template_name = 'checkout-step-1.html'
+    context_object_name = "cartitem_update"
 
 
 class DeleteCartItem(DeleteView):
     model = Cart
     template_name = 'checkout-step-1.html'
+    context_object_name = "cartitem_delete"

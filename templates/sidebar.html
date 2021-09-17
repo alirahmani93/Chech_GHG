@@ -1,0 +1,133 @@
+{% load static %}
+
+<!--  ==========  -->
+<!--  = Sidebar =  -->
+<!--  ==========  -->
+<aside class="span3 left-sidebar" id="tourStep1">
+    <div class="sidebar-item sidebar-filters" id="sidebarFilters">
+
+        <!--  ==========  -->
+        <!--  = Sidebar Title =  -->
+        <!--  ==========  -->
+        <div class="underlined">
+            <h3><span class="light">بر اساس فیلتر</span> خرید کنید</h3>
+        </div>
+
+        <!--  ==========  -->
+        <!--  = Categories =  -->
+        <!--  ==========  -->
+        <div class="accordion-group" id="tourStep2">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" href="#filterOne">دسته بندی ها <b
+                        class="caret"></b></a>
+            </div>
+            <div id="filterOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                    {% for elm in side %}
+                        {% if    elm.sub_category   %}
+
+                            <a href="#" data-target=".filter--accessories" class="selectable"><i
+                                    class="box"></i> {{ elm.sub_category }}</a>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div> <!-- /categories -->
+
+        <!--  ==========  -->
+        <!--  = Prices slider =  -->
+        <!--  ==========  -->
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">قیمت <b
+                        class="caret"></b></a>
+            </div>
+            <div id="filterPrices" class="accordion-body in collapse">
+                <div class="accordion-inner with-slider">
+                    <div class="jqueryui-slider-container">
+                        <div id="pricesRange"></div>
+                    </div>
+                    {% for elm in price %}
+
+
+                    {% if elm.up %}
+
+                    <label>
+                        <input type="text" data-initial="432" class="max-val pull-right" disabled/>
+                    </label>
+                    <label>
+                        <input type="text" data-initial="99" class="min-val" disabled/>
+                    </label>
+                {% endif %}
+                {% endfor %}
+
+                </div>
+            </div>
+        </div> <!-- /prices slider -->
+
+        <!--  ==========  -->
+        <!--  = Size filter =  -->
+        <!--  ==========  -->
+        <div class="accordion-group" id="tourStep3">
+            <div class="accordion-heading">
+                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">سایز
+                    <b class="caret"></b></a>
+            </div>
+            <div id="filterTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <a href="#" data-target="xs" data-type="size" class="selectable detailed"><i
+                            class="box"></i> XS</a>
+
+
+                </div>
+            </div>
+        </div> <!-- /size filter -->
+{##}
+{#        <!--  ==========  -->#}
+{#        <!--  = Color filter =  -->#}
+{#        <!--  ==========  -->#}
+{#        <div class="accordion-group">#}
+{#            <div class="accordion-heading">#}
+{#                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">رنگ#}
+{#                    <b class="caret"></b></a>#}
+{#            </div>#}
+{#            <div id="filterThree" class="accordion-body collapse">#}
+{#                <div class="accordion-inner">#}
+{#                    <a href="#" data-target="red" data-type="color" class="selectable detailed"><i#}
+{#                            class="box"></i> قرمز</a>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#        </div> <!-- /color filter -->#}
+
+        <!--  ==========  -->
+        <!--  = Brand filter =  -->
+        <!--  ==========  -->
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">برند
+                    <b class="caret"></b></a>
+            </div>
+
+           {% for b in brand %}
+
+
+            <div id="filterFour" class="accordion-body collapse">
+                <div class="accordion-inner">
+                    <a href="#" data-target="s-oliver" data-type="brand"
+                       class="selectable detailed"><i class="box"></i> {{ b.name }}</a>
+           {% endfor %}
+
+                </div>
+            </div>
+        </div> <!-- /brand filter -->
+
+        <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span>
+            حذف همه فیلتر ها</a>
+
+    </div>
+</aside> <!-- /sidebar -->
+

@@ -13,16 +13,46 @@ from .form import ProductForm
 
 # Create your views here.
 class ProductList(ListView):
+    model = Product
     context_object_name = 'list_p'
     template_name = 'shop.html'
     queryset = Product.objects.all()
+
+class BrandList(ListView):
+    model = Brand
+    context_object_name = 'brand'
+    template_name = 'sidebar.html'
+    queryset = Brand.objects.all()
+
+
+class SideBar(ListView):
+    model = Category
+    context_object_name = 'side'
+    template_name = 'sidebar.html'
+
+
+
+class PriceBar(ListView):
     model = Product
+    context_object_name = 'price'
+    template_name = 'sidebar.html'
+
+
+    def get_queryset(self):
+        down = Product.objects.order_by("-cost").first()
+        up = Product.objects.order_by("-cost").last()
+
+        queryset = {
+            "down": down,
+            "up": up
+        }
+        return queryset
 
 
 class ProductDetails(DetailView):
+    model = Product
     template_name = "product.html"
     context_object_name = "p_details"
-    model = Product
 
 
 class ProductFormView(FormView):
@@ -39,22 +69,22 @@ class TestAnnotated(ListView):
     # queryset = Product.objects.annotate(status_type=Count("cat"))
 
 
-def show_all_product(request, cat):
-    # obj = list(Product.objects.all().order_by("id").values())
-    # return JsonResponse(obj, safe=False)
-
-    # list_product = Product.objects.filter(cat=Category.objects.get(title=cat).values("id")).values()
-    list_product = list(Product.objects.filter(cat__title__contains=cat).values())
-    print(list_product)
-    context = {
-        "title": "Product List",
-        "list_p": list_product,
-        "request_time": datetime.strptime("26/08/2021", "%d/%m/%Y"),
-    }
-
-    print("context", context)
-    # return JsonResponse(list_product, safe=False)
-    return render(request, "shop.html", context)
+# def show_all_product(request, cat):
+#     # obj = list(Product.objects.all().order_by("id").values())
+#     # return JsonResponse(obj, safe=False)
+#
+#     # list_product = Product.objects.filter(cat=Category.objects.get(title=cat).values("id")).values()
+#     list_product = list(Product.objects.filter(cat__title__contains=cat).values())
+#     print(list_product)
+#     context = {
+#         "title": "Product List",
+#         "list_p": list_product,
+#         "request_time": datetime.strptime("26/08/2021", "%d/%m/%Y"),
+#     }
+#
+#     print("context", context)
+#     # return JsonResponse(list_product, safe=False)
+#     return render(request, "shop.html", context)
 
 
 def show_all(request, pmodel=None, pk=None):
@@ -65,23 +95,31 @@ def show_all(request, pmodel=None, pk=None):
         if str(model.__name__) == pmodel:
             pmodel = model
             obj = pmodel.objects.all().order_by("id")
-            obj_list = list(pmodel.objects.all().order_by("id").values())
-
+            obj2 = pmodel.objects.all().order_by("id")
+            list_obj = list(pmodel.objects.all().order_by("id").values())
+            context = {
+                "obj_list": list_obj,
+                "obj2": obj2
+            }
+            # Just Models
             if not pk:
-                # return render(request, "index.html", {})
-                return JsonResponse(obj_list, safe=False)
+                return render(request, "test.html", {"obj2": obj2, "list_obj": list_obj})
+                # return JsonResponse(obj_list, safe=False)
 
+            # object exist
             elif pk <= len(obj):
                 obj_detail = list(obj.filter(id=pk).values())
-                # return render(request, "index.html", {})
-                return JsonResponse(obj_detail, safe=False)
+                return render(request, "test.html", {"obj2": obj_detail})
+                # return JsonResponse(obj_detail, safe=False)
+
+            # object not exist
             elif pk > len(obj):
                 return HttpResponse("chizi ba in ID mojood nist")
                 # return render(request, "404.html", {})
 
         model_list.append(model.__name__)
-    # return render(request, "404.html", {})
-    return JsonResponse({"Our_models_are": model_list}, safe=False)
+    return render(request, "404.html", {"qs": model_list, "body": "مدل هایی که می توانید سرچ کنید"})
+    # return JsonResponse({"Our_models_are": model_list}, safe=False)
 
 
 def selected_product(request, id):
@@ -89,6 +127,7 @@ def selected_product(request, id):
     # print(uuid)
     obj = Product.objects.filter(id=id).values()
     attribute = []
+
     for attr in obj:
         attribute.append({
             "Product": attr.name,
@@ -97,3 +136,11 @@ def selected_product(request, id):
         })
     # return render(request, "app1/show_Questions.html", context)
     return JsonResponse(attribute, safe=True)
+
+
+class Media(ListView):
+    model = Media
+    template_name = "test.html"
+    context_object_name = "medias"
+    queryset = Media.objects.all()
+# queryset = Media.objects.all()

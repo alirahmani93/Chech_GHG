@@ -24,7 +24,7 @@ class Category(models.Model):
         verbose_name_plural = "گروه بندی"
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title},{self.id}"
 
 
 class Brand(models.Model):
@@ -39,9 +39,9 @@ class Brand(models.Model):
 
 
 class Media(models.Model):
-    product = models.ForeignKey("Product", on_delete=models.CASCADE)
+    product = models.ForeignKey("Product", on_delete=models.CASCADE, related_name="media")
     image_product = models.ImageField(upload_to=model_image_directory_path, null=True, blank=True,
-                                      validators=[validate_image_file_extension], default=None)
+                                      validators=[validate_image_file_extension], default=None, )
     video_product = models.FileField(upload_to=model_image_directory_path, null=True, blank=True, default=None)
     description = models.CharField(max_length=100, default=None)
 
@@ -49,36 +49,70 @@ class Media(models.Model):
         return f'{self.description}'
 
 
-class Attribute(models.Model):
-    att_fk = models.ForeignKey("Attribute", on_delete=models.CASCADE, null=True, blank=True)
-    title = models.CharField(max_length=50)
-    numeric_value = models.IntegerField(null=True, blank=True)
-    string_value = models.CharField(max_length=200, null=True, blank=True)
+class Attributekey(models.Model):
+    att_fk = models.ForeignKey("Attributekey", on_delete=models.CASCADE, null=True, blank=True)
+    title = models.CharField(max_length=50, null=True, blank=True, default=None)
+    unit = models.CharField(max_length=50, unique=True, null=True, blank=True, default=None)
+    is_numeric = models.BooleanField()
+    is_float = models.BooleanField()
+    is_string = models.BooleanField()
+    is_time = models.BooleanField()
+    is_datetime = models.BooleanField()
 
     def __str__(self):
         return f"{self.title}"
+
+
+class Attribute(models.Model):
+    attrs = models.ForeignKey("Attributekey", on_delete=models.CASCADE, related_name="attrval")
+    numeric_value = models.IntegerField(null=True, blank=True)
+    float_value = models.FloatField(null=True, blank=True)
+    string_value = models.CharField(max_length=200, null=True, blank=True)
+    datetime_value = models.DateTimeField(auto_now=True, null=True, blank=True)
+    time_value = models.TimeField(auto_now=True, null=True, blank=True)
+
+    # def save(self,**kwargs):
+    #     if
+
+    @property
+    def find_val(self):
+        val = None
+        if self.attrs.is_time:
+            val = self.time_value
+        elif self.attrs.is_datetime:
+            val = self.datetime_value
+        elif self.attrs.is_string:
+            val = self.string_value
+        elif self.attrs.is_float:
+            val = self.float_value
+        elif self.attrs.is_numeric:
+            val = self.numeric_value
+        return val
+
+    def __str__(self):
+        return f"{self.attrs.title} , {self.find_val}"
 
 
 class Product(models.Model):
     Not_Exist, Active, Will_not_be_produced, Ordered = "N", "A", "W", "O"
     status_choices = [("N", "Not_Exist"), ("A", "Active"), ("W", "Will_not_be_produced"), ("O", "Ordered")]
 
-    supplier = models.ForeignKey(to=Supplier, on_delete=models.RESTRICT, null=True, blank=True)
     ### FK ###
+    supplier = models.ForeignKey(to=Supplier, on_delete=models.RESTRICT, null=True, blank=True)
     filed = models.ForeignKey("Attribute", on_delete=models.CASCADE, null=True, blank=True, verbose_name="فیلد اضافی")
     cat = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True)
     brand = models.ForeignKey("Brand", on_delete=models.SET_NULL, null=True, blank=True)
     #### Product ####
     name = models.CharField(max_length=50, )
-    upc = models.PositiveBigIntegerField(help_text="بارکد ۱۲ رقمی")
+    slug = models.SlugField(unique=True, null=True, blank=True, allow_unicode=True)
     count = models.IntegerField("تعداد", default=0)
     status = models.CharField("وضعیت موجودی", choices=status_choices, max_length=1, default="N")
     size = models.CharField(max_length=30, null=True, blank=True)
-    wat = models.IntegerField("wat", null=True, blank=True)
-    voltage = models.IntegerField("Voltage", null=True, blank=True)
     description = models.TextField("توضیحات اضافی", max_length=30, null=True, blank=True)
+    upc = models.PositiveBigIntegerField(help_text="بارکد ۱۲ رقمی")
     catalog = models.FileField("کاتالوگ", upload_to="", null=True, blank=True)  ### How to connerct CDN??
-    is_acrive = models.BooleanField("فعال/غیرفعال", default=False)
+    is_archive = models.BooleanField("فعال/غیرفعال", default=False)
+
     ## Price ###  set Temp price for this product (( if (end - start) > (end - now) ==> cost = temporary_price
     price = models.FloatField(default=0, help_text="﷼")  # ex:10 000
     set_time = models.DateTimeField(auto_now_add=True)  # ex: 1400/06/10
@@ -87,7 +121,6 @@ class Product(models.Model):
     date_end = models.DateTimeField("زمان پایان تخفیف", null=True, blank=True)  # ex: 1400/06/14
     Temporary_price = models.FloatField(verbose_name="قیمت مموقت", null=True, blank=True)  # ex: 15 000
     cost = models.FloatField("قیمت محصول", null=True, blank=True)  # last Price
-    slug = models.SlugField(unique=True, null=True, blank=True, allow_unicode=True)
 
     @property
     def original_price(self):

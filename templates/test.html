@@ -6,10 +6,45 @@
 </head>
 <body>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <input type="submit" value="Save">#}
+{#    </form>#}
+{#<div style="background-color: aqua">#}
+
+{#    {% for elm in obj2 %}#}
+{##}
+{#         <div>#}
+{#             {% for field in list_obj %}#}
+{##}
+{#                <p> {{ field }}</p>#}
+{#                <p> {{ elm }}</p>#}
+{#             </div>#}
+{#    {% endfor %}#}
+{##}
+{#    {% endfor %}#}
+
+    {% for img in medias %}
+        {{ img }}
+        <img src="{{ img.image_product.url }}" alt="">
+
+    {% endfor %}
+    p.media_set.image_product.url
+
+{#    {% for i in cart_list %}#}
+{#    {{ i.created_at }}#}
+{##}
+{#    {% endfor %}#}
+<div>
+    {% for i in cart_list %}
+        {% for x in i %}
+        {{ x }}
+        {% endfor %}
+
+    {% endfor %}
+</div>
+
+
 </body>
 </html>

@@ -119,19 +119,19 @@
                                 <li class="dropdown">
                                     <a href="{% static "features.html" %}" class="dropdown-toggle">امکانات <b
                                             class="caret"></b> </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{% static "icons.html" %}">آیکن ها</a></li>
-                                        <li class="dropdown">
-                                            <a href="{% static "features.html" %}" class="dropdown-toggle"><i
-                                                    class="icon-caret-left pull-right visible-desktop"></i> همه امکانات</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="{% static  "features.html#headings" %}">سرخط ها</a></li>
-                                                <li><a href="{% static  "features.html#alertBoxes" %}">جعبه های
-                                                    هشدار</a></li>
-
-                                            </ul>
-                                        </li>
-                                    </ul>
+{#                                    <ul class="dropdown-menu">#}
+{#                                        <li><a href="{% static "icons.html" %}">آیکن ها</a></li>#}
+{#                                        <li class="dropdown">#}
+{#                                            <a href="{% static "features.html" %}" class="dropdown-toggle"><i#}
+{#                                                    class="icon-caret-left pull-right visible-desktop"></i> همه امکانات</a>#}
+{#                                            <ul class="dropdown-menu">#}
+{#                                                <li><a href="{% static  "features.html#headings" %}">سرخط ها</a></li>#}
+{#                                                <li><a href="{% static  "features.html#alertBoxes" %}">جعبه های#}
+{#                                                    هشدار</a></li>#}
+{##}
+{#                                            </ul>#}
+{#                                        </li>#}
+{#                                    </ul>#}
                                 </li>
                                 <li><a href="{% static "about-us.html" %}">درباره ما</a></li>
                                 <li><a href="{% static "contact.html" %}">تماس با ما</a></li>
@@ -150,17 +150,20 @@
                     <!--  ==========  -->
                     <!--  = Cart =  -->
                     <!--  ==========  -->s
-                    <div class="span3">
-                        <div class="cart-container" id="cartContainer">
-                            <div class="cart">
-                                <p class="items">سبد خرید <span class="dark-clr">(3)</span></p>
-                                <p class="dark-clr hidden-tablet">$1816.90</p>
-                                <a href="{% static "checkout-step-1.html" %}" class="btn btn-danger">
-                                    <!-- <span class="icon icons-cart"></span> -->
-                                    <i class="icon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="open-panel">
+
+{#                    <div class="span3">#}
+{#                        <div class="cart-container" id="cartContainer">#}
+{#                            <div class="cart">#}
+{#                                <p class="items">سبد خرید <span class="dark-clr"></span></p>#}
+{#                                <p class="dark-clr hidden-tablet">$1816.90</p>#}
+{#                                <a href="{% static "checkout-step-1.html" %}" class="btn btn-danger">#}
+{#                                    <!-- <span class="icon icons-cart"></span> -->#}
+{#                                    <i class="icon-shopping-cart"></i>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                            <div class="open-panel">#}
+{% for elm in qs %}
+
 
                                 <div class="item-in-cart clearfix">
                                     <div class="image">
@@ -168,53 +171,19 @@
                                              height="124" alt="cart item"/>
                                     </div>
                                     <div class="desc">
-                                        <strong><a href="{% static "product.html" %}">کلاه زمستانی</a></strong>
+                                        <strong><a href="{% static "product.html" %}">{{ elm. }}</a></strong>
                                         <span class="light-clr qty">
                                     تعداد : 1
                                     &nbsp;
                                     <a href="#" class="icon-remove-sign" title="Remove Item"></a>
                                 </span>
                                     </div>
-                                    <div class="price">
+                                    <div class="price">{{ elm }}
                                         <strong>$4957</strong>
                                     </div>
                                 </div>
+{% endfor %}
 
-                                <div class="item-in-cart clearfix">
-                                    <div class="image">
-                                        <img src="{% static  "images/dummy/cart-items/cart-item-2.jpg" %}" width="124"
-                                             height="124" alt="cart item"/>
-                                    </div>
-                                    <div class="desc">
-                                        <strong><a href="{% static "product.html" %}">کمربند اسپورت</a></strong>
-                                        <span class="light-clr qty">
-                                    تعداد : 1
-                                    &nbsp;
-                                    <a href="#" class="icon-remove-sign" title="Remove Item"></a>
-                                </span>
-                                    </div>
-                                    <div class="price">
-                                        <strong>$1318</strong>
-                                    </div>
-                                </div>
-
-                                <div class="item-in-cart clearfix">
-                                    <div class="image">
-                                        <img src="{% static  "images/dummy/cart-items/cart-item-3.jpg" %}" width="124"
-                                             height="124" alt="cart item"/>
-                                    </div>
-                                    <div class="desc">
-                                        <strong><a href="{% static  "product.html" %}">کیف پول مردانه</a></strong>
-                                        <span class="light-clr qty">
-                                    تعداد : 1
-                                    &nbsp;
-                                    <a href="#" class="icon-remove-sign" title="Remove Item"></a>
-                                </span>
-                                    </div>
-                                    <div class="price">
-                                        <strong>$3840</strong>
-                                    </div>
-                                </div>
 
                                 <div class="summary">
                                     <div class="line">
