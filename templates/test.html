@@ -25,25 +25,42 @@
 {##}
 {#    {% endfor %}#}
 
-    {% for img in medias %}
-        {{ img }}
-        <img src="{{ img.image_product.url }}" alt="">
+{#    {% for img in list_obj %}#}
+{#        {{ img }}#}
+{#        {% for elm in img %}#}
+{#            <p>{{ elm }}</p>#}
+{#                <img src="{{ img }}" alt="">#}
+{#        {% endfor %}#}
+{##}
+{##}
+{##}
+{#    {% endfor %}#}
 
-    {% endfor %}
-    p.media_set.image_product.url
 
 {#    {% for i in cart_list %}#}
 {#    {{ i.created_at }}#}
 {##}
 {#    {% endfor %}#}
-<div>
-    {% for i in cart_list %}
-        {% for x in i %}
-        {{ x }}
-        {% endfor %}
+{#<div>#}
+{#    {% for i in cart_list %}#}
+{#        {% for x in i %}#}
+{#        {{ x }}#}
+{#        {% endfor %}#}
+{##}
+{#    {% endfor %}#}
+{#</div>#}
 
+{#{% for media in medias %}#}
+{#    {% if mediaa. %}#}
+{##}
+{#    {% endif %} #}
+    {% for media in medias %}
+        {{ media.pk }}
+asdd
     {% endfor %}
-</div>
+
+
+{#{% endfor %}#}
 
 
 </body>

@@ -50,7 +50,7 @@ class Media(models.Model):
 
 
 class Attributekey(models.Model):
-    att_fk = models.ForeignKey("Attributekey", on_delete=models.CASCADE, null=True, blank=True)
+    att_fk = models.ForeignKey("Attributekey", on_delete=models.CASCADE, related_name="attkey", null=True, blank=True)
     title = models.CharField(max_length=50, null=True, blank=True, default=None)
     unit = models.CharField(max_length=50, unique=True, null=True, blank=True, default=None)
     is_numeric = models.BooleanField()
@@ -59,20 +59,63 @@ class Attributekey(models.Model):
     is_time = models.BooleanField()
     is_datetime = models.BooleanField()
 
+    @property
+    def find_type(self):
+        if self.is_time:
+            return self.is_time
+        elif self.is_datetime:
+            return self.is_datetime
+        elif self.is_string:
+            return type(str)
+        elif self.is_float:
+            return self.is_float
+        elif self.is_numeric:
+            return self.is_numeric
+        return False
+
+    # def save(self, *args, **kwargs):
+    #     KEYS = [self.is_time, self.is_datetime, self.is_string, self.is_float, self.is_numeric]
+    #     x = 0
+    #     print(KEYS)
+    #     for key in KEYS:
+    #         # print(key, self.find_type)
+    #         print(key.__class__.__name__)
+    #         if self.find_type == key.__class__.__name__:
+    #             x += 1
+    #             print(x, key)
+    #             return super().save(self, *args, **kwargs)
+    #
+    #     if x != 1: raise ValueError("bish az do mord entehkhb kardi")
+
+
+
     def __str__(self):
         return f"{self.title}"
 
 
 class Attribute(models.Model):
-    attrs = models.ForeignKey("Attributekey", on_delete=models.CASCADE, related_name="attrval")
+    attrs = models.ForeignKey("Attributekey", on_delete=models.CASCADE, related_name="attrval", null=True, blank=True)
+    product = models.ForeignKey("Product", on_delete=models.CASCADE, related_name="attrproduct", null=True, blank=True)
     numeric_value = models.IntegerField(null=True, blank=True)
     float_value = models.FloatField(null=True, blank=True)
     string_value = models.CharField(max_length=200, null=True, blank=True)
-    datetime_value = models.DateTimeField(auto_now=True, null=True, blank=True)
-    time_value = models.TimeField(auto_now=True, null=True, blank=True)
+    datetime_value = models.DateTimeField(null=True, blank=True)
+    time_value = models.TimeField(null=True, blank=True)
 
-    # def save(self,**kwargs):
-    #     if
+    def save(self, *args, **kwargs): #TODO Eshtebah save mishe
+        """
+        print(bool(self.numeric_value),self.attrs.find_type)
+        print(bool(self.float_value),self.attrs.find_type)
+        y= self.attrs.find_type.__class__
+        x=0
+        if  self.numeric_value.__class__ == y and not None : x =+1
+        elif self.float_value.__class__ == y and not None : x =+1
+        elif self.string_value.__class__ == y and not None : x =+1
+        elif self.datetime_value.__class__ == y and not None :  x =+1
+        elif self.time_value.__class__ == y and not None : x =+1
+        print(x,y,self.string_value.__class__)
+        """
+        return super().save(self, *args, **kwargs)
 
     @property
     def find_val(self):
@@ -99,7 +142,7 @@ class Product(models.Model):
 
     ### FK ###
     supplier = models.ForeignKey(to=Supplier, on_delete=models.RESTRICT, null=True, blank=True)
-    filed = models.ForeignKey("Attribute", on_delete=models.CASCADE, null=True, blank=True, verbose_name="فیلد اضافی")
+    filed = models.ManyToManyField("Attributekey", through=Attribute, blank=True, verbose_name="Extra Filed")
     cat = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True)
     brand = models.ForeignKey("Brand", on_delete=models.SET_NULL, null=True, blank=True)
     #### Product ####
@@ -109,8 +152,8 @@ class Product(models.Model):
     status = models.CharField("وضعیت موجودی", choices=status_choices, max_length=1, default="N")
     size = models.CharField(max_length=30, null=True, blank=True)
     description = models.TextField("توضیحات اضافی", max_length=30, null=True, blank=True)
-    upc = models.PositiveBigIntegerField(help_text="بارکد ۱۲ رقمی")
-    catalog = models.FileField("کاتالوگ", upload_to="", null=True, blank=True)  ### How to connerct CDN??
+    upc = models.PositiveBigIntegerField(null=True, blank=True, help_text="بارکد ۱۲ رقمی")
+    catalog = models.FileField("کاتالوگ", upload_to="", null=True, blank=True)  ### How to connerct CDN?? #TODO
     is_archive = models.BooleanField("فعال/غیرفعال", default=False)
 
     ## Price ###  set Temp price for this product (( if (end - start) > (end - now) ==> cost = temporary_price
@@ -152,5 +195,5 @@ class Product(models.Model):
         verbose_name = "محصولات"
         verbose_name_plural = "محصولات"
 
-    def __str__(self):
-        return f"{self.name}, {self.cost}, {self.id}"
+    # def __str__(self):
+    #     return f"{self.name}, {self.cost}, {self.id}"

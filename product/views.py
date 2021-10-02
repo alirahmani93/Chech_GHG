@@ -5,13 +5,16 @@ from django.apps import apps
 from django.db.models import Q, Count
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.cache import cache_page
 from django.views.generic import ListView, View, DetailView, FormView
+from rest_framework.views import APIView
 
 from .models import Product, Brand, Category, Media, Attribute  # ,Cart #, CartItem
 from .form import ProductForm
 
 
 # Create your views here.
+
 class ProductList(ListView):
     model = Product
     context_object_name = 'list_p'
@@ -37,7 +40,7 @@ class PriceBar(ListView):
     context_object_name = 'price'
     template_name = 'sidebar.html'
 
-
+    @cache_page(60*1)
     def get_queryset(self):
         down = Product.objects.order_by("-cost").first()
         up = Product.objects.order_by("-cost").last()
@@ -137,10 +140,21 @@ def selected_product(request, id):
     # return render(request, "app1/show_Questions.html", context)
     return JsonResponse(attribute, safe=True)
 
-
-class Media(ListView):
+#
+class MediaView(ListView):
     model = Media
     template_name = "test.html"
     context_object_name = "medias"
-    queryset = Media.objects.all()
+    # queryset = Media.objects.all()
 # queryset = Media.objects.all()
+
+
+
+
+# class CommentSerializeView(APIView):
+#     def putt(self, request):
+#         product = get_object_or_404(Product,id)
+#
+#
+#     def delete(self,id):
+#         product = get_object_or_404(Product,id)

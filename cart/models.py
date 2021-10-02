@@ -46,18 +46,26 @@ class CartItem(Log):
 
     @property
     def cond1(self) -> int:
-        print("2:", Product.count)
-        if (Product.count - self.quantity) > 0:
-            Product.count -= self.quantity
-            print("1:", Product.count)
-        return Product.count
+        print("up")
+        x= Product.objects.get(id=self.product_fk.id).count
+        print(x,self.quantity)
+
+        if x - self.quantity > 0:
+            y= x- self.quantity
+            Product.objects.get(id=self.product_fk.id).count=y
+            print(y)
+            return True
+        else:
+            return False
+
 
     # def save(self, **kwargs):
-    #     print("Save")
-    #     if self.quantity < 0:
-    #         raise Exception("tedad manfi mojaz nist")
-    #
-    #     super().save()
+    #     print("SAVE")
+    #     print("ass: ",self.cond1)
+    #     if self.cond1:
+    #         Product.save(Product)
+    #         super().save()
+    #     else: return HttpResponse("Shab bekheir")
 
     def __str__(self):
         return f"{self.product_fk.name}"

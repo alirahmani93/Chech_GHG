@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     {% if title %}
-    <title>{{ title }}</title>
+        <title>{{ title }}</title>
     {% else %}
-    <title>BabaBarghi</title>
+        <title>BabaBarghi</title>
     {% endif %}
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,21 +14,22 @@
     <meta name="author" content="ProteusThemes">
 
     <!--  Google Fonts  -->
-    <link href='http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,400italic,700italic&amp;subset=latin,latin-ext,greek' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,700,400italic,700italic&amp;subset=latin,latin-ext,greek'
+          rel='stylesheet' type='text/css'>
 
     <!-- Twitter Bootstrap -->
-    <link href="{%  static "stylesheets/bootstrap.css"  %}" rel="stylesheet">
-    <link href="{%  static "stylesheets/responsive.css" %}" rel="stylesheet">
+    <link href="{% static "stylesheets/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "stylesheets/responsive.css" %}" rel="stylesheet">
     <!-- Slider Revolution -->
     <link rel="stylesheet" href="{% static "js/rs-plugin/css/settings.css" %}" type="text/css"/>
     <!-- jQuery UI -->
-    <link rel="stylesheet" href="{% static "js/jquery-ui-1.10.3/css/smoothness/jquery-ui-1.10.3.custom.min.css" %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static "js/jquery-ui-1.10.3/css/smoothness/jquery-ui-1.10.3.custom.min.css" %}"
+          type="text/css"/>
     <!-- PrettyPhoto -->
     <link rel="stylesheet" href="{% static "js/prettyphoto/css/prettyPhoto.css" %}" type="text/css"/>
     <!-- main styles -->
 
     <link href="{% static "stylesheets/main.css" %}" rel="stylesheet">
-
 
 
     <!-- Modernizr -->
@@ -40,13 +41,13 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "images/apple-touch/72.png" %}">
     <link rel="apple-touch-icon-precomposed" href={% static "images/apple-touch/57.png" %}>
     <link rel="shortcut icon" href="{% static "images/LOGO50.png" %}">
-    <link rel="apple-touch-icon" href="{% static "images/LOGO50.png" %}"    >
+    <link rel="apple-touch-icon" href="{% static "images/LOGO50.png" %}">
 
-  </head>
+</head>
 
 <body>
 
-{%include "header.html" %}
+{% include "header.html" %}
 
 
 {% block content %}
@@ -54,9 +55,9 @@
 {% endblock %}
 
 
-{%include "footer.html" %}
+{% include "footer.html" %}
 
-{%include "scripts.html" %}
+{% include "scripts.html" %}
 
 </body>
 
