@@ -1,9 +1,17 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
 
+from .api.api_view import ProductViewset, CategoryViewset,BrandViewset
 from .views import *
 
+simple_router = SimpleRouter()
+simple_router.register("product", ProductViewset, basename="product")
+simple_router.register("cat", CategoryViewset, basename="category")
+simple_router.register("brand",BrandViewset , basename="brand")
+
+
 urlpatterns = [
-    path('product-list/',                   cache_page(60)(ProductList.as_view()),      name="shop"),
+    path('product-list/',                   cache_page(1)(ProductList.as_view()),      name="shop"),
     path('product-details/<int:pk>',        ProductDetails.as_view(),   name="product-details"),
 
     path('show_all/<str:pmodel>/',          show_all,                   name="show_all_list"),
@@ -19,6 +27,8 @@ urlpatterns = [
 
     path('media/',                        MediaView.as_view(),        name="media_view"),
 
-]
+    path("api/",include(simple_router.urls)),
 
+]
+print(simple_router.urls)
 # path('show_all_p/<str:cat>', show_all_product, name="show_all_product"),

@@ -9,7 +9,7 @@ from dotenv import load_dotenv, find_dotenv
 env_file = Path(find_dotenv(usecwd=True))
 load_dotenv(verbose=True, dotenv_path=env_file)
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-w34#+sf(hziskp3wbl6!t*(8^6!)s@#(8yeofk5ebgccfkd)=_'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 INTERNAL_IPS = ['127.0.0.1', ]
 ALLOWED_HOSTS = []
@@ -27,19 +27,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "debug_toolbar",  ## In debug mode
-    # "azbankgateways",
     "rest_framework",
     "rest_framework.authtoken",
+    # "rest_framework_simplejwt"
 
     'django_filters',
 
     "product",
     "users",
     "cart",
+    "payment",
+
+    "chech_GHG",
 
     # "shipping",
     # "wallet",
-    # "payment",
 
 ]
 
@@ -182,6 +184,7 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True

@@ -1,7 +1,13 @@
 from django.urls import path
 
-from .views import check_payment_successful, go_to_gateway_view
+from .views import  payment_return, payment_start , payment_check
+
 urlpatterns = [
-    path('check_payment/', check_payment_successful),
-    path('go_to_gateway_view/', go_to_gateway_view),
+
+
+
+    path('payment', payment_start, name='payment_start'),
+    path('payment/return', payment_return, name='payment_return'),
+    path('payment/check/<pk>', payment_check, name='payment_check'),
+
 ]

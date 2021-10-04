@@ -13,9 +13,9 @@ urlpatterns = [
     path('cart-delete/<int:pk>', DeleteCart.as_view(), name='cart-delete'),
 
     path('cartitemcart-detail/<int:pk>', DetailCartItem.as_view(),      name='cartitem-detail'),
-    path('cartitem-list/',   ListCartItem.as_view()  ,          name='cartitem-list'),
-    path('cartitem-create/', CreateCartItem.as_view(),          name='cartitem-create'),
-    path('cartitem-update/<int:pk>', UpdateCartItem.as_view(),  name='cartitem-update'),
+    path('cartitem-list/',   ListCartItem.as_view()  ,                  name='cartitem-list'),
+    path('cartitem-create/', CreateCartItem.as_view(),                  name='cartitem-create'),
+    path('cartitem-update/<int:pk>', UpdateCartItem.as_view(),          name='cartitem-update'),
     path('cartitem-delete/<int:pk>', DeleteCartItem.as_view(),          name='cartitem-delete'),
 
 ]

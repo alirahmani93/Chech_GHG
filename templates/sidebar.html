@@ -3,6 +3,8 @@
 <!--  ==========  -->
 <!--  = Sidebar =  -->
 <!--  ==========  -->
+{% block side %}
+
 <aside class="span3 left-sidebar" id="tourStep1">
     <div class="sidebar-item sidebar-filters" id="sidebarFilters">
 
@@ -23,6 +25,7 @@
             </div>
             <div id="filterOne" class="accordion-body collapse in">
                 <div class="accordion-inner">
+                <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxx</p>
                     {% for elm in side %}
                         {% if    elm.sub_category   %}
 
@@ -131,3 +134,4 @@
     </div>
 </aside> <!-- /sidebar -->
 
+{% endblock %}

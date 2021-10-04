@@ -1,5 +1,8 @@
-from django.urls import path
 
+from django.urls import path
+from rest_framework.routers import SimpleRouter
+
+from .api.api_view import *
 from .views import register, login, logout, UpdateProfile
 
 ###

@@ -12,3 +12,8 @@ def model_supplier_directory_path(instance, filename):
     email = instance.supplier.email.split("@")[0]
     company_name = instance.supplier.company_name
     return f'{instance.__class__.__name__}/{instance.id}_{email}/{company_name}.{file_type}'
+
+def model_home_directory_path(instance, filename):
+    file_type = filename.split(".")[-1]
+    name = instance.name
+    return f'{instance.__class__.__name__}/{instance.id}_{name}.{file_type}'
