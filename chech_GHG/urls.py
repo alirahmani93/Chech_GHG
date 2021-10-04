@@ -25,6 +25,8 @@ urlpatterns = [
     path('payment/', include("payment.urls")),
     # path('shipping/', include("shipping.urls")),
     # path('wallet/', include("wallet.urls")),
+
+
 ]
 
 if settings.DEBUG:
