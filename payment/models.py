@@ -37,4 +37,4 @@ class Invoice(models.Model):
     status = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.pk) + "  |  " + self.order_id + "  |  " + str(self.status)
+        return f"{self.pk}  |  {self.order_id}  |  {self.status}"

@@ -30,5 +30,5 @@ urlpatterns = [
     path("api/",include(simple_router.urls)),
 
 ]
-print(simple_router.urls)
+# print(simple_router.urls)
 # path('show_all_p/<str:cat>', show_all_product, name="show_all_product"),
