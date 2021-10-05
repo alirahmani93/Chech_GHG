@@ -20,7 +20,7 @@ urlpatterns = [
     path('account/', include("users.urls"), name="acc"),
     path('cart/', include("cart.urls"), name="cart"),
     # path('payment/', include("payment.urls")),
-    # path('shipping/', include("shipping.urls")),
+    path('shipping/', include("shipping.urls")),
     # path('wallet/', include("wallet.urls")),
 ]
 

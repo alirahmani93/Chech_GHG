@@ -5,7 +5,7 @@ from django.urls import reverse
 from azbankgateways import bankfactories, models as bank_models, default_settings as settings
 
 from .models import Payment
-
+from idpay import api
 # Create your views here.
 
 def check_payment_successful(request):

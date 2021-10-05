@@ -71,8 +71,9 @@
                                             class="zocial-github"></span></a>
                                 </div>
                                 <div class="register">
-                                    <a href="{% static "#loginModal" %}" role="button" data-toggle="modal">ورود</a> یا
-                                    <a href="{% static "#registerModal" %}" role="button" data-toggle="modal">ثبت
+{#                                    <a href="{% static "#loginModal" %}" role="button" data-toggle="modal">ورود</a> یا#}
+                                    <a href="{% url "login" %}" role="button" data-toggle="modal">ورود</a> یا
+                                    <a href="{% url "signup" %}" role="button" data-toggle="modal">ثبت
                                         نام</a>
                                 </div>
                             </div>
