@@ -20,17 +20,15 @@ urlpatterns = [
     path('email/', send_comment, name='email'),
     # path("auth-token-auth/",views.obtain)
 
-
     path('product/', include("product.urls"), name="prd"),
     path('account/', include("users.urls"), name="acc"),
     path('cart/', include("cart.urls"), name="cart"),
     path('payment/', include("payment.urls")),
-    # path('shipping/', include("shipping.urls")),
+    path('shipping/', include("shipping.urls")),
     # path('wallet/', include("wallet.urls")),
 
     path('api-token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api-token-refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
 
 ]
 

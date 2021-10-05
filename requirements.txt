@@ -1,11 +1,11 @@
 asgiref==3.4.1
 attrs==21.2.0
-az-iranian-bank-gateways==1.6.12
+
 cached-property==1.5.2
 certifi==2021.5.30
 charset-normalizer==2.0.4
 Django==3.2.7
--e git+https://github.com/jazzband/django-debug-toolbar.git@e20ac73bd8074d2dbced6e7ed14b3bd55e526669#egg=django_debug_toolbar
+
 django-filter==21.1
 django-redis==5.0.0
 django-render-partial==0.4
@@ -23,9 +23,7 @@ python-dotenv==0.19.0
 pytz==2021.1
 redis==3.5.3
 requests==2.26.0
-requests-file==1.5.1
-requests-toolbelt==0.9.1
+
 six==1.16.0
 sqlparse==0.4.1
 urllib3==1.26.6
-zeep==4.1.0

@@ -3,12 +3,13 @@ from json import loads, dumps
 from django.apps import apps
 
 from django.db.models import Q, Count
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.cache import cache_page
 from django.views.generic import ListView, View, DetailView, FormView
 from rest_framework.views import APIView
 
+from cart.forms import AddToCartForm
 from .models import Product, Brand, Category, Media, Attribute  # ,Cart #, CartItem
 from .form import ProductForm
 
@@ -20,6 +21,7 @@ class ProductList(ListView):
     context_object_name = 'list_p'
     template_name = 'shop.html'
     queryset = Product.objects.all()
+
 
 class BrandList(ListView):
     model = Brand
@@ -34,13 +36,12 @@ class SideBar(ListView):
     template_name = 'sidebar.html'
 
 
-
 class PriceBar(ListView):
     model = Product
     context_object_name = 'price'
     template_name = 'sidebar.html'
 
-    @cache_page(60*1)
+    @cache_page(60 * 1)
     def get_queryset(self):
         down = Product.objects.order_by("-cost").first()
         up = Product.objects.order_by("-cost").last()
@@ -52,24 +53,34 @@ class PriceBar(ListView):
         return queryset
 
 
-class ProductDetails(DetailView):
-    model = Product
-    template_name = "product.html"
-    context_object_name = "p_details"
+def product_detail(request, pk):
+    queryset = Product.objects.filter(pk=pk)
+    if queryset.exists():
+        product = queryset.first()
+        form = AddToCartForm({"product": product, "quantity":1})
+        return render(request, "product.html", {"product": product, "form": form})
+    raise Http404
+
+# class ProductDetails(DetailView):
+#     model = Product
+#     form_class = AddToCartForm
+#     template_name = "product.html"
+#     context_object_name = "p_details"
 
 
 class ProductFormView(FormView):
     template_name = "producr_form.html"
     form_class = ProductForm
+
     success_url = "Thank YOU"
 
 
-class TestAnnotated(ListView):
-    template_name = "producr_form.html"
-    context_object_name = "p_list"
-    queryset = Product.objects.all()
-    model = Product
-    # queryset = Product.objects.annotate(status_type=Count("cat"))
+# class TestAnnotated(ListView):
+#     template_name = "producr_form.html"
+#     context_object_name = "p_list"
+#     queryset = Product.objects.all()
+#     model = Product
+#     # queryset = Product.objects.annotate(status_type=Count("cat"))
 
 
 # def show_all_product(request, cat):
@@ -140,15 +151,13 @@ def selected_product(request, id):
     # return render(request, "app1/show_Questions.html", context)
     return JsonResponse(attribute, safe=True)
 
-#
+
 class MediaView(ListView):
     model = Media
     template_name = "test.html"
     context_object_name = "medias"
     # queryset = Media.objects.all()
 # queryset = Media.objects.all()
-
-
 
 
 # class CommentSerializeView(APIView):
