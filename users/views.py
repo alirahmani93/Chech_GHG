@@ -30,7 +30,6 @@ from chech_GHG.settings import KAVENAGAR_API_KEY
 
 
 User = get_user_model()
-User = get_user_model()
 
     #   #   #      #   #   #      #   #   #  register first method: class base  #   #   ##   #   ###   #   #   #   #
 class RegisterView(FormView):
@@ -95,27 +94,6 @@ def password_change(request):
     context = {
         'form': form,
     }
-#   #   #   # #   #   #       #  #   register second method: function base #   #   ##   #   ##   #   #
-# @require_POST
-def sign_up(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
-            User.objects.create_user(username=username, email=email, password=password)
-            return redirect('login')
-    else:
-        form = SignupForm()
-
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'signup.html', context)
-
-
 
 @login_required
 def password_change(request):
@@ -150,10 +128,6 @@ class LoginView(FormView):
         login(self.request, form.cleaned_data['user'])
         return super().form_valid(form)
 
-class LoginView(FormView):
-    form_class = LoginForm
-    template_name = 'login.html'
-    success_url = 'home_page'
 
 class ProfileUpdateView(UpdateView):
     model = User
