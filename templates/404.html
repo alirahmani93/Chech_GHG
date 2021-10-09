@@ -33,13 +33,12 @@
     <div class="name">
         <div class="span4 offset4">
             <div class="sidebar-item widget_search">
-{#                <form role="search" method="get" id="searchform" action={% url "home_page" %} class="form">#}
-{#                    <input type="text" placeholder="جستجو در نوشته ها ..." name="s" class="input-block-level"#}
-{#                           id="appendedInputButton">#}
-                    <button type="submit"> برگرد به خانه
-                        <i class="icon-search"></i>
-                    </button>
-{#                </form>#}
+                <form action={% url "home_page" %}>
+                    <input type="submit" >
+{#                    <button type="submit"> برگرد به خانه#}
+{#                        <i class="icon-search"></i>#}
+{#                    </button>#}
+                </form>
             </div>
         </div>
     </div>

@@ -54,13 +54,22 @@
 {#    {% if mediaa. %}#}
 {##}
 {#    {% endif %} #}
-    {% for media in medias %}
-        {{ media.pk }}
-asdd
-    {% endfor %}
+{#    {% for media in medias %}#}
+{#        {{ media.pk }}#}
+{#asdd#}
+{#    {% endfor %}#}
 
 
 {#{% endfor %}#}
+
+{% for x in list_obj %}
+<p>{{ x.id }}</p>
+{% endfor %}
+
+{% for x in obj2 %}
+<p>id {{ x.id}}</p>
+{% endfor %}
+
 
 
 </body>

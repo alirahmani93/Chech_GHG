@@ -25,15 +25,14 @@
             </div>
             <div id="filterOne" class="accordion-body collapse in">
                 <div class="accordion-inner">
-                <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxx</p>
                     {% for elm in side %}
                         {% if    elm.sub_category   %}
 
                             <a href="#" data-target=".filter--accessories" class="selectable"><i
                                     class="box"></i> {{ elm.sub_category }}</a>
-
                         {% endif %}
-
+                    <a href="#" data-target=".filter--accessories" class="selectable"><i
+                                    class="box"></i> {{ elm.title }}</a>
                     {% endfor %}
 
                 </div>
@@ -111,21 +110,21 @@
         <!--  ==========  -->
         <div class="accordion-group">
             <div class="accordion-heading">
+
                 <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">برند
                     <b class="caret"></b></a>
             </div>
 
            {% for b in brand %}
-
+                <p>{{ b.name }}</p>
 
             <div id="filterFour" class="accordion-body collapse">
                 <div class="accordion-inner">
                     <a href="#" data-target="s-oliver" data-type="brand"
                        class="selectable detailed"><i class="box"></i> {{ b.name }}</a>
            {% endfor %}
-
-                </div>
             </div>
+                </div>
         </div> <!-- /brand filter -->
 
         <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span>
