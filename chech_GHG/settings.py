@@ -6,6 +6,8 @@ import django_redis.client
 from django.contrib.staticfiles.finders import AppDirectoriesFinder
 from dotenv import load_dotenv, find_dotenv
 
+from celery.schedules import crontab
+
 env_file = Path(find_dotenv(usecwd=True))
 load_dotenv(verbose=True, dotenv_path=env_file)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +39,7 @@ INSTALLED_APPS = [
     "users",
     "cart",
     "payment",
-
+    "blog",
     "chech_GHG",
 
     # "shipping",
@@ -137,7 +139,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/0",
+        "LOCATION": "redis://127.0.0.1:6380/0",
         "TIMEOUT": 60 * 60,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
@@ -208,3 +210,25 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 KAVENAGAR_API_KEY = os.environ.get("KAVENAGAR_API_KEY")
 # KAVENAGAR_API_KEY = "654A326F39354853692B30347450356E4D65745659655230743164384A7546757A3964416B4C586C6647413D"
+
+CELERY_BROKER_URL = 'redis://localhost:6380/1'
+CELERY_RESULT_BACKEND = 'redis://localhost:6380/2'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Tehran'
+#
+# CELERY_BEAT_SCHEDULE = {
+#     "hello_task": {
+#         "task": "product_present.tasks.hello_task",
+#         # "schedule": crontab(minute="*/1"),
+#         "schedule": 10.0,
+#         "args": ("ashkan",),
+#     },
+#     "hello_ghamar": {
+#         "task": "product_present.tasks.hello_task",
+#         "schedule": crontab(minute="*/1"),
+#         # "schedule": 10.0,
+#         "args": ("ghamar",),
+#     }
+# }
