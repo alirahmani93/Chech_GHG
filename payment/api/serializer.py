@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer, HyperlinkedModelSerializ
     ListSerializer,StringRelatedField
 
 
-from payment.models import Invoice
+# from payment.models import Invoice
 
 
 
@@ -10,6 +10,6 @@ class PaymentSerializer(ModelSerializer):
     # invoice = StringRelatedField()
 
     class Meta:
-        model = Invoice
+        # model = Invoice
         fields = "__all__",
 

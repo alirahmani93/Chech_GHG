@@ -9,19 +9,19 @@ from rest_framework.throttling import UserRateThrottle
 from rest_framework.permissions import IsAuthenticated
 
 from .serializer import PaymentSerializer
-from payment.models import Invoice
+# from payment.models import Invoice
 
 class PaymentSerializerView(ListCreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = PaymentSerializer
     pagination_class = PageNumberPagination
-    queryset = Invoice.objects.all()
+    # queryset = Invoice.objects.all()
 
 
 class PaymentViewset(ReadOnlyModelViewSet):
     throttle_classes = [UserRateThrottle]
     permission_classes = [IsAuthenticated]
-    queryset = Invoice.objects.all()
+    # queryset = Invoice.objects.all()
     serializer_class = PaymentSerializer
 
     def list(self, request, *args, **kwargs):
