@@ -27,7 +27,8 @@ class BrandList(ListView):
     model = Brand
     context_object_name = 'brand'
     template_name = 'sidebar.html'
-    queryset = Brand.objects.all()
+    queryset = Brand.objects.all().values()
+    print("PPPPPPPPPPPPPPPPPPPPPPPPPPP",queryset.values())
 
 
 class SideBar(ListView):
