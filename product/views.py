@@ -56,17 +56,20 @@ class PriceBar(ListView):
 
 def product_detail(request, pk):
     queryset = Product.objects.filter(pk=pk)
+    print(queryset)
     if queryset.exists():
         product = queryset.first()
         form = AddToCartForm({"product": product, "quantity":1})
         return render(request, "product.html", {"product": product, "form": form})
     raise Http404
 
-# class ProductDetails(DetailView):
-#     model = Product
-#     form_class = AddToCartForm
-#     template_name = "product.html"
-#     context_object_name = "p_details"
+class ProductDetails(DetailView):
+    model = Product
+    query_pk_and_slug = "pk"
+
+    # queryset = Product.objects.filter(pk=pk)
+    template_name = "product.html"
+    context_object_name = "p_details"
 
 
 class ProductFormView(FormView):

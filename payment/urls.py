@@ -16,4 +16,3 @@ urlpatterns = [
     path("api/",include(simple_router.urls)),
 
 ]
-print("xxxxxxxxxxxxxxxxxx",simple_router)

@@ -4,7 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('product-list/',                   cache_page(0)(ProductList.as_view()),      name="shop"),
-    # path('product-details/<int:pk>',        ProductDetails.as_view(),   name="product-details"),
+    path('product-details/<int:pk>',        ProductDetails.as_view(),   name="product-details"),
     path('product-details/<int:pk>',        product_detail,   name="product-details"),
 
     path('show_all/<str:pmodel>/',          show_all,                   name="show_all_list"), #kar mikone

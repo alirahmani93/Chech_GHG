@@ -17,24 +17,12 @@ class Cart(Log):
     status_choices = (('on_cart', 'on_cart'), ('ready_to_pay', 'ready_to_pay'))
     # FK
     user_fk = models.OneToOneField(OurUser, on_delete=models.RESTRICT, null=True, blank=True, related_name='carts')
-    # cart_item = models.ForeignKey("CartItem", on_delete=models.RESTRICT, null=True, blank=True)
     # Attributes
-    # cart_uuid = models.UUIDField(verbose_name="شماره کارت ساخته شده", unique_for_date=1, default=None,)
     cart_status = models.CharField(max_length=100, choices=status_choices, default=status_choices[0])
     active = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.user_fk.email}"
-
-    # def add(self, product, qty=1):
-    #     if self.product_fks.filter(product=product).first():
-    #         product_item = self.product_fks.filter(product=product).first()
-    #         product_item.quantity += qty
-    #         product_item.save()
-    #
-    #     else:
-    #         product_item = self.product_fks.create(product=product, quantity=qty)
-    #     return product_item
 
     def validate_user(self, user):
         if user.is_authenticated:
@@ -69,11 +57,22 @@ class CartItem(Log):
 
     # FK
     cart_fk = models.ForeignKey(Cart, on_delete=models.RESTRICT, related_name="cart_fks", null=True, blank=True)
-    product_fk = models.ForeignKey(Product, on_delete=models.RESTRICT, related_name="product_fks", null=True, blank=True)
+    product_fk = models.ForeignKey(Product, on_delete=models.RESTRICT, related_name="product_fks", null=True,
+                                   blank=True)
     # Attrs
     quantity = models.IntegerField(default=1)
     status = models.BooleanField(default=True)
     is_selected = models.BooleanField(default=False)
+
+    def add(self, product, qty=1):
+        if self.objects.product_fk.filter(product=product).first():
+            product_item = self.product_fk.objects.filter(product=product).first()
+            product_item.quantity += qty
+            product_item.save()
+
+        else:
+            product_item = self.product_fk.objects.create(product=product, quantity=qty)
+        return product_item
 
     @property
     def cond1(self) -> int:
@@ -91,6 +90,5 @@ class CartItem(Log):
 
     def __str__(self):
         return f"{self.product_fk.name}"
-
 
 #   can have a table for every future invoice

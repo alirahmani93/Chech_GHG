@@ -34,6 +34,7 @@ def contact_us(request):
 @require_http_methods(["POST"])
 def send_comment(request):
     summation.delay(2,3)
+    return HttpResponse("DONE")
 
     # # if request.uesr.is_annonymos:
     # #     author = request.POST.get("author", None)

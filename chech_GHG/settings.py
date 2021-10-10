@@ -209,7 +209,6 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 KAVENAGAR_API_KEY = os.environ.get("KAVENAGAR_API_KEY")
-# KAVENAGAR_API_KEY = "654A326F39354853692B30347450356E4D65745659655230743164384A7546757A3964416B4C586C6647413D"
 
 CELERY_BROKER_URL = 'redis://localhost:6380/1'
 CELERY_RESULT_BACKEND = 'redis://localhost:6380/2'
@@ -217,18 +216,18 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Tehran'
-#
-# CELERY_BEAT_SCHEDULE = {
-#     "hello_task": {
-#         "task": "product_present.tasks.hello_task",
-#         # "schedule": crontab(minute="*/1"),
-#         "schedule": 10.0,
-#         "args": ("ashkan",),
-#     },
-#     "hello_ghamar": {
-#         "task": "product_present.tasks.hello_task",
-#         "schedule": crontab(minute="*/1"),
-#         # "schedule": 10.0,
-#         "args": ("ghamar",),
-#     }
-# }
+
+CELERY_BEAT_SCHEDULE = {
+    "hello_task": {
+        "task": "product_present.tasks.hello_task",
+        # "schedule": crontab(minute="*/1"),
+        "schedule": 10.0,
+        "args": ("ashkan",),
+    },
+    "hello_ghamar": {
+        "task": "product_present.tasks.hello_task",
+        "schedule": crontab(minute="*/1"),
+        # "schedule": 10.0,
+        "args": ("ghamar",),
+    }
+}
