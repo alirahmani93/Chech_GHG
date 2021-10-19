@@ -20,18 +20,17 @@ from django.contrib.auth import authenticate, login as log_in, logout as log_out
     update_session_auth_hash
 from django.views.generic import UpdateView, FormView
 from django.template import loader
-from kavenegar import KavenegarAPI ,APIException,HTTPException
 from users.forms import RegistrationForm, LoginForm, SignupForm, ChangePasswordForm
 
 from chech_GHG.settings import KAVENAGAR_API_KEY
 from .models import OurUser, Regular, Staff, Supplier
-from kavenegar import KavenegarAPI,APIException,HTTPException
+from kavenegar import KavenegarAPI, APIException, HTTPException
 from chech_GHG.settings import KAVENAGAR_API_KEY
-
 
 User = get_user_model()
 
-    #   #   #      #   #   #      #   #   #  register first method: class base  #   #   ##   #   ###   #   #   #   #
+
+#   #   #      #   #   #      #   #   #  register first method: class base  #   #   ##   #   ###   #   #   #   #
 class RegisterView(FormView):
     form_class = RegistrationForm
     template_name = 'register.html'
@@ -41,9 +40,11 @@ class RegisterView(FormView):
         form.save()
         return super().form_valid(form)
 
+
 def login(request):
     if request.method == "GET":
         return render(request, "login-register.html", {})
+
 
 #   #   #      #   #   #      #   #   #  register first method: class base  #   #   ##   #   ###   #   #   #   #
 class RegisterView(FormView):
@@ -95,6 +96,7 @@ def password_change(request):
         'form': form,
     }
 
+
 @login_required
 def password_change(request):
     user = request.user
@@ -118,6 +120,7 @@ def password_change(request):
 
 def password_change_done(request):
     return render(request, 'change_password_done.html')
+
 
 class LoginView(FormView):
     form_class = LoginForm
@@ -161,6 +164,7 @@ def search(request):
 
     return HttpResponse(template.render(context, request))
 
+
 # class UpdateProfile(UpdateView):    #(LoginRequiredMixin, UpdateView):
 #     model = OurUser
 #     template_name = "test.html"
@@ -170,7 +174,6 @@ def search(request):
 def send_sms(request):
     try:
         api = KavenegarAPI(KAVENAGAR_API_KEY)
-        # api = KavenegarAPI("654A326F39354853692B30347450356E4D65745659655230743164384A7546757A3964416B4C586C6647413D")
         params = {
             'sender': '',  # optional
             'receptor': '09195341154',  # multiple mobile number, split by comma
@@ -187,14 +190,14 @@ def send_sms(request):
 
 def call(request):
     try:
-      api = KavenegarAPI(KAVENAGAR_API_KEY)
-      params = {
-        'receptor': '09195341154',
-        'message': 'Hello'
-      }
-      response = api.call_maketts(params)
-      print(response)
-      return HttpResponse("call RAFT")
+        api = KavenegarAPI(KAVENAGAR_API_KEY)
+        params = {
+            'receptor': '09195341154',
+            'message': 'Hello'
+        }
+        response = api.call_maketts(params)
+        print(response)
+        return HttpResponse("call RAFT")
 
     except APIException as e:
         return HttpResponse(e)

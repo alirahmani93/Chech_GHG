@@ -6,7 +6,7 @@ import django_redis.client
 from django.contrib.staticfiles.finders import AppDirectoriesFinder
 from dotenv import load_dotenv, find_dotenv
 
-from celery.schedules import crontab
+# from celery.schedules import crontab
 
 env_file = Path(find_dotenv(usecwd=True))
 load_dotenv(verbose=True, dotenv_path=env_file)
@@ -28,10 +28,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    "debug_toolbar",  ## In debug mode
+    # "debug_toolbar",  ## In debug mode
     "rest_framework",
-    "rest_framework.authtoken",
-    # "rest_framework_simplejwt"
+    # "rest_framework.authtoken",
+    # "rest_framework_simplejwt",
 
     'django_filters',
 
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "users",
     "cart",
     "payment",
-    "blog",
     "chech_GHG",
 
     # "shipping",
@@ -48,7 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,9 +59,9 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # ),
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle'
@@ -182,6 +181,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_ROOT = BASE_DIR / 'static/'
 STATICFILES_DIRS = ((BASE_DIR / 'static/'),)
 
 # STATICFILES_FINDERS = [
@@ -219,15 +219,15 @@ CELERY_TIMEZONE = 'Asia/Tehran'
 
 CELERY_BEAT_SCHEDULE = {
     "hello_task": {
-        "task": "product_present.tasks.hello_task",
-        # "schedule": crontab(minute="*/1"),
-        "schedule": 10.0,
-        "args": ("ashkan",),
+        # "task": "product_present.tasks.hello_task",
+        # # "schedule": crontab(minute="*/1"),
+        # "schedule": 10.0,
+        # "args": ("ashkan",),
     },
     "hello_ghamar": {
-        "task": "product_present.tasks.hello_task",
-        "schedule": crontab(minute="*/1"),
-        # "schedule": 10.0,
-        "args": ("ghamar",),
+        # "task": "product_present.tasks.hello_task",
+        # "schedule": crontab(minute="*/1"),
+        # # "schedule": 10.0,
+        # "args": ("ghamar",),
     }
 }

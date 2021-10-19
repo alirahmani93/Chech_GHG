@@ -15,7 +15,6 @@ from .models import AboutUs, Timesheet
 
 from users.tasks import emailing, summation
 
-
 # Create your views here.
 def home(request):
     return render(request, "index.html", {'title': "Baba Barghi"})
@@ -33,31 +32,27 @@ def contact_us(request):
 
 @require_http_methods(["POST"])
 def send_comment(request):
-    summation.delay(2,3)
-    return HttpResponse("DONE")
+    # if request.uesr.is_annonymos:
+    #     author = request.POST.get("author", None)
+    #
+    # else:
+    #     author = request.user
+    try:
+        email = request.POST.get("email", None)
+        comment = request.POST.get("comment", None)
+        # message = render_to_string('contact.html',{
+        #     'user': email,
+        #     'domain': current_site.domain})
 
-    # # if request.uesr.is_annonymos:
-    # #     author = request.POST.get("author", None)
-    # #
-    # # else:
-    # #     author = request.user
-    # try:
-    #     email = request.POST.get("email", None)
-    #     comment = request.POST.get("comment", None)
-    #     current_site = get_current_site(request)
-    #     # message = render_to_string('contact.html',{
-    #     #     'user': email,
-    #     #     'domain': current_site.domain})
-    #
-    #     send_mail(email, comment, settings.EMAIL_HOST_USER, ["info.bababarghi@gmail.com",],auth_password="Qwert1234@",)
-    #
-    #     # messages.success(request, "Register Successfully!")
-    #     return HttpResponse('dame shoma babat feedbacket garm ')
-    #
-    #
-    # except IntegrityError as e:
-    #     messages.error(request, f"{e}")
-    #     return redirect('/')
+        emailing.delay(email, comment)
+
+        # messages.success(request, "Register Successfully!")
+        return HttpResponse('dame shoma babat feedbacket garm ')
+
+
+    except IntegrityError as e:
+        messages.error(request, f"{e}")
+        return redirect('/')
 
 
 def search(request):
